@@ -9,6 +9,7 @@ import { AttemptsTable } from "@/components/game/AttemptsTable";
 import { StatsBar } from "@/components/game/StatsBar";
 import { ShareButton } from "@/components/game/ShareButton";
 import { HintPanel } from "@/components/game/HintPanel";
+import { GameModeSwitcher, type GameMode } from "@/components/game/GameModeSwitcher";
 import { SupportFooter } from "@/components/game/SupportFooter";
 import {
   loadStats,
@@ -29,6 +30,7 @@ function Index() {
   const [won, setWon] = useState(false);
   const [shake, setShake] = useState(false);
   const [stats, setStats] = useState<LocalStats>(() => loadStats());
+  const [mode, setMode] = useState<GameMode>("classic");
 
   const charactersQ = useQuery({
     queryKey: ["characters"],
@@ -135,7 +137,11 @@ function Index() {
         <StatsBar stats={stats} />
       </section>
 
-      <HintPanel target={target} attemptCount={attempts.length} won={won} />
+      <div className="mb-4">
+        <GameModeSwitcher mode={mode} onChange={setMode} />
+      </div>
+
+      <HintPanel target={target} attemptCount={attempts.length} won={won} mode={mode} />
 
       {/* Search */}
       <section className={`mb-5 ${shake ? "animate-shake" : ""}`}>
