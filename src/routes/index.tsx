@@ -7,6 +7,7 @@ import { Countdown } from "@/components/game/Countdown";
 import { CharacterSearch } from "@/components/game/CharacterSearch";
 import { AttemptsTable } from "@/components/game/AttemptsTable";
 import { StatsBar } from "@/components/game/StatsBar";
+import { ShareButton } from "@/components/game/ShareButton";
 import {
   loadStats,
   loadTodayState,
