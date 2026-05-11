@@ -47,8 +47,8 @@ export function CharacterSearch({ characters, excludeIds, disabled, onPick }: Pr
 
   return (
     <div ref={wrapRef} className="relative w-full">
-      <div className="flex items-center gap-2 panel-hero px-3 py-2.5">
-        <Search className="size-4 text-primary shrink-0" />
+      <div className={`flex items-center gap-2 panel-input px-4 py-3.5 ${q.length === 0 && !disabled ? "panel-input-idle" : ""}`}>
+        <Search className="size-5 text-villain shrink-0" style={{ color: "var(--villain)" }} />
         <input
           value={q}
           onChange={(e) => {
@@ -71,7 +71,7 @@ export function CharacterSearch({ characters, excludeIds, disabled, onPick }: Pr
           }}
           disabled={disabled}
           placeholder={disabled ? "¡Has acertado!" : "Escribe un héroe..."}
-          className="flex-1 bg-transparent outline-none placeholder:text-muted-foreground text-base disabled:opacity-50"
+          className="flex-1 bg-transparent outline-none text-base disabled:opacity-50"
           autoComplete="off"
           autoCapitalize="off"
           spellCheck={false}

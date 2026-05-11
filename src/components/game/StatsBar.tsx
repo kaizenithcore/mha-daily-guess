@@ -11,10 +11,10 @@ export function StatsBar({ stats }: { stats: LocalStats }) {
   return (
     <div className="grid grid-cols-3 gap-2">
       {items.map(({ icon: Icon, label, value }) => (
-        <div key={label} className="panel-hero py-2 px-2 flex flex-col items-center">
-          <Icon className="size-4 text-primary mb-0.5" />
-          <span className="font-display text-xl leading-none">{value}</span>
-          <span className="text-[0.6rem] uppercase tracking-widest text-muted-foreground mt-0.5">
+        <div key={label} className="panel-info py-2 px-2 flex flex-col items-center">
+          <Icon className="size-3.5 text-muted-foreground mb-0.5" />
+          <span className="font-display text-xl leading-none text-foreground">{value}</span>
+          <span className="text-[0.55rem] uppercase tracking-widest text-muted-foreground mt-0.5">
             {label}
           </span>
         </div>
