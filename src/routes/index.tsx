@@ -9,6 +9,7 @@ import { AttemptsTable } from "@/components/game/AttemptsTable";
 import { StatsBar } from "@/components/game/StatsBar";
 import { ShareButton } from "@/components/game/ShareButton";
 import { HintPanel } from "@/components/game/HintPanel";
+import { SupportFooter } from "@/components/game/SupportFooter";
 import {
   loadStats,
   loadTodayState,
@@ -91,16 +92,33 @@ function Index() {
   return (
     <main className="mx-auto w-full max-w-xl px-4 pt-6 pb-24 sm:pt-10">
       {/* Header */}
-      <header className="text-center mb-6">
+      <header className="relative text-center mb-6 isolate">
+        {/* Comic action lines behind title */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 flex items-center justify-center"
+        >
+          <div
+            className="size-64 rounded-full opacity-30"
+            style={{
+              background:
+                "repeating-conic-gradient(from 0deg, color-mix(in oklab, var(--hero) 35%, transparent) 0deg 6deg, transparent 6deg 14deg)",
+              maskImage:
+                "radial-gradient(circle, black 30%, transparent 70%)",
+              WebkitMaskImage:
+                "radial-gradient(circle, black 30%, transparent 70%)",
+            }}
+          />
+        </div>
         <span className="chip mb-3">
           <Sparkles className="size-3" /> Daily hero
         </span>
-        <h1 className="font-display text-5xl sm:text-6xl tracking-wider">
-          <span className="text-primary drop-shadow-[0_2px_0_rgba(0,0,0,0.4)]">MHA</span>
-          <span className="text-foreground">dle</span>
+        <h1 className="font-display text-6xl sm:text-7xl tracking-wider leading-none">
+          <span className="text-primary drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">MHA</span>
+          <span className="text-foreground drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">dle</span>
         </h1>
-        <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-          Adivina el héroe del día. Plus Ultra.
+        <p className="text-xs sm:text-sm text-muted-foreground mt-2 uppercase tracking-[0.25em]">
+          Adivina el héroe · Plus Ultra
         </p>
       </header>
 
@@ -179,9 +197,7 @@ function Index() {
         </div>
       )}
 
-      <footer className="mt-10 text-center text-[0.7rem] text-muted-foreground">
-        Hecho por fans · No oficial · Reset diario 00:00 UTC
-      </footer>
+      <SupportFooter />
     </main>
   );
 }
