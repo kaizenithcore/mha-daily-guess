@@ -117,6 +117,8 @@ function Index() {
         <StatsBar stats={stats} />
       </section>
 
+      <HintPanel target={target} attemptCount={attempts.length} won={won} />
+
       {/* Search */}
       <section className={`mb-5 ${shake ? "animate-shake" : ""}`}>
         {charactersQ.isLoading ? (
