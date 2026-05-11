@@ -142,6 +142,15 @@
 }
 
 @layer components {
+  /* Informational panel — flat, quiet, no glow */
+  .panel-info {
+    background: color-mix(in oklab, var(--panel) 70%, transparent);
+    border: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+    border-radius: var(--radius-md);
+    box-shadow: inset 0 1px 0 color-mix(in oklab, var(--foreground) 5%, transparent);
+  }
+
+  /* Decorative hero panel — used for win banner and key highlights */
   .panel-hero {
     background: linear-gradient(180deg,
       color-mix(in oklab, var(--panel) 92%, transparent),
@@ -153,6 +162,48 @@
       0 12px 30px -12px oklch(0 0 0 / 0.6);
   }
 
+  /* Interactive input panel — bright ring, red accent stripe, "tap me" feel */
+  .panel-input {
+    position: relative;
+    background: linear-gradient(180deg,
+      color-mix(in oklab, var(--paper) 96%, transparent),
+      color-mix(in oklab, var(--paper) 88%, transparent));
+    color: var(--hero-foreground);
+    border: 2.5px solid var(--hero);
+    border-radius: var(--radius-lg);
+    box-shadow:
+      0 0 0 3px color-mix(in oklab, var(--villain) 0%, transparent),
+      0 0 0 4px color-mix(in oklab, var(--hero) 35%, transparent),
+      0 10px 30px -10px color-mix(in oklab, var(--hero) 50%, transparent);
+    transition: box-shadow 0.2s ease, transform 0.15s ease;
+  }
+  .panel-input::before {
+    content: "";
+    position: absolute;
+    left: -2.5px;
+    top: 8px;
+    bottom: 8px;
+    width: 5px;
+    background: var(--villain);
+    border-radius: 4px;
+    box-shadow: 0 0 12px color-mix(in oklab, var(--villain) 60%, transparent);
+  }
+  .panel-input:focus-within {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 3px color-mix(in oklab, var(--villain) 30%, transparent),
+      0 0 0 5px color-mix(in oklab, var(--hero) 55%, transparent),
+      0 14px 36px -10px color-mix(in oklab, var(--hero) 65%, transparent);
+  }
+  .panel-input input::placeholder { color: color-mix(in oklab, var(--hero-foreground) 55%, transparent); }
+  .panel-input input { color: var(--hero-foreground); font-weight: 600; }
+
+  @keyframes input-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--hero) 55%, transparent), 0 0 0 4px color-mix(in oklab, var(--hero) 35%, transparent), 0 10px 30px -10px color-mix(in oklab, var(--hero) 50%, transparent); }
+    50% { box-shadow: 0 0 0 8px color-mix(in oklab, var(--hero) 0%, transparent), 0 0 0 4px color-mix(in oklab, var(--hero) 60%, transparent), 0 14px 34px -10px color-mix(in oklab, var(--hero) 60%, transparent); }
+  }
+  .panel-input-idle { animation: input-pulse 2.4s ease-in-out infinite; }
+
   .chip {
     display: inline-flex;
     align-items: center;
@@ -160,12 +211,17 @@
     padding: 0.25rem 0.6rem;
     border-radius: 9999px;
     font-size: 0.72rem;
-    font-weight: 600;
-    background: color-mix(in oklab, var(--hero) 18%, transparent);
+    font-weight: 700;
+    background: color-mix(in oklab, var(--hero) 22%, transparent);
     color: var(--hero);
-    border: 1px solid color-mix(in oklab, var(--hero) 35%, transparent);
+    border: 1px solid color-mix(in oklab, var(--hero) 40%, transparent);
     text-transform: uppercase;
     letter-spacing: 0.08em;
+  }
+  .chip-red {
+    background: color-mix(in oklab, var(--villain) 20%, transparent);
+    color: color-mix(in oklab, var(--villain) 90%, white);
+    border-color: color-mix(in oklab, var(--villain) 50%, transparent);
   }
 
   .tile {
