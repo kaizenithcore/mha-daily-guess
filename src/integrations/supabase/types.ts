@@ -14,7 +14,86 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      characters: {
+        Row: {
+          affiliation: string | null
+          age: number | null
+          aliases: string[]
+          created_at: string
+          first_appearance_season: number | null
+          gender: string | null
+          height: number | null
+          id: string
+          image_url: string | null
+          is_active: boolean
+          name: string
+          nationality: string | null
+          quirk_type: string | null
+          quote: string | null
+          silhouette_image_url: string | null
+        }
+        Insert: {
+          affiliation?: string | null
+          age?: number | null
+          aliases?: string[]
+          created_at?: string
+          first_appearance_season?: number | null
+          gender?: string | null
+          height?: number | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          name: string
+          nationality?: string | null
+          quirk_type?: string | null
+          quote?: string | null
+          silhouette_image_url?: string | null
+        }
+        Update: {
+          affiliation?: string | null
+          age?: number | null
+          aliases?: string[]
+          created_at?: string
+          first_appearance_season?: number | null
+          gender?: string | null
+          height?: number | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          name?: string
+          nationality?: string | null
+          quirk_type?: string | null
+          quote?: string | null
+          silhouette_image_url?: string | null
+        }
+        Relationships: []
+      }
+      daily_characters: {
+        Row: {
+          character_id: string
+          created_at: string
+          date: string
+        }
+        Insert: {
+          character_id: string
+          created_at?: string
+          date: string
+        }
+        Update: {
+          character_id?: string
+          created_at?: string
+          date?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "daily_characters_character_id_fkey"
+            columns: ["character_id"]
+            isOneToOne: false
+            referencedRelation: "characters"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
