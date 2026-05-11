@@ -8,6 +8,7 @@ import { CharacterSearch } from "@/components/game/CharacterSearch";
 import { AttemptsTable } from "@/components/game/AttemptsTable";
 import { StatsBar } from "@/components/game/StatsBar";
 import { ShareButton } from "@/components/game/ShareButton";
+import { HintPanel } from "@/components/game/HintPanel";
 import {
   loadStats,
   loadTodayState,
@@ -115,6 +116,8 @@ function Index() {
         </div>
         <StatsBar stats={stats} />
       </section>
+
+      <HintPanel target={target} attemptCount={attempts.length} won={won} />
 
       {/* Search */}
       <section className={`mb-5 ${shake ? "animate-shake" : ""}`}>
