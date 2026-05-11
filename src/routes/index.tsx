@@ -9,6 +9,7 @@ import { AttemptsTable } from "@/components/game/AttemptsTable";
 import { StatsBar } from "@/components/game/StatsBar";
 import { ShareButton } from "@/components/game/ShareButton";
 import { HintPanel } from "@/components/game/HintPanel";
+import { SupportFooter } from "@/components/game/SupportFooter";
 import {
   loadStats,
   loadTodayState,
