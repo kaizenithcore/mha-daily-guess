@@ -30,6 +30,7 @@ function Index() {
   const [won, setWon] = useState(false);
   const [shake, setShake] = useState(false);
   const [stats, setStats] = useState<LocalStats>(() => loadStats());
+  const [mode, setMode] = useState<GameMode>("classic");
 
   const charactersQ = useQuery({
     queryKey: ["characters"],
