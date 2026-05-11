@@ -180,9 +180,7 @@ function Index() {
         </div>
       )}
 
-      <footer className="mt-10 text-center text-[0.7rem] text-muted-foreground">
-        Hecho por fans · No oficial · Reset diario 00:00 UTC
-      </footer>
+      <SupportFooter />
     </main>
   );
 }
