@@ -208,8 +208,8 @@ function Index() {
       <AttemptsTable attempts={attempts} target={target} />
 
       {attempts.length === 0 && !charactersQ.isLoading && (
-        <div className="panel-hero p-6 text-center text-sm text-muted-foreground">
-          Empieza escribiendo el nombre de un héroe o villano...
+        <div className="panel-info p-5 text-center text-xs text-muted-foreground uppercase tracking-[0.18em]">
+          Empieza escribiendo el nombre de un héroe…
         </div>
       )}
 
