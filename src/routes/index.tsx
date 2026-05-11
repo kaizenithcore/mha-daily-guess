@@ -112,7 +112,7 @@ function Index() {
             }}
           />
         </div>
-        <span className="chip mb-3">
+        <span className="chip chip-red mb-3">
           <Sparkles className="size-3" /> Daily hero
         </span>
         <h1 className="font-display text-6xl sm:text-7xl tracking-wider leading-none">
@@ -120,18 +120,18 @@ function Index() {
           <span className="text-foreground drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">dle</span>
         </h1>
         <p className="text-xs sm:text-sm text-muted-foreground mt-2 uppercase tracking-[0.25em]">
-          Adivina el héroe · Plus Ultra
+          Adivina el héroe · <span style={{ color: "var(--villain)" }} className="font-semibold">Plus Ultra</span>
         </p>
       </header>
 
-      <section className="grid grid-cols-1 gap-4 mb-5">
-        <div className="panel-hero p-3 flex items-center justify-between gap-4">
+      <section className="grid grid-cols-1 gap-2.5 mb-5">
+        <div className="panel-info p-2.5 flex items-center justify-between gap-4">
           <Countdown onReset={() => location.reload()} />
           <div className="text-right">
-            <div className="text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">
+            <div className="text-[0.55rem] uppercase tracking-[0.2em] text-muted-foreground">
               Reto #{daysSinceLaunch()}
             </div>
-            <div className="font-display text-lg text-primary">U.A. High</div>
+            <div className="font-display text-base text-primary leading-tight">U.A. High</div>
           </div>
         </div>
         <StatsBar stats={stats} />
@@ -143,10 +143,20 @@ function Index() {
 
       <HintPanel target={target} attemptCount={attempts.length} won={won} mode={mode} />
 
-      {/* Search */}
-      <section className={`mb-5 ${shake ? "animate-shake" : ""}`}>
+      {/* Search — primary interactive zone */}
+      <section className={`mb-6 ${shake ? "animate-shake" : ""}`}>
+        {!won && (
+          <div className="flex items-center justify-between mb-1.5 px-1">
+            <span className="text-[0.65rem] uppercase tracking-[0.22em] font-bold text-villain" style={{ color: "var(--villain)" }}>
+              ▸ Tu turno
+            </span>
+            <span className="text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">
+              Intento {attempts.length + 1}
+            </span>
+          </div>
+        )}
         {charactersQ.isLoading ? (
-          <div className="panel-hero p-4 text-sm text-muted-foreground text-center">
+          <div className="panel-info p-4 text-sm text-muted-foreground text-center">
             Cargando héroes...
           </div>
         ) : (
