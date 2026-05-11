@@ -135,17 +135,35 @@ function Index() {
       {/* Win banner */}
       {won && target && (
         <section className="panel-hero glow-hero p-5 text-center mb-5 animate-pop-in">
-          <div className="chip mx-auto mb-2" style={{ background: "color-mix(in oklab, var(--correct) 25%, transparent)", color: "var(--correct)", borderColor: "color-mix(in oklab, var(--correct) 50%, transparent)" }}>
+          <div
+            className="chip mx-auto mb-3"
+            style={{
+              background: "color-mix(in oklab, var(--correct) 25%, transparent)",
+              color: "var(--correct)",
+              borderColor: "color-mix(in oklab, var(--correct) 50%, transparent)",
+            }}
+          >
             ¡Plus Ultra!
           </div>
+          {target.image_url && (
+            <div className="mx-auto mb-3 size-28 rounded-full overflow-hidden border-4 border-primary shadow-[0_0_30px_color-mix(in_oklab,var(--hero)_55%,transparent)]">
+              <img src={target.image_url} alt={target.name} className="size-full object-cover" />
+            </div>
+          )}
           <h2 className="font-display text-3xl text-primary">{target.name}</h2>
           {target.aliases?.[0] && (
             <p className="text-sm text-muted-foreground mt-1">«{target.aliases[0]}»</p>
           )}
-          <p className="text-sm mt-3">
+          <p className="text-sm mt-3 mb-4">
             Resuelto en <strong>{attempts.length}</strong>{" "}
-            {attempts.length === 1 ? "intento" : "intentos"}
+            {attempts.length === 1 ? "intento" : "intentos"} · Racha{" "}
+            <strong>{stats.streak}</strong> 🔥
           </p>
+          <ShareButton
+            puzzleNumber={daysSinceLaunch()}
+            attempts={attempts}
+            target={target}
+          />
         </section>
       )}
 
