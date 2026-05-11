@@ -48,7 +48,7 @@ export function CharacterSearch({ characters, excludeIds, disabled, onPick }: Pr
   return (
     <div ref={wrapRef} className="relative w-full">
       <div className={`flex items-center gap-2 panel-input px-4 py-3.5 ${q.length === 0 && !disabled ? "panel-input-idle" : ""}`}>
-        <Search className="size-5 text-villain shrink-0" style={{ color: "var(--villain)" }} />
+        <Search className="size-4 shrink-0 text-villain" style={{ color: "var(--villain)" }} />
         <input
           value={q}
           onChange={(e) => {
@@ -71,7 +71,7 @@ export function CharacterSearch({ characters, excludeIds, disabled, onPick }: Pr
           }}
           disabled={disabled}
           placeholder={disabled ? "¡Has acertado!" : "Escribe un héroe..."}
-          className="flex-1 bg-transparent outline-none text-base disabled:opacity-50"
+          className="flex-1 bg-transparent text-base outline-none disabled:opacity-50"
           autoComplete="off"
           autoCapitalize="off"
           spellCheck={false}
@@ -79,7 +79,7 @@ export function CharacterSearch({ characters, excludeIds, disabled, onPick }: Pr
       </div>
 
       {open && suggestions.length > 0 && (
-        <ul className="absolute z-30 mt-2 w-full overflow-hidden panel-hero divide-y divide-border max-h-[60vh] overflow-y-auto">
+        <ul className="absolute z-30 mt-2 max-h-[60vh] w-full overflow-y-auto overflow-hidden panel-hero divide-y divide-border rounded-2xl">
           {suggestions.map((c, i) => (
             <li key={c.id}>
               <button
@@ -87,10 +87,10 @@ export function CharacterSearch({ characters, excludeIds, disabled, onPick }: Pr
                 onClick={() => pick(c)}
                 onMouseEnter={() => setActiveIdx(i)}
                 className={`flex w-full items-center gap-3 px-3 py-2.5 text-left transition ${
-                  i === activeIdx ? "bg-primary/15" : "hover:bg-primary/10"
+                  i === activeIdx ? "bg-primary/14" : "hover:bg-primary/8"
                 }`}
               >
-                <div className="size-9 rounded-md bg-secondary border border-border flex items-center justify-center font-display text-primary text-sm shrink-0 overflow-hidden">
+                <div className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-secondary font-display text-sm text-primary">
                   {c.image_url ? (
                     <img src={c.image_url} alt="" className="size-full object-cover" />
                   ) : (
@@ -98,9 +98,9 @@ export function CharacterSearch({ characters, excludeIds, disabled, onPick }: Pr
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="font-semibold truncate">{c.name}</div>
+                  <div className="truncate font-semibold">{c.name}</div>
                   {c.aliases?.[0] && (
-                    <div className="text-xs text-muted-foreground truncate">
+                    <div className="truncate text-xs text-muted-foreground">
                       {c.aliases[0]}
                     </div>
                   )}

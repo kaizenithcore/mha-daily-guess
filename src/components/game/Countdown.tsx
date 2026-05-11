@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import { formatCountdown, msUntilNextUTCMidnight } from "@/lib/mhadle";
 
 export function Countdown({ onReset }: { onReset?: () => void }) {
-  const [ms, setMs] = useState(() => msUntilNextUTCMidnight());
+  const [ms, setMs] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    setMs(msUntilNextUTCMidnight());
     const id = setInterval(() => {
       const next = msUntilNextUTCMidnight();
       setMs(next);
@@ -18,8 +21,8 @@ export function Countdown({ onReset }: { onReset?: () => void }) {
       <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
         Próximo héroe en
       </span>
-      <span className="font-display text-2xl text-primary tabular-nums">
-        {formatCountdown(ms)}
+      <span className="font-display text-3xl leading-none text-primary tabular-nums">
+        {mounted ? formatCountdown(ms) : "00:00:00"}
       </span>
     </div>
   );

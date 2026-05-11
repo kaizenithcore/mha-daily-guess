@@ -72,7 +72,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "MHAdle — Adivina el héroe del día" },
+      { title: "MHAdle" },
       { name: "description", content: "Wordle diario de My Hero Academia. Adivina el personaje oculto del día con pistas visuales. ¡Plus Ultra!" },
       { property: "og:title", content: "MHAdle — Adivina el héroe del día" },
       { property: "og:description", content: "Wordle diario de My Hero Academia. Pistas, racha y reto nuevo cada 24 h." },

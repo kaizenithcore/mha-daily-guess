@@ -30,7 +30,7 @@ export function AttemptsTable({
   if (attempts.length === 0) return null;
 
   const rows: Attempt[] = target
-    ? attempts.map((g) => ({ guess: g, cmp: compareCharacters(g, target) }))
+    ? [...attempts].reverse().map((g) => ({ guess: g, cmp: compareCharacters(g, target) }))
     : [];
 
   return (
@@ -42,14 +42,14 @@ export function AttemptsTable({
       </div>
 
       {rows.map((row, idx) => {
-        const isLatest = idx === rows.length - 1;
+        const isLatest = idx === 0;
         return (
           <div
             key={`${row.guess.id}-${idx}`}
-            className="panel-hero ua-frame p-3 animate-card-in"
+            className="panel-hero ua-frame animate-card-in p-3 sm:p-4"
           >
-            <div className="flex items-center gap-3 mb-2.5">
-              <div className="size-11 rounded-md border-2 border-primary/40 bg-secondary overflow-hidden shrink-0 flex items-center justify-center font-display text-primary shadow-[0_0_0_2px_color-mix(in_oklab,var(--background)_100%,transparent),0_0_0_3px_color-mix(in_oklab,var(--hero)_45%,transparent)]">
+            <div className="mb-3 flex items-center gap-3">
+              <div className="flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border bg-secondary font-display text-primary shadow-[0_0_0_1px_color-mix(in_oklab,var(--hero)_20%,transparent)]">
                 {row.guess.image_url ? (
                   <img src={row.guess.image_url} alt="" className="size-full object-cover" />
                 ) : (
@@ -57,15 +57,17 @@ export function AttemptsTable({
                 )}
               </div>
               <div className="min-w-0 flex-1">
-                <div className="font-display text-lg leading-tight truncate">{row.guess.name}</div>
+                <div className="font-display text-xl leading-tight truncate">{row.guess.name}</div>
                 {row.guess.aliases?.[0] && (
-                  <div className="text-xs text-muted-foreground truncate">«{row.guess.aliases[0]}»</div>
+                  <div className="truncate text-xs text-muted-foreground">
+                    «{row.guess.aliases[0]}»
+                  </div>
                 )}
               </div>
-              <span className="ua-badge font-display">#{idx + 1}</span>
+              <span className="ua-badge font-display">#{rows.length - idx}</span>
             </div>
 
-            <div className="grid grid-cols-7 gap-1.5">
+            <div className="grid grid-cols-7 gap-1.5 sm:gap-2">
               {COLS.map(({ key, label }, colIdx) => {
                 const cell = row.cmp[key] as AttemptComparison[keyof AttemptComparison];
                 const value = cell.value ?? "—";

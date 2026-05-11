@@ -64,11 +64,26 @@ export function compareCharacters(
 }
 
 /** Today key in UTC (YYYY-MM-DD). Daily reset at 00:00 UTC. */
-export function todayKeyUTC(): string {
+export function todayKeyUTC(offsetDays = 0): string {
   const d = new Date();
+  if (offsetDays !== 0) {
+    d.setUTCDate(d.getUTCDate() + offsetDays);
+  }
   return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()))
     .toISOString()
     .slice(0, 10);
+}
+
+export function dateToKeyUTC(date: Date): string {
+  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))
+    .toISOString()
+    .slice(0, 10);
+}
+
+export function shiftDateKey(dateKey: string, offsetDays: number): string {
+  const date = new Date(`${dateKey}T00:00:00.000Z`);
+  date.setUTCDate(date.getUTCDate() + offsetDays);
+  return date.toISOString().slice(0, 10);
 }
 
 /** ms until next 00:00 UTC */
@@ -101,6 +116,11 @@ export interface LocalStats {
 
 const STATS_KEY = "mhadle:stats";
 const TODAY_STATE_KEY = "mhadle:today";
+const INFINITE_ENABLED_KEY = "mhadle:infinite-enabled";
+
+function todayStateStorageKey(scope: string, dateKey: string): string {
+  return `${TODAY_STATE_KEY}:${scope}:${dateKey}`;
+}
 
 export function loadStats(): LocalStats {
   if (typeof window === "undefined") {
@@ -115,14 +135,14 @@ export function loadStats(): LocalStats {
   }
 }
 
-export function recordWin(attempts: number): LocalStats {
+export function recordWin(attempts: number, dayKey = todayKeyUTC()): LocalStats {
   const stats = loadStats();
-  const today = todayKeyUTC();
+  const today = dayKey;
   if (stats.lastWonDate === today) return stats;
 
   // streak continues if last win was yesterday UTC
   const yesterday = (() => {
-    const d = new Date();
+    const d = new Date(`${today}T00:00:00.000Z`);
     d.setUTCDate(d.getUTCDate() - 1);
     return d.toISOString().slice(0, 10);
   })();
@@ -144,23 +164,147 @@ export interface TodayState {
   date: string;
   attemptIds: string[];
   won: boolean;
+  surrendered: boolean;
 }
 
-export function loadTodayState(): TodayState {
-  const empty: TodayState = { date: todayKeyUTC(), attemptIds: [], won: false };
+export function loadTodayState(scope = "classic", dateKey = todayKeyUTC()): TodayState {
+  const empty: TodayState = { date: dateKey, attemptIds: [], won: false, surrendered: false };
   if (typeof window === "undefined") return empty;
   try {
-    const raw = localStorage.getItem(TODAY_STATE_KEY);
+    const raw = localStorage.getItem(todayStateStorageKey(scope, dateKey));
+    if (!raw && scope === "classic" && dateKey === todayKeyUTC()) {
+      const legacy = localStorage.getItem(TODAY_STATE_KEY);
+      if (legacy) {
+        const parsedLegacy = JSON.parse(legacy) as TodayState;
+        if (parsedLegacy.date === dateKey) {
+          return { ...empty, ...parsedLegacy };
+        }
+      }
+    }
     if (!raw) return empty;
     const parsed = JSON.parse(raw) as TodayState;
-    if (parsed.date !== todayKeyUTC()) return empty;
-    return parsed;
+    if (parsed.date !== dateKey) return empty;
+    return { ...empty, ...parsed };
   } catch {
     return empty;
   }
 }
 
-export function saveTodayState(state: TodayState) {
+export function saveTodayState(state: TodayState, scope = "classic", dateKey = todayKeyUTC()) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(TODAY_STATE_KEY, JSON.stringify(state));
+  localStorage.setItem(todayStateStorageKey(scope, dateKey), JSON.stringify(state));
+  if (scope === "classic" && dateKey === todayKeyUTC()) {
+    localStorage.setItem(TODAY_STATE_KEY, JSON.stringify(state));
+  }
+}
+
+export function loadInfiniteEnabled(): boolean {
+  if (typeof window === "undefined") return false;
+  return localStorage.getItem(INFINITE_ENABLED_KEY) === "true";
+}
+
+export function saveInfiniteEnabled(enabled: boolean) {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(INFINITE_ENABLED_KEY, String(enabled));
+}
+
+export type EndlessPhase = "playing" | "revealed" | "gameover";
+
+export interface EndlessState {
+  roundIndex: number;
+  attemptIds: string[];
+  livesLeft: number;
+  roundsCompleted: number;
+  phase: EndlessPhase;
+  result: "won" | "surrendered" | "lost" | null;
+}
+
+const ENDLESS_STATE_KEY = "mhadle:endless";
+const ENDLESS_RECORD_KEY = "mhadle:endless-record";
+const ENDLESS_DEFAULT_STATE: EndlessState = {
+  roundIndex: 0,
+  attemptIds: [],
+  livesLeft: 5,
+  roundsCompleted: 0,
+  phase: "playing",
+  result: null,
+};
+
+function endlessStateStorageKey(scope: string, dateKey: string): string {
+  return `${ENDLESS_STATE_KEY}:${scope}:${dateKey}`;
+}
+
+function endlessRecordStorageKey(scope: string, dateKey: string): string {
+  return `${ENDLESS_RECORD_KEY}:${scope}:${dateKey}`;
+}
+
+export function loadEndlessState(scope = "classic", dateKey = todayKeyUTC()): EndlessState {
+  if (typeof window === "undefined") return ENDLESS_DEFAULT_STATE;
+  try {
+    const raw = localStorage.getItem(endlessStateStorageKey(scope, dateKey));
+    if (!raw) return ENDLESS_DEFAULT_STATE;
+    const parsed = JSON.parse(raw) as Partial<EndlessState>;
+    return {
+      ...ENDLESS_DEFAULT_STATE,
+      ...parsed,
+      attemptIds: Array.isArray(parsed.attemptIds) ? parsed.attemptIds : [],
+      livesLeft: typeof parsed.livesLeft === "number" ? parsed.livesLeft : 5,
+      roundsCompleted: typeof parsed.roundsCompleted === "number" ? parsed.roundsCompleted : 0,
+      phase: parsed.phase === "revealed" || parsed.phase === "gameover" ? parsed.phase : "playing",
+      result:
+        parsed.result === "won" || parsed.result === "surrendered" || parsed.result === "lost"
+          ? parsed.result
+          : null,
+      roundIndex: typeof parsed.roundIndex === "number" ? parsed.roundIndex : 0,
+    };
+  } catch {
+    return ENDLESS_DEFAULT_STATE;
+  }
+}
+
+export function saveEndlessState(state: EndlessState, scope = "classic", dateKey = todayKeyUTC()) {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(endlessStateStorageKey(scope, dateKey), JSON.stringify(state));
+}
+
+export function resetEndlessState(scope = "classic", dateKey = todayKeyUTC()): EndlessState {
+  if (typeof window !== "undefined") {
+    localStorage.setItem(endlessStateStorageKey(scope, dateKey), JSON.stringify(ENDLESS_DEFAULT_STATE));
+  }
+  return ENDLESS_DEFAULT_STATE;
+}
+
+export interface EndlessRecordSummary {
+  previousRecord: number;
+  bestRecord: number;
+  isNewRecord: boolean;
+}
+
+export function loadEndlessRecord(scope = "classic", dateKey = todayKeyUTC()): number {
+  if (typeof window === "undefined") return 0;
+  try {
+    const raw = localStorage.getItem(endlessRecordStorageKey(scope, dateKey));
+    if (!raw) return 0;
+    const parsed = JSON.parse(raw) as unknown;
+    return typeof parsed === "number" && parsed >= 0 ? parsed : 0;
+  } catch {
+    return 0;
+  }
+}
+
+export function updateEndlessRecord(
+  scope = "classic",
+  dateKey = todayKeyUTC(),
+  roundsCompleted: number,
+): EndlessRecordSummary {
+  const previousRecord = loadEndlessRecord(scope, dateKey);
+  const bestRecord = Math.max(previousRecord, roundsCompleted);
+  if (typeof window !== "undefined" && bestRecord !== previousRecord) {
+    localStorage.setItem(endlessRecordStorageKey(scope, dateKey), JSON.stringify(bestRecord));
+  }
+  return {
+    previousRecord,
+    bestRecord,
+    isNewRecord: roundsCompleted > previousRecord,
+  };
 }

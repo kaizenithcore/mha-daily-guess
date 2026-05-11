@@ -9,12 +9,12 @@ export function StatsBar({ stats }: { stats: LocalStats }) {
     { icon: Target, label: "Media", value: avg },
   ];
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid grid-cols-3 gap-2.5">
       {items.map(({ icon: Icon, label, value }) => (
-        <div key={label} className="panel-info py-2 px-2 flex flex-col items-center">
-          <Icon className="size-3.5 text-muted-foreground mb-0.5" />
-          <span className="font-display text-xl leading-none text-foreground">{value}</span>
-          <span className="text-[0.55rem] uppercase tracking-widest text-muted-foreground mt-0.5">
+        <div key={label} className="panel-info flex flex-col items-center px-2 py-3">
+          <Icon className="mb-1 size-3.5 text-muted-foreground" />
+          <span className="font-display text-2xl leading-none text-foreground">{value}</span>
+          <span className="mt-0.5 text-[0.55rem] uppercase tracking-widest text-muted-foreground">
             {label}
           </span>
         </div>

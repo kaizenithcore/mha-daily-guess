@@ -1,0 +1,339 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-11T22:03:06.902Z",
+  "items": {
+    "f5265830-ea1e-4d91-946c-c50b6d3f8e5f": {
+      "status": "completed",
+      "name": "Best Jeanist",
+      "query": "Best Jeanist",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/9/623630.jpg",
+      "storagePath": "characters/f5265830-ea1e-4d91-946c-c50b6d3f8e5f.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/f5265830-ea1e-4d91-946c-c50b6d3f8e5f.webp",
+      "updatedAt": "2026-05-11T22:01:58.780Z"
+    },
+    "9865dc6c-e80a-425f-a82e-47a76458d71d": {
+      "status": "completed",
+      "name": "Camie Utsushimi",
+      "query": "Camie Utsushimi",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/10/360116.jpg",
+      "storagePath": "characters/9865dc6c-e80a-425f-a82e-47a76458d71d.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/9865dc6c-e80a-425f-a82e-47a76458d71d.webp",
+      "updatedAt": "2026-05-11T22:02:00.464Z"
+    },
+    "bcc2131e-98b5-4178-b9e1-09e1fd8e4f2c": {
+      "status": "completed",
+      "name": "Dabi",
+      "query": "Dabi",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/6/454749.jpg",
+      "storagePath": "characters/bcc2131e-98b5-4178-b9e1-09e1fd8e4f2c.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/bcc2131e-98b5-4178-b9e1-09e1fd8e4f2c.webp",
+      "updatedAt": "2026-05-11T22:02:02.166Z"
+    },
+    "95912328-d143-4b35-9fd9-5517e10cae60": {
+      "status": "completed",
+      "name": "Denki Kaminari",
+      "query": "Denki Kaminari",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/10/329527.jpg",
+      "storagePath": "characters/95912328-d143-4b35-9fd9-5517e10cae60.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/95912328-d143-4b35-9fd9-5517e10cae60.webp",
+      "updatedAt": "2026-05-11T22:02:03.918Z"
+    },
+    "7602d6cb-676b-4eef-9fdd-1ecde478d7bc": {
+      "status": "completed",
+      "name": "Eijiro Kirishima",
+      "query": "Eijiro Kirishima",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/11/329529.jpg",
+      "storagePath": "characters/7602d6cb-676b-4eef-9fdd-1ecde478d7bc.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/7602d6cb-676b-4eef-9fdd-1ecde478d7bc.webp",
+      "updatedAt": "2026-05-11T22:02:05.666Z"
+    },
+    "829b4697-b408-428e-822e-7075466e265c": {
+      "status": "completed",
+      "name": "Endeavor",
+      "query": "Endeavor",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/11/16997.jpg",
+      "storagePath": "characters/829b4697-b408-428e-822e-7075466e265c.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/829b4697-b408-428e-822e-7075466e265c.webp",
+      "updatedAt": "2026-05-11T22:02:07.327Z"
+    },
+    "738d1042-2dee-48a7-82be-d50da2bc6199": {
+      "status": "completed",
+      "name": "Eri",
+      "query": "Eri",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/13/622064.jpg",
+      "storagePath": "characters/738d1042-2dee-48a7-82be-d50da2bc6199.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/738d1042-2dee-48a7-82be-d50da2bc6199.webp",
+      "updatedAt": "2026-05-11T22:02:09.948Z"
+    },
+    "5a4a1044-2064-4993-bd73-6893aee48b7a": {
+      "status": "completed",
+      "name": "Fumikage Tokoyami",
+      "query": "Fumikage Tokoyami",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/13/299402.jpg",
+      "storagePath": "characters/5a4a1044-2064-4993-bd73-6893aee48b7a.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/5a4a1044-2064-4993-bd73-6893aee48b7a.webp",
+      "updatedAt": "2026-05-11T22:02:11.641Z"
+    },
+    "a0c40d12-bcf9-4e5f-8b39-f139d31b7a6a": {
+      "status": "completed",
+      "name": "Hanta Sero",
+      "query": "Hanta Sero",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/10/301034.jpg",
+      "storagePath": "characters/a0c40d12-bcf9-4e5f-8b39-f139d31b7a6a.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/a0c40d12-bcf9-4e5f-8b39-f139d31b7a6a.webp",
+      "updatedAt": "2026-05-11T22:02:13.515Z"
+    },
+    "e9674c12-4907-411c-a422-b931719a9510": {
+      "status": "completed",
+      "name": "Hawks",
+      "query": "Hawks",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/16/625232.jpg",
+      "storagePath": "characters/e9674c12-4907-411c-a422-b931719a9510.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/e9674c12-4907-411c-a422-b931719a9510.webp",
+      "updatedAt": "2026-05-11T22:02:15.259Z"
+    },
+    "278cfbdd-ac91-4d38-9f9f-0fdd533b518b": {
+      "status": "completed",
+      "name": "Himiko Toga",
+      "query": "Himiko Toga",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/7/485281.jpg",
+      "storagePath": "characters/278cfbdd-ac91-4d38-9f9f-0fdd533b518b.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/278cfbdd-ac91-4d38-9f9f-0fdd533b518b.webp",
+      "updatedAt": "2026-05-11T22:02:16.946Z"
+    },
+    "9955040d-9140-4581-b938-44a14e9e8e18": {
+      "status": "completed",
+      "name": "Hitoshi Shinso",
+      "query": "Hitoshi Shinso",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/4/398855.jpg",
+      "storagePath": "characters/9955040d-9140-4581-b938-44a14e9e8e18.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/9955040d-9140-4581-b938-44a14e9e8e18.webp",
+      "updatedAt": "2026-05-11T22:02:18.639Z"
+    },
+    "e3b14a96-2557-4b7b-b487-e6726f84c5db": {
+      "status": "completed",
+      "name": "Inasa Yoarashi",
+      "query": "Inasa Yoarashi",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/3/362861.jpg",
+      "storagePath": "characters/e3b14a96-2557-4b7b-b487-e6726f84c5db.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/e3b14a96-2557-4b7b-b487-e6726f84c5db.webp",
+      "updatedAt": "2026-05-11T22:02:21.086Z"
+    },
+    "a8c3f203-a800-43cb-9048-da2f44331bfc": {
+      "status": "completed",
+      "name": "Izuku Midoriya",
+      "query": "Izuku Midoriya",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/7/299404.jpg",
+      "storagePath": "characters/a8c3f203-a800-43cb-9048-da2f44331bfc.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/a8c3f203-a800-43cb-9048-da2f44331bfc.webp",
+      "updatedAt": "2026-05-11T22:02:22.772Z"
+    },
+    "e47b6346-0f8f-4650-a9ff-8552dc4e0ebe": {
+      "status": "completed",
+      "name": "Katsuki Bakugo",
+      "query": "Katsuki Bakugo",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/12/299406.jpg",
+      "storagePath": "characters/e47b6346-0f8f-4650-a9ff-8552dc4e0ebe.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/e47b6346-0f8f-4650-a9ff-8552dc4e0ebe.webp",
+      "updatedAt": "2026-05-11T22:02:24.494Z"
+    },
+    "bdc1790f-2432-43cf-b97d-bc6e64819a70": {
+      "status": "completed",
+      "name": "Kurogiri",
+      "query": "Kurogiri",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/11/333082.jpg",
+      "storagePath": "characters/bdc1790f-2432-43cf-b97d-bc6e64819a70.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/bdc1790f-2432-43cf-b97d-bc6e64819a70.webp",
+      "updatedAt": "2026-05-11T22:02:26.820Z"
+    },
+    "8e9d7d63-064a-4954-b7f2-d68d58ee72f4": {
+      "status": "completed",
+      "name": "Kyoka Jiro",
+      "query": "Kyoka Jiro",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/3/112346.jpg",
+      "storagePath": "characters/8e9d7d63-064a-4954-b7f2-d68d58ee72f4.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/8e9d7d63-064a-4954-b7f2-d68d58ee72f4.webp",
+      "updatedAt": "2026-05-11T22:02:28.539Z"
+    },
+    "ecb548e3-8518-45ee-b8b1-40142a66d4a9": {
+      "status": "completed",
+      "name": "Mezo Shoji",
+      "query": "Mezo Shoji",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/2/300743.jpg",
+      "storagePath": "characters/ecb548e3-8518-45ee-b8b1-40142a66d4a9.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/ecb548e3-8518-45ee-b8b1-40142a66d4a9.webp",
+      "updatedAt": "2026-05-11T22:02:30.627Z"
+    },
+    "7f6c9964-520f-45a0-94ed-558fdce7e516": {
+      "status": "completed",
+      "name": "Mina Ashido",
+      "query": "Mina Ashido",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/16/329525.jpg",
+      "storagePath": "characters/7f6c9964-520f-45a0-94ed-558fdce7e516.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/7f6c9964-520f-45a0-94ed-558fdce7e516.webp",
+      "updatedAt": "2026-05-11T22:02:32.341Z"
+    },
+    "50538bd1-0173-43b4-8444-9f9899c11986": {
+      "status": "completed",
+      "name": "Minoru Mineta",
+      "query": "Minoru Mineta",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/10/299413.jpg",
+      "storagePath": "characters/50538bd1-0173-43b4-8444-9f9899c11986.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/50538bd1-0173-43b4-8444-9f9899c11986.webp",
+      "updatedAt": "2026-05-11T22:02:34.021Z"
+    },
+    "ba690691-7b80-42d3-8ca8-4b216793d971": {
+      "status": "completed",
+      "name": "Mirio Togata",
+      "query": "Mirio Togata",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/15/349440.jpg",
+      "storagePath": "characters/ba690691-7b80-42d3-8ca8-4b216793d971.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/ba690691-7b80-42d3-8ca8-4b216793d971.webp",
+      "updatedAt": "2026-05-11T22:02:35.736Z"
+    },
+    "85bc357a-5803-43b7-bfa1-7da6ca4883ab": {
+      "status": "completed",
+      "name": "Mirko",
+      "query": "Mirko",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/15/612329.jpg",
+      "storagePath": "characters/85bc357a-5803-43b7-bfa1-7da6ca4883ab.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/85bc357a-5803-43b7-bfa1-7da6ca4883ab.webp",
+      "updatedAt": "2026-05-11T22:02:37.644Z"
+    },
+    "9f50ee84-cbfd-4305-81fe-cb5cff9a94b4": {
+      "status": "completed",
+      "name": "Momo Yaoyorozu",
+      "query": "Momo Yaoyorozu",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/7/562316.jpg",
+      "storagePath": "characters/9f50ee84-cbfd-4305-81fe-cb5cff9a94b4.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/9f50ee84-cbfd-4305-81fe-cb5cff9a94b4.webp",
+      "updatedAt": "2026-05-11T22:02:39.358Z"
+    },
+    "fc243609-bbe9-4c51-86bf-a6cd9d2a6903": {
+      "status": "completed",
+      "name": "Mr. Compress",
+      "query": "Mr. Compress",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/4/595345.jpg",
+      "storagePath": "characters/fc243609-bbe9-4c51-86bf-a6cd9d2a6903.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/fc243609-bbe9-4c51-86bf-a6cd9d2a6903.webp",
+      "updatedAt": "2026-05-11T22:02:41.838Z"
+    },
+    "a014e33a-3e4b-4bbb-8994-8ad752c96138": {
+      "status": "completed",
+      "name": "Nejire Hado",
+      "query": "Nejire Hado",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/3/365145.jpg",
+      "storagePath": "characters/a014e33a-3e4b-4bbb-8994-8ad752c96138.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/a014e33a-3e4b-4bbb-8994-8ad752c96138.webp",
+      "updatedAt": "2026-05-11T22:02:44.087Z"
+    },
+    "e727d8b7-0c73-485b-bab8-44c51808194e": {
+      "status": "completed",
+      "name": "Ochaco Uraraka",
+      "query": "Ochaco Uraraka",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/9/299421.jpg",
+      "storagePath": "characters/e727d8b7-0c73-485b-bab8-44c51808194e.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/e727d8b7-0c73-485b-bab8-44c51808194e.webp",
+      "updatedAt": "2026-05-11T22:02:46.076Z"
+    },
+    "b58a0a98-9f07-4bb4-a59b-76c763a203ad": {
+      "status": "completed",
+      "name": "Shota Aizawa",
+      "query": "Shota Aizawa",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/8/301855.jpg",
+      "storagePath": "characters/b58a0a98-9f07-4bb4-a59b-76c763a203ad.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/b58a0a98-9f07-4bb4-a59b-76c763a203ad.webp",
+      "updatedAt": "2026-05-11T22:02:47.803Z"
+    },
+    "f0683648-8764-491d-8b48-f89e5771d226": {
+      "status": "completed",
+      "name": "Shoto Todoroki",
+      "query": "Shoto Todoroki",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/12/332527.jpg",
+      "storagePath": "characters/f0683648-8764-491d-8b48-f89e5771d226.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/f0683648-8764-491d-8b48-f89e5771d226.webp",
+      "updatedAt": "2026-05-11T22:02:49.495Z"
+    },
+    "fe1b74ef-8c67-43c4-9c68-7be772fb0850": {
+      "status": "completed",
+      "name": "Spinner",
+      "query": "Spinner",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/2/565263.jpg",
+      "storagePath": "characters/fe1b74ef-8c67-43c4-9c68-7be772fb0850.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/fe1b74ef-8c67-43c4-9c68-7be772fb0850.webp",
+      "updatedAt": "2026-05-11T22:02:51.146Z"
+    },
+    "41d39e5e-e63e-4d57-ab9f-0246984bd9ee": {
+      "status": "completed",
+      "name": "Stain",
+      "query": "Stain",
+      "sourceImageUrl": "https://myanimelist.net/img/sp/icon/apple-touch-icon-256.png",
+      "storagePath": "characters/41d39e5e-e63e-4d57-ab9f-0246984bd9ee.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/41d39e5e-e63e-4d57-ab9f-0246984bd9ee.webp",
+      "updatedAt": "2026-05-11T22:02:52.762Z"
+    },
+    "005828b9-3def-4ef3-bb6a-709e713dba48": {
+      "status": "completed",
+      "name": "Star and Stripe",
+      "query": "Star and Stripe",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/14/547200.jpg",
+      "storagePath": "characters/005828b9-3def-4ef3-bb6a-709e713dba48.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/005828b9-3def-4ef3-bb6a-709e713dba48.webp",
+      "updatedAt": "2026-05-11T22:02:55.191Z"
+    },
+    "62009b88-62f1-4d0b-90c5-177425f92b71": {
+      "status": "completed",
+      "name": "Tamaki Amajiki",
+      "query": "Tamaki Amajiki",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/14/409263.jpg",
+      "storagePath": "characters/62009b88-62f1-4d0b-90c5-177425f92b71.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/62009b88-62f1-4d0b-90c5-177425f92b71.webp",
+      "updatedAt": "2026-05-11T22:02:56.968Z"
+    },
+    "b6e8e46f-052f-493f-b498-8d02981da8a8": {
+      "status": "completed",
+      "name": "Tenya Iida",
+      "query": "Tenya Iida",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/9/299417.jpg",
+      "storagePath": "characters/b6e8e46f-052f-493f-b498-8d02981da8a8.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/b6e8e46f-052f-493f-b498-8d02981da8a8.webp",
+      "updatedAt": "2026-05-11T22:02:59.106Z"
+    },
+    "eae00c34-be0c-4df7-b3e7-3f0fff605e71": {
+      "status": "completed",
+      "name": "Tomura Shigaraki",
+      "query": "Tomura Shigaraki",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/14/272139.jpg",
+      "storagePath": "characters/eae00c34-be0c-4df7-b3e7-3f0fff605e71.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/eae00c34-be0c-4df7-b3e7-3f0fff605e71.webp",
+      "updatedAt": "2026-05-11T22:03:01.004Z"
+    },
+    "e4823e29-7fc9-4190-95ef-deead1b3ee4b": {
+      "status": "completed",
+      "name": "Toshinori Yagi",
+      "query": "Toshinori Yagi",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/12/277470.jpg",
+      "storagePath": "characters/e4823e29-7fc9-4190-95ef-deead1b3ee4b.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/e4823e29-7fc9-4190-95ef-deead1b3ee4b.webp",
+      "updatedAt": "2026-05-11T22:03:02.949Z"
+    },
+    "324376bd-9085-4c3a-a1bf-f0337491aaef": {
+      "status": "completed",
+      "name": "Tsuyu Asui",
+      "query": "Tsuyu Asui",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/10/299409.jpg",
+      "storagePath": "characters/324376bd-9085-4c3a-a1bf-f0337491aaef.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/324376bd-9085-4c3a-a1bf-f0337491aaef.webp",
+      "updatedAt": "2026-05-11T22:03:04.646Z"
+    },
+    "ec13b80f-c931-47b7-b5a3-43b8fbf7ffef": {
+      "status": "completed",
+      "name": "Yuga Aoyama",
+      "query": "Yuga Aoyama",
+      "sourceImageUrl": "https://myanimelist.net/images/characters/5/58094.jpg",
+      "storagePath": "characters/ec13b80f-c931-47b7-b5a3-43b8fbf7ffef.webp",
+      "publicUrl": "https://njqxkjscbavslhyzzamz.supabase.co/storage/v1/object/public/character-images/characters/ec13b80f-c931-47b7-b5a3-43b8fbf7ffef.webp",
+      "updatedAt": "2026-05-11T22:03:06.902Z"
+    }
+  }
+}

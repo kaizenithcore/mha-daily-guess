@@ -1,26 +1,33 @@
-import { Coffee, Heart } from "lucide-react";
+import { Coffee, Heart, Mail } from "lucide-react";
 
 export function SupportFooter() {
   return (
     <footer className="mt-10 space-y-4">
-      <div className="panel-hero p-4 text-center">
-        <p className="text-xs text-muted-foreground mb-3">
+      <div className="panel-info p-4 text-center">
+        <p className="mb-3 text-xs text-muted-foreground">
           ¿Te gusta MHAdle? Ayuda a mantenerlo vivo
         </p>
         <div className="flex items-center justify-center gap-2">
           <a
-            href="https://ko-fi.com/"
+            href="mailto:hola@kaizenith.es?subject=Feedback%20MHAdle"
+            className="focus-ring inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-semibold transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
+            aria-label="Enviar feedback por correo"
+          >
+            <Mail className="size-3.5" /> Feedback
+          </a>
+          <a
+            href="https://ko-fi.com/kaizenith"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold border border-border bg-secondary hover:bg-primary hover:text-primary-foreground hover:border-primary transition"
+            className="focus-ring inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-semibold transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
           >
             <Coffee className="size-3.5" /> Ko-fi
           </a>
           <a
-            href="https://patreon.com/"
+            href="https://patreon.com/kaizenithcore"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold border border-border bg-secondary hover:bg-accent hover:text-accent-foreground hover:border-accent transition"
+            className="focus-ring inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-semibold transition hover:border-accent hover:bg-accent hover:text-accent-foreground"
           >
             <Heart className="size-3.5" /> Patreon
           </a>

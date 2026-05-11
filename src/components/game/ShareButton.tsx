@@ -35,7 +35,7 @@ export function ShareButton({ puzzleNumber, attempts, target }: Props) {
     <button
       type="button"
       onClick={handleShare}
-      className="btn-hero inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm"
+      className="btn-hero focus-ring inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm"
     >
       {copied ? <Check className="size-4" /> : <Share2 className="size-4" />}
       {copied ? "¡Copiado!" : "Compartir resultado"}
