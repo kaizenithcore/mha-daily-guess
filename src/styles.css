@@ -216,6 +216,128 @@
       0 0 0 2px color-mix(in oklab, var(--hero) 60%, transparent),
       0 0 30px color-mix(in oklab, var(--hero) 50%, transparent);
   }
+
+  /* UA Tabs — academy HUD switcher */
+  .ua-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+    padding: 0.4rem;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg,
+      color-mix(in oklab, var(--panel) 95%, transparent),
+      color-mix(in oklab, var(--panel) 75%, transparent));
+    border: 2px solid var(--border);
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklab, var(--hero) 18%, transparent),
+      0 6px 20px -10px oklch(0 0 0 / 0.6);
+    position: relative;
+  }
+  .ua-tabs::before {
+    content: "U.A.";
+    position: absolute;
+    top: -0.55rem;
+    left: 0.75rem;
+    background: var(--background);
+    padding: 0 0.4rem;
+    font-family: var(--font-display);
+    letter-spacing: 0.2em;
+    font-size: 0.6rem;
+    color: var(--hero);
+  }
+  .ua-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.55rem 0.4rem;
+    border-radius: 0.6rem;
+    background: color-mix(in oklab, var(--secondary) 70%, transparent);
+    color: var(--muted-foreground);
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .ua-tab:hover { color: var(--foreground); border-color: color-mix(in oklab, var(--hero) 30%, transparent); }
+  .ua-tab-active {
+    background: linear-gradient(180deg,
+      color-mix(in oklab, var(--hero) 90%, transparent),
+      color-mix(in oklab, var(--hero) 70%, black));
+    color: var(--hero-foreground);
+    border-color: color-mix(in oklab, var(--hero) 80%, black);
+    box-shadow:
+      0 4px 0 0 color-mix(in oklab, var(--hero) 50%, black),
+      0 0 24px color-mix(in oklab, var(--hero) 45%, transparent);
+    transform: translateY(-1px);
+  }
+  .ua-tab-active .ua-tab-meta { color: color-mix(in oklab, var(--hero-foreground) 75%, transparent); }
+  .ua-tab-meta {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: color-mix(in oklab, var(--muted-foreground) 80%, transparent);
+  }
+
+  /* UA framed panel — comic corners */
+  .ua-frame { position: relative; }
+  .ua-frame::before,
+  .ua-frame::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--hero);
+    pointer-events: none;
+  }
+  .ua-frame::before { top: -2px; left: -2px; border-right: none; border-bottom: none; border-top-left-radius: 6px; }
+  .ua-frame::after { bottom: -2px; right: -2px; border-left: none; border-top: none; border-bottom-right-radius: 6px; }
+
+  .ua-corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--hero);
+    pointer-events: none;
+  }
+  .ua-corner-tl { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+  .ua-corner-tr { top: 6px; right: 6px; border-left: none; border-bottom: none; }
+  .ua-corner-bl { bottom: 6px; left: 6px; border-right: none; border-top: none; }
+  .ua-corner-br { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+
+  .silhouette-frame {
+    background:
+      radial-gradient(circle at 50% 40%, color-mix(in oklab, var(--hero) 18%, transparent), transparent 70%),
+      var(--secondary);
+  }
+  .silhouette-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(135deg, transparent 0 6px, color-mix(in oklab, var(--foreground) 4%, transparent) 6px 7px);
+    pointer-events: none;
+  }
+
+  .ua-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    background: color-mix(in oklab, var(--hero) 90%, black);
+    color: var(--hero-foreground);
+    border: 1px solid color-mix(in oklab, var(--hero) 50%, black);
+    letter-spacing: 0.1em;
+  }
+  .ua-meta {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--muted-foreground);
+  }
 }
 
 @layer utilities {
@@ -233,4 +355,22 @@
     100% { transform: scale(1); opacity: 1; }
   }
   .animate-pop-in { animation: pop-in 0.22s ease-out both; }
+
+  @keyframes card-in {
+    0% { transform: translateY(14px) scale(0.97); opacity: 0; }
+    60% { transform: translateY(-2px) scale(1.01); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+  .animate-card-in { animation: card-in 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+
+  @keyframes tile-flip {
+    0% { transform: rotateX(-90deg) scale(0.8); opacity: 0; filter: brightness(2); }
+    60% { transform: rotateX(10deg) scale(1.04); opacity: 1; filter: brightness(1.4); }
+    100% { transform: rotateX(0deg) scale(1); opacity: 1; filter: brightness(1); }
+  }
+  .animate-tile-flip {
+    animation: tile-flip 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
+    transform-origin: center bottom;
+    backface-visibility: hidden;
+  }
 }
