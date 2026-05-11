@@ -118,11 +118,17 @@
   }
 
   body {
+    background-color: var(--color-background);
     background-image:
-      radial-gradient(circle at 18% 12%, color-mix(in oklab, var(--hero) 18%, transparent) 0, transparent 38%),
-      radial-gradient(circle at 82% 88%, color-mix(in oklab, var(--villain) 14%, transparent) 0, transparent 42%),
-      radial-gradient(color-mix(in oklab, var(--foreground) 8%, transparent) 1px, transparent 1px);
-    background-size: auto, auto, 14px 14px;
+      radial-gradient(circle at 18% 12%, color-mix(in oklab, var(--hero) 22%, transparent) 0, transparent 36%),
+      radial-gradient(circle at 82% 88%, color-mix(in oklab, var(--villain) 16%, transparent) 0, transparent 40%),
+      repeating-linear-gradient(
+        135deg,
+        transparent 0 14px,
+        color-mix(in oklab, var(--foreground) 3%, transparent) 14px 15px
+      ),
+      radial-gradient(color-mix(in oklab, var(--foreground) 9%, transparent) 1px, transparent 1px);
+    background-size: auto, auto, auto, 14px 14px;
     background-attachment: fixed;
     min-height: 100dvh;
   }
