@@ -1,34 +1,27 @@
-# =========================
-# Stage 1: Build
-# =========================
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
 COPY package*.json ./
-COPY tsconfig.json ./
-COPY vite.config.ts ./
-COPY wrangler.jsonc ./
-COPY components.json ./
 
 RUN npm ci
 
-COPY src ./src
-COPY supabase ./supabase
+COPY . .
 
 RUN npm run build
 
-# =========================
-# Stage 2: Runtime
-# =========================
-FROM caddy:2-alpine
+FROM node:20-alpine
 
-WORKDIR /usr/share/caddy
+WORKDIR /app
 
-COPY --from=builder /app/dist ./
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./
 
-RUN printf ':80 {\n  root * /usr/share/caddy\n  encode zstd gzip\n  try_files {path} /index.html\n  file_server\n}\n' > /etc/caddy/Caddyfile
+ENV NODE_ENV=production
+ENV HOST=0.0.0.0
+ENV PORT=3000
 
-EXPOSE 80
+EXPOSE 3000
 
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+CMD ["node", "dist/server/index.js"]
