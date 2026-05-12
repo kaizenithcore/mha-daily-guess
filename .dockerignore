@@ -18,4 +18,3 @@ bun.lock
 eslint.config.js
 tsconfig.scripts.json
 scripts
-supabase
