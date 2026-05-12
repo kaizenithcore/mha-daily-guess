@@ -4,25 +4,21 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copiar archivos de configuración y definición
+# Copiar archivos de configuración (solo los que existen en el repo)
 COPY package*.json ./
 COPY tsconfig.json ./
-COPY tsconfig.scripts.json ./
 COPY vite.config.ts ./
 COPY wrangler.jsonc ./
 COPY components.json ./
-COPY eslint.config.js ./
 
 # Instalar todas las dependencias (incluidas devDependencies para build)
 RUN npm ci
 
-# Copiar código fuente y archivos necesarios
+# Copiar código fuente
 COPY src ./src
-COPY scripts ./scripts
-COPY dist-scripts ./dist-scripts
-COPY .tanstack ./.tanstack
+
+# Copiar supabase (migrations y config)
 COPY supabase ./supabase
-COPY public ./public 2>/dev/null || true
 
 # Compilar la aplicación (genera dist/client y dist/server)
 RUN npm run build
