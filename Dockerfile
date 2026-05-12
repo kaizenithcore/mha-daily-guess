@@ -25,14 +25,21 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-ENV NODE_ENV=production \
-    PORT=80 \
-    HOST=0.0.0.0
+ENV NODE_ENV=production
+
+# Instalar Caddy
+RUN apk add --no-cache caddy
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
+# Crear Caddyfile mínimo: reverse proxy 80 -> localhost:3000
+RUN echo ':80 {' > /etc/caddy/Caddyfile && \
+    echo '  reverse_proxy localhost:3000' >> /etc/caddy/Caddyfile && \
+    echo '}' >> /etc/caddy/Caddyfile
+
 EXPOSE 80
 
-CMD ["node", "dist/server/index.js"]
+# Ejecutar: Node en background + Caddy en foreground
+CMD ["sh", "-c", "PORT=3000 HOST=0.0.0.0 node dist/server/index.js & sleep 3; caddy run --config /etc/caddy/Caddyfile"]
