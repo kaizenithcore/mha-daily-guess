@@ -25,21 +25,14 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Instalar wget para healthcheck
-RUN apk add --no-cache wget
-
-ENV NODE_ENV=production
-ENV PORT=3000
-ENV HOST=0.0.0.0
+ENV NODE_ENV=production \
+    PORT=80 \
+    HOST=0.0.0.0
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
-EXPOSE 3000
-
-# Healthcheck real
-HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
-  CMD wget -qO- http://127.0.0.1:3000/ || exit 1
+EXPOSE 80
 
 CMD ["node", "dist/server/index.js"]
