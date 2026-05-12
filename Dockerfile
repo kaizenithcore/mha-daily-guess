@@ -27,7 +27,7 @@ WORKDIR /usr/share/caddy
 
 COPY --from=builder /app/dist ./
 
-COPY Caddyfile /etc/caddy/Caddyfile
+RUN printf ':80 {\n  root * /usr/share/caddy\n  encode zstd gzip\n  try_files {path} /index.html\n  file_server\n}\n' > /etc/caddy/Caddyfile
 
 EXPOSE 80
 
