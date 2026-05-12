@@ -21,24 +21,14 @@ RUN npm run build
 # =========================
 # Stage 2: Runtime
 # =========================
-FROM node:20-alpine
+FROM caddy:2-alpine
 
-WORKDIR /app
+WORKDIR /usr/share/caddy
 
-ENV NODE_ENV=production
+COPY --from=builder /app/dist ./
 
-# Instalar Caddy
-RUN apk add --no-cache caddy
-
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-
-# Caddyfile
-RUN echo ':80 {' > /etc/caddy/Caddyfile && \
-    echo '  reverse_proxy 127.0.0.1:3000' >> /etc/caddy/Caddyfile && \
-    echo '}' >> /etc/caddy/Caddyfile
+COPY Caddyfile /etc/caddy/Caddyfile
 
 EXPOSE 80
 
-CMD ["sh", "-c", "PORT=3000 HOST=0.0.0.0 node dist/server/index.js & sleep 3; caddy run --config /etc/caddy/Caddyfile"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
