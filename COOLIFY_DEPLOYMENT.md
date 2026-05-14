@@ -14,7 +14,8 @@ Para evitar defaults ambiguos de Coolify, este repo incluye `nixpacks.toml` con 
 3. Deja **Publish Directory** vacío.
 4. No uses configuración custom de Nginx/Caddy en Coolify.
 5. En Domains, pon solo hostnames (sin protocolo): `mhadle.kaizenith.es`.
-6. Si quieres varios dominios, sepáralos por coma pero siempre sin `http://` ni `https://`.
+6. Si quieres varios dominios, añádelos como entradas separadas en la UI (evita mezclarlos en una sola cadena con protocolos).
+7. El runtime debe escuchar en puerto interno `80` (forzado en `nixpacks.toml` con `PORT=80`).
 
 ## Qué hace este repo
 
@@ -43,5 +44,6 @@ Si el recurso actual sigue en bucle de reinicios, crea un recurso nuevo en Cooli
 Si aparece 404 después de compilar bien:
 
 1. Revisa que en logs de plan aparezca `NIXPACKS_SPA_OUTPUT_DIR: dist/client`.
-2. Revisa que `COOLIFY_FQDN` no tenga `https` ni protocolos mezclados.
-3. Haz redeploy con cache limpio.
+2. Revisa que `COOLIFY_FQDN` no tenga valores corruptos como `https`.
+3. Revisa que `PORT=80` esté presente en el entorno final del contenedor.
+4. Haz redeploy con cache limpio.
