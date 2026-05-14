@@ -1,5 +1,0 @@
-[variables]
-# Force Caddy (Nixpacks) to serve the actual client build output.
-NIXPACKS_SPA_OUTPUT_DIR = "dist/client"
-# Ensure runtime listens on Coolify's expected internal HTTP port.
-PORT = "80"
