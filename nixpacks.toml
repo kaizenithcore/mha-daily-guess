@@ -1,0 +1,3 @@
+[variables]
+# Force Caddy (Nixpacks) to serve the actual client build output.
+NIXPACKS_SPA_OUTPUT_DIR = "dist/client"
