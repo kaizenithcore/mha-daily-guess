@@ -2,4 +2,4 @@
 # Keep the client output path explicit for the static production server.
 NIXPACKS_SPA_OUTPUT_DIR = "dist/client"
 # Coolify injects this into the runtime; the server also defaults to 3000 locally.
-PORT = "80"
+PORT = "3000"
