@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "../dist/client");
-const port = Number(process.env.PORT ?? 3000);
+const port = 3000;
 const host = "0.0.0.0";
 
 const mimeTypes = new Map([

@@ -15,13 +15,13 @@ El `start` del repo ahora lanza `serve dist/client` para que el contenedor perma
 4. No uses configuración custom de Nginx/Caddy en Coolify.
 5. En Domains, pon solo hostnames (sin protocolo ni slash final): `mhadle.kaizenith.es`.
 6. Si quieres varios dominios, añádelos como entradas separadas en la UI.
-7. El runtime debe escuchar en el puerto que Coolify inyecte en `PORT`; en este repo queda forzado a `80` para Coolify y `3000` como valor local por defecto.
+7. El runtime escucha de forma fija en `3000`.
 
 ## Qué hace este repo
 
 - `package.json` compila con `vite build`.
 - `package.json` expone `start` como servidor estático persistente sobre `dist/client`.
-- `nixpacks.toml` deja explícito el directorio cliente y el `PORT` para el runtime.
+- `nixpacks.toml` deja explícito el directorio cliente para el runtime.
 
 ## Variables de entorno
 
@@ -45,5 +45,5 @@ Si aparece 404 después de compilar bien:
 
 1. Revisa que en logs de plan aparezca `serve dist/client` como start command.
 2. Revisa que `COOLIFY_FQDN` no tenga valores corruptos como `https`.
-3. Revisa que el puerto interno del contenedor coincida con `PORT` y con el puerto expuesto en Coolify.
+3. Revisa que el puerto interno del contenedor coincida con `3000` y con el puerto expuesto en Coolify.
 4. Haz redeploy con cache limpio.
