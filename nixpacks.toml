@@ -1,5 +1,5 @@
 [variables]
-# Serve the actual Vite client bundle through Nixpacks' SPA/Caddy mode.
+# Keep the client output path explicit for the static production server.
 NIXPACKS_SPA_OUTPUT_DIR = "dist/client"
-# Keep the runtime aligned with Coolify's expected internal port.
+# Coolify injects this into the runtime; the server also defaults to 3000 locally.
 PORT = "80"

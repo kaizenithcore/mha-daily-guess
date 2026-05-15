@@ -2,10 +2,10 @@
 
 ## Estado actual
 
-Este repositorio ya no usa Dockerfile. El despliegue correcto es con **Nixpacks** en modo SPA estática.
+Este repositorio ya no usa Dockerfile. El despliegue correcto es con **Nixpacks** y un servidor estático persistente.
 
 La app compila con `npm run build` y el runtime debe servir el frontend compilado desde `dist/client`.
-Para evitar defaults ambiguos de Coolify, este repo incluye `nixpacks.toml` con `NIXPACKS_SPA_OUTPUT_DIR=dist/client` y `PORT=80`.
+El `start` del repo ahora lanza `serve dist/client` para que el contenedor permanezca vivo.
 
 ## Configuración recomendada en Coolify
 
@@ -15,13 +15,13 @@ Para evitar defaults ambiguos de Coolify, este repo incluye `nixpacks.toml` con 
 4. No uses configuración custom de Nginx/Caddy en Coolify.
 5. En Domains, pon solo hostnames (sin protocolo ni slash final): `mhadle.kaizenith.es`.
 6. Si quieres varios dominios, añádelos como entradas separadas en la UI.
-7. El runtime debe escuchar en puerto interno `80` (forzado en `nixpacks.toml` con `PORT=80`).
+7. El runtime debe escuchar en el puerto que Coolify inyecte en `PORT`; en este repo queda forzado a `80` para Coolify y `3000` como valor local por defecto.
 
 ## Qué hace este repo
 
 - `package.json` compila con `vite build`.
-- `nixpacks.toml` fuerza `NIXPACKS_SPA_OUTPUT_DIR` en `dist/client`.
-- `nixpacks.toml` fija el puerto interno en `80`.
+- `package.json` expone `start` como servidor estático persistente sobre `dist/client`.
+- `nixpacks.toml` deja explícito el directorio cliente y el `PORT` para el runtime.
 
 ## Variables de entorno
 
@@ -43,7 +43,7 @@ Si el recurso actual sigue en bucle de reinicios, crea un recurso nuevo en Cooli
 
 Si aparece 404 después de compilar bien:
 
-1. Revisa que en logs de plan aparezca `dist/client` en la salida SPA de Nixpacks.
+1. Revisa que en logs de plan aparezca `serve dist/client` como start command.
 2. Revisa que `COOLIFY_FQDN` no tenga valores corruptos como `https`.
-3. Revisa que `PORT=80` esté presente en el entorno final del contenedor.
+3. Revisa que el puerto interno del contenedor coincida con `PORT` y con el puerto expuesto en Coolify.
 4. Haz redeploy con cache limpio.

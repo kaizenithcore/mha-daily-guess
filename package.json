@@ -12,7 +12,7 @@
     "format": "prettier --write .",
     "seed:character-images": "npm run seed:character-images:build && node dist-scripts/scripts/seed-character-images.js",
     "seed:character-images:build": "tsc -p tsconfig.scripts.json",
-    "start": "node dist/server/index.js"
+    "start": "node scripts/serve-client.mjs"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
