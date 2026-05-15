@@ -1,7 +1,25 @@
 import { createServer } from "node:http";
+import { readFile, stat } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const port = Number(process.env.PORT ?? 3000);
 const host = "0.0.0.0";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const clientRoot = path.resolve(__dirname, "../dist/client");
+
+const mimeTypes = new Map([
+  [".css", "text/css; charset=utf-8"],
+  [".js", "application/javascript; charset=utf-8"],
+  [".json", "application/json; charset=utf-8"],
+  [".svg", "image/svg+xml"],
+  [".png", "image/png"],
+  [".jpg", "image/jpeg"],
+  [".jpeg", "image/jpeg"],
+  [".webp", "image/webp"],
+  [".ico", "image/x-icon"],
+]);
 
 function buildRequestUrl(request) {
   const hostHeader = request.headers.host ?? `${host}:${port}`;
@@ -36,6 +54,38 @@ async function nodeRequestToWebRequest(request) {
     body: request,
     duplex: "half",
   });
+}
+
+function getContentType(filePath) {
+  return mimeTypes.get(path.extname(filePath).toLowerCase()) ?? "application/octet-stream";
+}
+
+async function tryServeStaticAsset(requestPath, response) {
+  if (!requestPath.startsWith("/assets/")) {
+    return false;
+  }
+
+  const filePath = path.resolve(clientRoot, `.${requestPath}`);
+  if (!filePath.startsWith(clientRoot)) {
+    return false;
+  }
+
+  try {
+    const entry = await stat(filePath);
+    if (!entry.isFile()) {
+      return false;
+    }
+
+    const body = await readFile(filePath);
+    response.writeHead(200, {
+      "content-type": getContentType(filePath),
+      "cache-control": "public, max-age=31536000, immutable",
+    });
+    response.end(body);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function writeWebResponseToNode(response, nodeResponse) {
@@ -78,6 +128,10 @@ const server = createServer(async (request, response) => {
     if (url.pathname === "/health") {
       response.writeHead(200, { "content-type": "text/plain; charset=utf-8" });
       response.end("ok");
+      return;
+    }
+
+    if (await tryServeStaticAsset(url.pathname, response)) {
       return;
     }
 
