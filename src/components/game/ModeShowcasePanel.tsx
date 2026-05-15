@@ -63,7 +63,7 @@ export function ModeShowcasePanel({ target, attemptCount, won, mode }: Props) {
     );
   }
 
-  const unlocked = won || attemptCount >= 2;
+  const unlocked = true;
   return (
     <section className="panel-hero ua-frame mx-auto mb-5 max-w-xl animate-pop-in p-4 sm:p-5">
       <div className="mb-3 flex items-center justify-between gap-3">
