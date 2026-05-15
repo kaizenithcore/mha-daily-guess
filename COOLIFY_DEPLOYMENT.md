@@ -2,26 +2,26 @@
 
 ## Estado actual
 
-Este repositorio ya no usa Dockerfile. El despliegue correcto es con **Nixpacks**.
+Este repositorio ya no usa Dockerfile. El despliegue correcto es con **Nixpacks** en modo SPA estática.
 
-La app compila con `npm run build` y en producción se sirve el frontend desde `dist/client`.
-Para evitar defaults ambiguos de Coolify, este repo incluye `nixpacks.toml` con `NIXPACKS_SPA_OUTPUT_DIR=dist/client`.
+La app compila con `npm run build` y el runtime debe servir el frontend compilado desde `dist/client`.
+Para evitar defaults ambiguos de Coolify, este repo incluye `nixpacks.toml` con `NIXPACKS_SPA_OUTPUT_DIR=dist/client` y `PORT=80`.
 
 ## Configuración recomendada en Coolify
 
 1. Usa **Build Pack: Nixpacks**.
-2. Deja **Is it a static site? = No** y **Is it a SPA? = No** para evitar que Coolify genere un contenedor nginx adicional.
+2. Deja **Is it a static site? = No** y **Is it a SPA? = No**.
 3. Deja **Publish Directory** vacío.
 4. No uses configuración custom de Nginx/Caddy en Coolify.
-5. En Domains, pon solo hostnames (sin protocolo): `mhadle.kaizenith.es`.
-6. Si quieres varios dominios, añádelos como entradas separadas en la UI (evita mezclarlos en una sola cadena con protocolos).
+5. En Domains, pon solo hostnames (sin protocolo ni slash final): `mhadle.kaizenith.es`.
+6. Si quieres varios dominios, añádelos como entradas separadas en la UI.
 7. El runtime debe escuchar en puerto interno `80` (forzado en `nixpacks.toml` con `PORT=80`).
 
 ## Qué hace este repo
 
 - `package.json` compila con `vite build`.
-- `nixpacks.toml` fija `NIXPACKS_SPA_OUTPUT_DIR` en `dist/client`.
-- `Staticfile` se conserva como referencia, pero la configuración efectiva queda forzada por Nixpacks.
+- `nixpacks.toml` fuerza `NIXPACKS_SPA_OUTPUT_DIR` en `dist/client`.
+- `nixpacks.toml` fija el puerto interno en `80`.
 
 ## Variables de entorno
 
@@ -43,7 +43,7 @@ Si el recurso actual sigue en bucle de reinicios, crea un recurso nuevo en Cooli
 
 Si aparece 404 después de compilar bien:
 
-1. Revisa que en logs de plan aparezca `NIXPACKS_SPA_OUTPUT_DIR: dist/client`.
+1. Revisa que en logs de plan aparezca `dist/client` en la salida SPA de Nixpacks.
 2. Revisa que `COOLIFY_FQDN` no tenga valores corruptos como `https`.
 3. Revisa que `PORT=80` esté presente en el entorno final del contenedor.
 4. Haz redeploy con cache limpio.
