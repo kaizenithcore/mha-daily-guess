@@ -2,10 +2,9 @@
 
 ## Estado actual
 
-Este repositorio ya no usa Dockerfile. El despliegue correcto es con **Nixpacks** y un servidor estático persistente.
+Este repositorio ya no usa Dockerfile. El despliegue correcto es con **Nixpacks** y un adaptador Node que expone el worker generado por TanStack Start.
 
-La app compila con `npm run build` y el runtime debe servir el frontend compilado desde `dist/client`.
-El `start` del repo ahora lanza `serve dist/client` para que el contenedor permanezca vivo.
+La app compila con `npm run build` y el runtime arranca `scripts/serve-worker.mjs`, que traduce requests HTTP de Coolify al `fetch` del worker en `dist/server/index.js`.
 
 ## Configuración recomendada en Coolify
 
@@ -20,8 +19,8 @@ El `start` del repo ahora lanza `serve dist/client` para que el contenedor perma
 ## Qué hace este repo
 
 - `package.json` compila con `vite build`.
-- `package.json` expone `start` como servidor estático persistente sobre `dist/client`.
-- `nixpacks.toml` deja explícito el directorio cliente para el runtime.
+- `package.json` expone `start` como adaptador Node para el worker generado.
+- `nixpacks.toml` deja explícito el directorio cliente para Nixpacks.
 
 ## Variables de entorno
 
@@ -43,7 +42,7 @@ Si el recurso actual sigue en bucle de reinicios, crea un recurso nuevo en Cooli
 
 Si aparece 404 después de compilar bien:
 
-1. Revisa que en logs de plan aparezca `serve dist/client` como start command.
+1. Revisa que en logs de plan aparezca `node scripts/serve-worker.mjs` como start command.
 2. Revisa que `COOLIFY_FQDN` no tenga valores corruptos como `https`.
 3. Revisa que el puerto interno del contenedor coincida con `3000` y con el puerto expuesto en Coolify.
 4. Haz redeploy con cache limpio.
