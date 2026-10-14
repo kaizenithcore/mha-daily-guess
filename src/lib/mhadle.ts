@@ -1,6 +1,6 @@
-import type { Tables } from "@/integrations/supabase/types";
+import type { Character } from "@/lib/characters";
 
-export type Character = Tables<"characters">;
+export type { Character };
 
 export type Comparison = "correct" | "partial" | "wrong";
 export type NumericHint = "higher" | "lower" | "equal";

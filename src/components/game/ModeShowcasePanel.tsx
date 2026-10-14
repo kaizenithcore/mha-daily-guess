@@ -17,7 +17,7 @@ export function ModeShowcasePanel({ target, attemptCount, won, mode }: Props) {
     const brightness = won ? 1 : 0.04 + t * 0.96;
     const blur = won ? 0 : Math.max(0, 14 - attemptCount * 1.9);
     const contrast = won ? 1 : 0.4 + t * 0.6;
-    const img = target.silhouette_image_url || target.image_url;
+    const img = target.image_url;
 
     return (
       <section className="panel-hero ua-frame mx-auto mb-5 max-w-xl animate-pop-in p-4 sm:p-5">

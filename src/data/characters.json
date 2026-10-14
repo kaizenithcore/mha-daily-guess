@@ -1,0 +1,561 @@
+[
+  {
+    "id": "f5265830-ea1e-4d91-946c-c50b6d3f8e5f",
+    "name": "Best Jeanist",
+    "aliases": [
+      "Best Jeanist"
+    ],
+    "gender": "Masculino",
+    "age": 35,
+    "height": 190,
+    "quirk_type": "Emisor",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "La elegancia también es disciplina."
+  },
+  {
+    "id": "9865dc6c-e80a-425f-a82e-47a76458d71d",
+    "name": "Camie Utsushimi",
+    "aliases": [
+      "Camie"
+    ],
+    "gender": "Femenino",
+    "age": 17,
+    "height": 161,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto Shiketsu",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Súper increíble."
+  },
+  {
+    "id": "bcc2131e-98b5-4178-b9e1-09e1fd8e4f2c",
+    "name": "Dabi",
+    "aliases": [
+      "Toya Todoroki"
+    ],
+    "gender": "Masculino",
+    "age": 24,
+    "height": 176,
+    "quirk_type": "Emisor",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Arde."
+  },
+  {
+    "id": "95912328-d143-4b35-9fd9-5517e10cae60",
+    "name": "Denki Kaminari",
+    "aliases": [
+      "Chargebolt"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 168,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡Vamos allá!"
+  },
+  {
+    "id": "7602d6cb-676b-4eef-9fdd-1ecde478d7bc",
+    "name": "Eijiro Kirishima",
+    "aliases": [
+      "Red Riot"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 170,
+    "quirk_type": "Transformación",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡Eso sí que es varonil!"
+  },
+  {
+    "id": "829b4697-b408-428e-822e-7075466e265c",
+    "name": "Endeavor",
+    "aliases": [
+      "Endeavor"
+    ],
+    "gender": "Masculino",
+    "age": 46,
+    "height": 195,
+    "quirk_type": "Emisor",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Observadme."
+  },
+  {
+    "id": "738d1042-2dee-48a7-82be-d50da2bc6199",
+    "name": "Eri",
+    "aliases": [
+      "Eri"
+    ],
+    "gender": "Femenino",
+    "age": 7,
+    "height": 110,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A.",
+    "nationality": "Japonesa",
+    "first_appearance_season": 4,
+    "quote": "Gracias."
+  },
+  {
+    "id": "5a4a1044-2064-4993-bd73-6893aee48b7a",
+    "name": "Fumikage Tokoyami",
+    "aliases": [
+      "Tsukuyomi"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 158,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Dark Shadow."
+  },
+  {
+    "id": "a0c40d12-bcf9-4e5f-8b39-f139d31b7a6a",
+    "name": "Hanta Sero",
+    "aliases": [
+      "Cellophane"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 177,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡Hora de la cinta!"
+  },
+  {
+    "id": "e9674c12-4907-411c-a422-b931719a9510",
+    "name": "Hawks",
+    "aliases": [
+      "Hawks"
+    ],
+    "gender": "Masculino",
+    "age": 23,
+    "height": 172,
+    "quirk_type": "Mutante",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 4,
+    "quote": "Eres demasiado lento."
+  },
+  {
+    "id": "278cfbdd-ac91-4d38-9f9f-0fdd533b518b",
+    "name": "Himiko Toga",
+    "aliases": [
+      "Toga"
+    ],
+    "gender": "Femenino",
+    "age": 17,
+    "height": 157,
+    "quirk_type": "Transformación",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Me encanta la sangre."
+  },
+  {
+    "id": "9955040d-9140-4581-b938-44a14e9e8e18",
+    "name": "Hitoshi Shinso",
+    "aliases": [
+      "Shinso"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 177,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A.",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Respóndeme."
+  },
+  {
+    "id": "e3b14a96-2557-4b7b-b487-e6726f84c5db",
+    "name": "Inasa Yoarashi",
+    "aliases": [
+      "Gale Force"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 190,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto Shiketsu",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "¡Pasión!"
+  },
+  {
+    "id": "a8c3f203-a800-43cb-9048-da2f44331bfc",
+    "name": "Izuku Midoriya",
+    "aliases": [
+      "Deku"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 166,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡Yo también quiero convertirme en héroe!"
+  },
+  {
+    "id": "e47b6346-0f8f-4650-a9ff-8552dc4e0ebe",
+    "name": "Katsuki Bakugo",
+    "aliases": [
+      "Kacchan",
+      "Gran Explosión Asesina Dynamight"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 172,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "No me subestimes."
+  },
+  {
+    "id": "bdc1790f-2432-43cf-b97d-bc6e64819a70",
+    "name": "Kurogiri",
+    "aliases": [
+      "Puerta de Niebla"
+    ],
+    "gender": "Masculino",
+    "age": 30,
+    "height": 195,
+    "quirk_type": "Emisor",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Por favor, mantengan la calma."
+  },
+  {
+    "id": "8e9d7d63-064a-4954-b7f2-d68d58ee72f4",
+    "name": "Kyoka Jiro",
+    "aliases": [
+      "Earphone Jack"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 154,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Rock and roll."
+  },
+  {
+    "id": "ecb548e3-8518-45ee-b8b1-40142a66d4a9",
+    "name": "Mezo Shoji",
+    "aliases": [
+      "Tentacole"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 187,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Protegeré a todos."
+  },
+  {
+    "id": "7f6c9964-520f-45a0-94ed-558fdce7e516",
+    "name": "Mina Ashido",
+    "aliases": [
+      "Pinky"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 159,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡A bailar!"
+  },
+  {
+    "id": "50538bd1-0173-43b4-8444-9f9899c11986",
+    "name": "Minoru Mineta",
+    "aliases": [
+      "Grape Juice"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 108,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡Voy a ser súper popular!"
+  },
+  {
+    "id": "ba690691-7b80-42d3-8ca8-4b216793d971",
+    "name": "Mirio Togata",
+    "aliases": [
+      "Lemillion"
+    ],
+    "gender": "Masculino",
+    "age": 18,
+    "height": 181,
+    "quirk_type": "Transformación",
+    "affiliation": "Instituto U.A. - Los Tres Grandes",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "¡Poder!"
+  },
+  {
+    "id": "85bc357a-5803-43b7-bfa1-7da6ca4883ab",
+    "name": "Mirko",
+    "aliases": [
+      "Mirko"
+    ],
+    "gender": "Femenino",
+    "age": 27,
+    "height": 159,
+    "quirk_type": "Mutante",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 4,
+    "quote": "¡Traedlo todo!"
+  },
+  {
+    "id": "9f50ee84-cbfd-4305-81fe-cb5cff9a94b4",
+    "name": "Momo Yaoyorozu",
+    "aliases": [
+      "Creati",
+      "Yaomomo"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 173,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "El conocimiento es poder."
+  },
+  {
+    "id": "fc243609-bbe9-4c51-86bf-a6cd9d2a6903",
+    "name": "Mr. Compress",
+    "aliases": [
+      "Atsuhiro Sako"
+    ],
+    "gender": "Masculino",
+    "age": 32,
+    "height": 181,
+    "quirk_type": "Emisor",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "¡Que empiece el espectáculo!"
+  },
+  {
+    "id": "a014e33a-3e4b-4bbb-8994-8ad752c96138",
+    "name": "Nejire Hado",
+    "aliases": [
+      "Nejire Chan"
+    ],
+    "gender": "Femenino",
+    "age": 18,
+    "height": 164,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Los Tres Grandes",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "¡Ondas!"
+  },
+  {
+    "id": "e727d8b7-0c73-485b-bab8-44c51808194e",
+    "name": "Ochaco Uraraka",
+    "aliases": [
+      "Uravity"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 156,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Mi corazón siempre anima a los demás."
+  },
+  {
+    "id": "b58a0a98-9f07-4bb4-a59b-76c763a203ad",
+    "name": "Shota Aizawa",
+    "aliases": [
+      "Eraser Head"
+    ],
+    "gender": "Masculino",
+    "age": 31,
+    "height": 183,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A.",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Niños problemáticos..."
+  },
+  {
+    "id": "f0683648-8764-491d-8b48-f89e5771d226",
+    "name": "Shoto Todoroki",
+    "aliases": [
+      "Shoto"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 176,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Es tu poder."
+  },
+  {
+    "id": "fe1b74ef-8c67-43c4-9c68-7be772fb0850",
+    "name": "Spinner",
+    "aliases": [
+      "Shuichi Iguchi"
+    ],
+    "gender": "Masculino",
+    "age": 21,
+    "height": 174,
+    "quirk_type": "Mutante",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Stain me cambió."
+  },
+  {
+    "id": "41d39e5e-e63e-4d57-ab9f-0246984bd9ee",
+    "name": "Stain",
+    "aliases": [
+      "Asesino de Héroes"
+    ],
+    "gender": "Masculino",
+    "age": 31,
+    "height": 175,
+    "quirk_type": "Transformación",
+    "affiliation": "Villano Independiente",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Los falsos héroes deben desaparecer."
+  },
+  {
+    "id": "005828b9-3def-4ef3-bb6a-709e713dba48",
+    "name": "Star and Stripe",
+    "aliases": [
+      "Cathleen Bate"
+    ],
+    "gender": "Femenino",
+    "age": 42,
+    "height": 193,
+    "quirk_type": "Emisor",
+    "affiliation": "Héroe Profesional Americano",
+    "nationality": "Estadounidense",
+    "first_appearance_season": 7,
+    "quote": "¡New Order!"
+  },
+  {
+    "id": "62009b88-62f1-4d0b-90c5-177425f92b71",
+    "name": "Tamaki Amajiki",
+    "aliases": [
+      "Suneater"
+    ],
+    "gender": "Masculino",
+    "age": 18,
+    "height": 177,
+    "quirk_type": "Transformación",
+    "affiliation": "Instituto U.A. - Los Tres Grandes",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Quiero irme a casa..."
+  },
+  {
+    "id": "b6e8e46f-052f-493f-b498-8d02981da8a8",
+    "name": "Tenya Iida",
+    "aliases": [
+      "Ingenium"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 179,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡Recipro Burst!"
+  },
+  {
+    "id": "eae00c34-be0c-4df7-b3e7-3f0fff605e71",
+    "name": "Tomura Shigaraki",
+    "aliases": [
+      "Tenko Shimura"
+    ],
+    "gender": "Masculino",
+    "age": 21,
+    "height": 175,
+    "quirk_type": "Emisor",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Lo destruiré todo."
+  },
+  {
+    "id": "e4823e29-7fc9-4190-95ef-deead1b3ee4b",
+    "name": "Toshinori Yagi",
+    "aliases": [
+      "All Might",
+      "Símbolo de la Paz"
+    ],
+    "gender": "Masculino",
+    "age": 49,
+    "height": 220,
+    "quirk_type": "Emisor",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡Ya estoy aquí!"
+  },
+  {
+    "id": "324376bd-9085-4c3a-a1bf-f0337491aaef",
+    "name": "Tsuyu Asui",
+    "aliases": [
+      "Froppy",
+      "Tsu"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 150,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Kero."
+  },
+  {
+    "id": "ec13b80f-c931-47b7-b5a3-43b8fbf7ffef",
+    "name": "Yuga Aoyama",
+    "aliases": [
+      "No Puedo Parar de Brillar"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 168,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡Resplandeciente!"
+  }
+]

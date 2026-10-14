@@ -24,9 +24,7 @@ La app compila con `npm run build` y el runtime arranca `scripts/serve-worker.mj
 
 ## Variables de entorno
 
-Las variables `VITE_*` deben seguir configurándose en Coolify antes del deploy para que queden embebidas en build time.
-
-No definas secretos de servidor en frontend. `SUPABASE_SERVICE_ROLE_KEY` no debe inyectarse en builds cliente.
+Ninguna. Desde 2026-10 la app no tiene backend: los personajes están en `src/data/characters.json` y sus retratos en `src/assets/characters/<id>.webp`, empaquetados en el build. Las antiguas variables `VITE_SUPABASE_*` / `SUPABASE_*` pueden borrarse de Coolify.
 
 ## Validación local
 

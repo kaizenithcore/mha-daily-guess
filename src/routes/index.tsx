@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { Sparkles } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { CHARACTERS } from "@/lib/characters";
 import { Countdown } from "@/components/game/Countdown";
 import { CharacterSearch } from "@/components/game/CharacterSearch";
 import { AttemptsTable } from "@/components/game/AttemptsTable";
@@ -134,18 +133,8 @@ function Index() {
     }
   }, [archiveDateKey]);
 
-  const charactersQ = useQuery({
-    queryKey: ["characters"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("characters")
-        .select("*")
-        .eq("is_active", true)
-        .order("name");
-      if (error) throw error;
-      return data as Character[];
-    },
-  });
+  // Roster is bundled statically (no backend); same shape as the old query.
+  const charactersQ = { data: CHARACTERS, isLoading: false };
 
   const target = useMemo<Character | null>(() => {
     if (!charactersQ.data) return null;
