@@ -401,7 +401,7 @@
     "age": 31,
     "height": 183,
     "quirk_type": "Emisor",
-    "affiliation": "Instituto U.A.",
+    "affiliation": "Instituto U.A. - Profesorado",
     "nationality": "Japonesa",
     "first_appearance_season": 1,
     "quote": "Niños problemáticos..."
@@ -557,5 +557,896 @@
     "nationality": "Japonesa",
     "first_appearance_season": 1,
     "quote": "¡Resplandeciente!"
+  },
+  {
+    "id": "69ce1051-8003-4dc8-b330-09d8fad0f999",
+    "name": "Mashirao Ojiro",
+    "aliases": [
+      "Tailman"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 169,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Mi don es bastante normal… pero estoy orgulloso de él."
+  },
+  {
+    "id": "c2956e04-8db9-448b-897b-176870f16c94",
+    "name": "Koji Koda",
+    "aliases": [
+      "Anima"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 186,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "En U.A. siempre hay que seguir adelante. ¡Plus Ultra!"
+  },
+  {
+    "id": "de37f1f3-a4a0-4c55-a820-b939e4e57a67",
+    "name": "Rikido Sato",
+    "aliases": [
+      "Sugarman"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 185,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Puede que tengas un poder especial, pero entendemos cómo te sientes."
+  },
+  {
+    "id": "562a2335-28d6-4c9e-8ce8-7ed8d61e5cf6",
+    "name": "Toru Hagakure",
+    "aliases": [
+      "Invisible Girl"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 152,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-A",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "No has sonreído ni una sola vez desde que Midoriya volvió con nosotros."
+  },
+  {
+    "id": "e9a8268f-d748-43c3-afc1-0e1c6e348cbc",
+    "name": "Neito Monoma",
+    "aliases": [
+      "Phantom Thief"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 170,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-B",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "No tengo madera de protagonista, pero no me quejo de lo que me ha tocado."
+  },
+  {
+    "id": "3ab25059-8cac-4f18-8754-05547280b7eb",
+    "name": "Itsuka Kendo",
+    "aliases": [
+      "Battle Fist"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 166,
+    "quirk_type": "Transformación",
+    "affiliation": "Instituto U.A. - Clase 1-B",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Llevar un arma es admitir que no confías en ti mismo en un combate."
+  },
+  {
+    "id": "72308b44-26e3-47af-b351-6f64b9d5cadc",
+    "name": "Tetsutetsu Tetsutetsu",
+    "aliases": [
+      "Real Steel"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 174,
+    "quirk_type": "Transformación",
+    "affiliation": "Instituto U.A. - Clase 1-B",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "¡Soy de la clase 1-B del curso de héroes! ¡Si no doy la cara ahora, ¿para qué estoy aquí?!"
+  },
+  {
+    "id": "821977e8-e8fc-4960-870b-aab2e821f2ee",
+    "name": "Ibara Shiozaki",
+    "aliases": [
+      "Vine"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 167,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-B",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Juro por mi nombre que los intrigantes serán juzgados."
+  },
+  {
+    "id": "8c5720a8-3897-4070-a732-42039da46ab6",
+    "name": "Pony Tsunotori",
+    "aliases": [
+      "Rocketti"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 155,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Clase 1-B",
+    "nationality": "Estadounidense",
+    "first_appearance_season": 2,
+    "quote": "¡No soporto la idea de que todos pierdan por mi culpa!"
+  },
+  {
+    "id": "9d8b935f-1098-4bed-bd9f-45739b2ace8d",
+    "name": "Kosei Tsuburaba",
+    "aliases": [
+      "Tsuburaba"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 170,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-B",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "¡Ja, ja! ¿Qué te parece? ¡Una pared invisible!"
+  },
+  {
+    "id": "39807a8e-72c6-442e-8c76-d848f2047814",
+    "name": "Setsuna Tokage",
+    "aliases": [
+      "Lizardy"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 158,
+    "quirk_type": "Transformación",
+    "affiliation": "Instituto U.A. - Clase 1-B",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "A quien madruga… La victoria es así de simple."
+  },
+  {
+    "id": "c856680b-6284-45a5-8cdb-8487e0ea0e3d",
+    "name": "Kinoko Komori",
+    "aliases": [
+      "Shemage"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 152,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-B",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "¡Creced, creced! ¡Cubrid la tierra de setas!"
+  },
+  {
+    "id": "2036e907-4211-4c18-bf9b-85b9124a5dab",
+    "name": "Yosetsu Awase",
+    "aliases": [
+      "Welder"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 172,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-B",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Si perdemos la iniciativa en esta pelea, estamos acabados."
+  },
+  {
+    "id": "164985d9-fb78-47bd-9529-007d63b94094",
+    "name": "Juzo Honenuki",
+    "aliases": [
+      "Mudman"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 174,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Clase 1-B",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "¡Sin arrepentimientos! Si perdemos, perdemos."
+  },
+  {
+    "id": "79fc6e14-593b-4cfc-8895-5980eda7b533",
+    "name": "Mei Hatsume",
+    "aliases": [
+      "Hatsume"
+    ],
+    "gender": "Femenino",
+    "age": 16,
+    "height": 157,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A.",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Inventar cosas es la manera en que el curso de apoyo hace de héroe."
+  },
+  {
+    "id": "588aada5-6bba-4ab4-b68e-7be6ae690fda",
+    "name": "Nezu",
+    "aliases": [
+      "Director Nezu"
+    ],
+    "gender": "Masculino",
+    "age": null,
+    "height": 85,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Profesorado",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Ese único paso… parece un viaje imposible."
+  },
+  {
+    "id": "ce64dc23-0780-4c0f-81b5-ecd29551b62b",
+    "name": "Present Mic",
+    "aliases": [
+      "Hizashi Yamada"
+    ],
+    "gender": "Masculino",
+    "age": 30,
+    "height": 185,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Profesorado",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡Debería haberlo sabido! Al final, él siempre tiende una mano."
+  },
+  {
+    "id": "954cf17e-2526-469e-8025-cb32679a9292",
+    "name": "Midnight",
+    "aliases": [
+      "Nemuri Kayama"
+    ],
+    "gender": "Femenino",
+    "age": 31,
+    "height": 175,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Profesorado",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Veros correr y chillar como bebés me despierta el lado sádico."
+  },
+  {
+    "id": "df0d36c5-1dcb-4911-945e-b06303dd8771",
+    "name": "Cementoss",
+    "aliases": [
+      "Ken Ishiyama"
+    ],
+    "gender": "Masculino",
+    "age": 28,
+    "height": 185,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Profesorado",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "En un combate, todo consiste en aprovechar tus puntos fuertes."
+  },
+  {
+    "id": "1a0a7410-bfdd-4d18-86fc-e72661220fb2",
+    "name": "Ectoplasm",
+    "aliases": [
+      "Ectoplasma"
+    ],
+    "gender": "Masculino",
+    "age": 41,
+    "height": 180,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Profesorado",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Busco héroes que se crezcan ante la adversidad."
+  },
+  {
+    "id": "dcf2f892-cfc7-45e7-99b5-20cf00dbb311",
+    "name": "Snipe",
+    "aliases": [
+      "Snipe"
+    ],
+    "gender": "Masculino",
+    "age": null,
+    "height": 182,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Profesorado",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡Hace lo mismo que mi don solo con habilidad, y a tres kilómetros!"
+  },
+  {
+    "id": "931bf09e-60c1-4d3c-8130-426cc7f1f758",
+    "name": "Vlad King",
+    "aliases": [
+      "Sekijiro Kan"
+    ],
+    "gender": "Masculino",
+    "age": 30,
+    "height": 194,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Profesorado",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "El segundo trimestre será el momento de que brille la clase B."
+  },
+  {
+    "id": "5cc44474-47bd-4236-b609-33f38d9b85f4",
+    "name": "Power Loader",
+    "aliases": [
+      "Higari Maijima"
+    ],
+    "gender": "Masculino",
+    "age": 40,
+    "height": 155,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Profesorado",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Los mejores inventores no se dejan atar por las convenciones."
+  },
+  {
+    "id": "e395c426-b5a0-4a8d-9e64-0a2f0363cb07",
+    "name": "Recovery Girl",
+    "aliases": [
+      "Chiyo Shuzenji"
+    ],
+    "gender": "Femenino",
+    "age": null,
+    "height": 115,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Profesorado",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "U.A. siempre os prepara nuevas barreras para que superéis vuestros límites."
+  },
+  {
+    "id": "0db808fc-a269-4649-bd6a-701d490ec026",
+    "name": "Thirteen",
+    "aliases": [
+      "13",
+      "Anan Kurose"
+    ],
+    "gender": "Femenino",
+    "age": 28,
+    "height": 180,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto U.A. - Profesorado",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Vuestros poderes no existen para hacer daño, sino para ayudar a la gente."
+  },
+  {
+    "id": "92dc97a1-de2e-4c16-8b0d-50d569424818",
+    "name": "Hound Dog",
+    "aliases": [
+      "Ryo Inui"
+    ],
+    "gender": "Masculino",
+    "age": 32,
+    "height": 196,
+    "quirk_type": "Mutante",
+    "affiliation": "Instituto U.A. - Profesorado",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¡No vayas pensando que lo que hiciste estuvo bien!"
+  },
+  {
+    "id": "a33df87c-c195-46e7-86dc-8767d2a5822f",
+    "name": "Fat Gum",
+    "aliases": [
+      "Taishiro Toyomitsu"
+    ],
+    "gender": "Masculino",
+    "age": 29,
+    "height": 250,
+    "quirk_type": "Transformación",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 4,
+    "quote": "Contra un villano, lo esencial es quitarle cuanto antes las ganas de pelear."
+  },
+  {
+    "id": "ebafe4b1-ca24-4b51-a33b-ffdc9d24e1f7",
+    "name": "Sir Nighteye",
+    "aliases": [
+      "Mirai Sasaki"
+    ],
+    "gender": "Masculino",
+    "age": 38,
+    "height": 200,
+    "quirk_type": "Emisor",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Un mundo sin sonrisas ni humor no tiene un futuro brillante."
+  },
+  {
+    "id": "920624c5-c9a2-4dd6-b74a-a3f8a1c0920a",
+    "name": "Gran Torino",
+    "aliases": [
+      "Sorahiko Torino"
+    ],
+    "gender": "Masculino",
+    "age": null,
+    "height": 120,
+    "quirk_type": "Mutante",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "No seas tan rígido."
+  },
+  {
+    "id": "fab3329f-2086-4db1-a325-448962477d54",
+    "name": "Mt. Lady",
+    "aliases": [
+      "Yu Takeyama"
+    ],
+    "gender": "Femenino",
+    "age": 23,
+    "height": 162,
+    "quirk_type": "Transformación",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Gritar el nombre de tu ataque definitivo no es solo para lucirse."
+  },
+  {
+    "id": "cbf67d28-09fe-42cc-9a49-244b33771803",
+    "name": "Kamui Woods",
+    "aliases": [
+      "Shinji Nishiya"
+    ],
+    "gender": "Masculino",
+    "age": 28,
+    "height": 168,
+    "quirk_type": "Transformación",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "¿Uso ilegal de poderes en hora punta, robo y agresión? Eres el mal en persona."
+  },
+  {
+    "id": "54e09a53-f0cc-4ee2-b7c5-2ce4b1ae8003",
+    "name": "Edgeshot",
+    "aliases": [
+      "Shinya Kamihara"
+    ],
+    "gender": "Masculino",
+    "age": 33,
+    "height": 170,
+    "quirk_type": "Transformación",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Este corazón pertenece a una vida que no podemos permitirnos perder."
+  },
+  {
+    "id": "36161d78-48d1-4007-be98-09f74243ada6",
+    "name": "Gang Orca",
+    "aliases": [
+      "Kugo Sakamata"
+    ],
+    "gender": "Masculino",
+    "age": 34,
+    "height": 202,
+    "quirk_type": "Mutante",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Proteger a la gente en la ciudad es un trabajo complejo y con muchas caras."
+  },
+  {
+    "id": "96fd89a6-35dd-4401-af49-1f890b2aae74",
+    "name": "Ryukyu",
+    "aliases": [
+      "Ryuko Tatsuma"
+    ],
+    "gender": "Femenino",
+    "age": 25,
+    "height": 166,
+    "quirk_type": "Transformación",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 4,
+    "quote": "Ahí fuera hay una niña que nos necesita. Eso es lo que más importa."
+  },
+  {
+    "id": "b293e88e-0eb8-4c9e-a019-1d9752b83b85",
+    "name": "Tensei Iida",
+    "aliases": [
+      "Ingenium"
+    ],
+    "gender": "Masculino",
+    "age": 30,
+    "height": 183,
+    "quirk_type": "Mutante",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Siempre he pensado que quien lleva a un niño perdido a su sitio es lo más guay."
+  },
+  {
+    "id": "bc2a7467-7ee2-45bd-979a-5f7d9e8230c4",
+    "name": "Nana Shimura",
+    "aliases": [
+      "Nana"
+    ],
+    "gender": "Femenino",
+    "age": 35,
+    "height": null,
+    "quirk_type": "Emisor",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Un verdadero héroe no salva solo vidas, también corazones."
+  },
+  {
+    "id": "59258377-9b10-477a-a2c1-4af868d160a9",
+    "name": "Mandalay",
+    "aliases": [
+      "Shino Sosaki"
+    ],
+    "gender": "Femenino",
+    "age": 31,
+    "height": 168,
+    "quirk_type": "Emisor",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Es verdad que te dejaron atrás, pero gracias a ellos se salvaron vidas."
+  },
+  {
+    "id": "22dd092c-ac15-4b7a-b6f8-7d0ff5296bd6",
+    "name": "Ragdoll",
+    "aliases": [
+      "Tomoko Shiretoko"
+    ],
+    "gender": "Femenino",
+    "age": 31,
+    "height": 166,
+    "quirk_type": "Emisor",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Están usando mi don de búsqueda para el mal, miau."
+  },
+  {
+    "id": "afe82401-2a5b-4317-aa7d-75c977800de0",
+    "name": "Tiger",
+    "aliases": [
+      "Yawara Chatora"
+    ],
+    "gender": "Masculino",
+    "age": 31,
+    "height": 190,
+    "quirk_type": "Transformación",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Plus Ultra, ¿no? ¡Pues enseñadme ese Ultra!"
+  },
+  {
+    "id": "c48168f4-24cb-4ffd-8872-7c29f0b572eb",
+    "name": "Burnin",
+    "aliases": [
+      "Moe Kamiji"
+    ],
+    "gender": "Femenino",
+    "age": 25,
+    "height": 169,
+    "quirk_type": "Mutante",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 5,
+    "quote": "Supongo que no tengo que hacer nada para que os vengáis arriba."
+  },
+  {
+    "id": "39fb8dbd-5360-4b42-994f-a0874b276921",
+    "name": "Rock Lock",
+    "aliases": [
+      "Ken Takagi"
+    ],
+    "gender": "Masculino",
+    "age": 32,
+    "height": 173,
+    "quirk_type": "Emisor",
+    "affiliation": "Héroe Profesional",
+    "nationality": "Japonesa",
+    "first_appearance_season": 4,
+    "quote": "Sean de U.A. o no, los niños son niños."
+  },
+  {
+    "id": "82636914-daa9-48f1-9127-2ac238d35757",
+    "name": "All For One",
+    "aliases": [
+      "AFO",
+      "Maestro"
+    ],
+    "gender": "Masculino",
+    "age": null,
+    "height": 225,
+    "quirk_type": "Emisor",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Si lo que deseáis es libertad, someteos a mí."
+  },
+  {
+    "id": "37047be8-8f78-4f41-ae0f-7353ae3af8d8",
+    "name": "Muscular",
+    "aliases": [
+      "Goto Imasuji"
+    ],
+    "gender": "Masculino",
+    "age": 25,
+    "height": 200,
+    "quirk_type": "Transformación",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Los mocosos como vosotros sabéis muy bien echar la culpa a otros."
+  },
+  {
+    "id": "e83be08e-94d9-404c-8ef3-dd83e571e881",
+    "name": "Moonfish",
+    "aliases": [
+      "Moonfish"
+    ],
+    "gender": "Masculino",
+    "age": null,
+    "height": null,
+    "quirk_type": "Transformación",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Qué bonito. Tan bonito. No. Esto es trabajo."
+  },
+  {
+    "id": "55e25669-66e3-4c2b-a53f-dada4d9da7ad",
+    "name": "Mustard",
+    "aliases": [
+      "Mustard"
+    ],
+    "gender": "Masculino",
+    "age": null,
+    "height": null,
+    "quirk_type": "Emisor",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Al menos usad algo de estrategia. Si no, apenas merecéis que os mate."
+  },
+  {
+    "id": "690c27f7-efbb-4f06-91f3-02b0ee9ba158",
+    "name": "Magne",
+    "aliases": [
+      "Kenji Hikiishi",
+      "Big Sis Magne"
+    ],
+    "gender": "Femenino",
+    "age": null,
+    "height": null,
+    "quirk_type": "Emisor",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "¡Estoy aquí porque quiero vivir libre!"
+  },
+  {
+    "id": "eb3ded85-4e4e-4448-9450-f09affcea373",
+    "name": "Twice",
+    "aliases": [
+      "Jin Bubaigawara"
+    ],
+    "gender": "Masculino",
+    "age": 31,
+    "height": 178,
+    "quirk_type": "Emisor",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "No hay sitio en la sociedad para locos como yo."
+  },
+  {
+    "id": "c9a756a6-20cf-4424-9a2d-fd3dcea7c165",
+    "name": "Overhaul",
+    "aliases": [
+      "Kai Chisaki"
+    ],
+    "gender": "Masculino",
+    "age": 27,
+    "height": 179,
+    "quirk_type": "Emisor",
+    "affiliation": "Shie Hassaikai",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "¡Llevadme con el jefe! ¡Es lo único que me queda!"
+  },
+  {
+    "id": "b9e21285-dd5d-42c0-ac9a-8bab0726fa59",
+    "name": "Chronostasis",
+    "aliases": [
+      "Hari Kurono"
+    ],
+    "gender": "Masculino",
+    "age": null,
+    "height": null,
+    "quirk_type": "Mutante",
+    "affiliation": "Shie Hassaikai",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "¡Esto es por la banda! ¡Esto es por Kai!"
+  },
+  {
+    "id": "758a8afd-ae24-4afa-8a10-10f14b0ec04b",
+    "name": "Rappa",
+    "aliases": [
+      "Kendo Rappa"
+    ],
+    "gender": "Masculino",
+    "age": null,
+    "height": null,
+    "quirk_type": "Emisor",
+    "affiliation": "Shie Hassaikai",
+    "nationality": "Japonesa",
+    "first_appearance_season": 4,
+    "quote": "Llevar un arma a una pelea es de muy mal gusto."
+  },
+  {
+    "id": "43c63bd9-bdc4-4831-88f6-03f650923230",
+    "name": "Gentle Criminal",
+    "aliases": [
+      "Gentle",
+      "Danjuro Tobita"
+    ],
+    "gender": "Masculino",
+    "age": 32,
+    "height": 181,
+    "quirk_type": "Emisor",
+    "affiliation": "Villano Independiente",
+    "nationality": "Japonesa",
+    "first_appearance_season": 4,
+    "quote": "¡Para grabar mi nombre en la historia!"
+  },
+  {
+    "id": "ec17ab8d-a410-4691-a993-12109e5a09f2",
+    "name": "La Brava",
+    "aliases": [
+      "Manami Aiba"
+    ],
+    "gender": "Femenino",
+    "age": 21,
+    "height": 111,
+    "quirk_type": "Emisor",
+    "affiliation": "Villano Independiente",
+    "nationality": "Japonesa",
+    "first_appearance_season": 4,
+    "quote": "Mientras esté contigo, Gentle, seré feliz pase lo que pase."
+  },
+  {
+    "id": "36fbbea4-1fdf-4cf0-8348-c9561d05f574",
+    "name": "Re-Destro",
+    "aliases": [
+      "Rikiya Yotsubashi",
+      "Destro"
+    ],
+    "gender": "Masculino",
+    "age": null,
+    "height": null,
+    "quirk_type": "Transformación",
+    "affiliation": "Ejército de Liberación Meta",
+    "nationality": "Japonesa",
+    "first_appearance_season": 5,
+    "quote": "Derribaremos el orden existente y reconstruiremos este mundo."
+  },
+  {
+    "id": "86d9b172-1626-43b9-b2af-38df54df50c7",
+    "name": "Kyudai Garaki",
+    "aliases": [
+      "Daruma Ujiko",
+      "Doctor"
+    ],
+    "gender": "Masculino",
+    "age": null,
+    "height": null,
+    "quirk_type": "Mutante",
+    "affiliation": "Liga de Villanos",
+    "nationality": "Japonesa",
+    "first_appearance_season": 2,
+    "quote": "Solo he vivido por el chico… por Shigaraki."
+  },
+  {
+    "id": "6526f30d-bfdc-4de0-9772-704e22075bd8",
+    "name": "Lady Nagant",
+    "aliases": [
+      "Kaina Tsutsumi"
+    ],
+    "gender": "Femenino",
+    "age": null,
+    "height": 171,
+    "quirk_type": "Transformación",
+    "affiliation": "Villano Independiente",
+    "nationality": "Japonesa",
+    "first_appearance_season": 6,
+    "quote": "Me había manchado de oscuridad y había perdido la fe en la luz."
+  },
+  {
+    "id": "ffc31c7a-ce93-4520-b4f5-7f359d74b463",
+    "name": "Kota Izumi",
+    "aliases": [
+      "Kota"
+    ],
+    "gender": "Masculino",
+    "age": 6,
+    "height": 107,
+    "quirk_type": "Emisor",
+    "affiliation": "Civil",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "¡Tenía que intentarlo porque quiero ser como tú!"
+  },
+  {
+    "id": "cd0d5c28-a316-493b-81d0-2d2373b912a5",
+    "name": "Inko Midoriya",
+    "aliases": [
+      "Inko"
+    ],
+    "gender": "Femenino",
+    "age": 40,
+    "height": 160,
+    "quirk_type": "Emisor",
+    "affiliation": "Civil",
+    "nationality": "Japonesa",
+    "first_appearance_season": 1,
+    "quote": "Ahora voy a animarte con todo mi corazón, Izuku."
+  },
+  {
+    "id": "0fe48c56-9eb6-4d05-b4d8-4ee7d619d3dd",
+    "name": "Seiji Shishikura",
+    "aliases": [
+      "Shishikross"
+    ],
+    "gender": "Masculino",
+    "age": 16,
+    "height": 172,
+    "quirk_type": "Transformación",
+    "affiliation": "Instituto Shiketsu",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Comportarse con la clase propia de tu instituto: eso es la dignidad."
+  },
+  {
+    "id": "5e8d288a-4d21-4547-b882-2e5557e2c25e",
+    "name": "Yo Shindo",
+    "aliases": [
+      "Grand"
+    ],
+    "gender": "Masculino",
+    "age": 17,
+    "height": 176,
+    "quirk_type": "Emisor",
+    "affiliation": "Instituto Ketsubutsu",
+    "nationality": "Japonesa",
+    "first_appearance_season": 3,
+    "quote": "Un héroe necesita un espíritu duro como la roca, que no se doble ni se rompa."
   }
 ]

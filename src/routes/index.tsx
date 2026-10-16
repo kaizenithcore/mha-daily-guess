@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Sparkles } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 import { CHARACTERS } from "@/lib/characters";
 import { Countdown } from "@/components/game/Countdown";
 import { CharacterSearch } from "@/components/game/CharacterSearch";
@@ -14,6 +14,8 @@ import { EndlessSummaryDialog } from "@/components/game/EndlessSummaryDialog";
 import { GameModeSwitcher, type GameMode } from "@/components/game/GameModeSwitcher";
 import { SupportFooter } from "@/components/game/SupportFooter";
 import {
+  LAUNCH_DATE_KEY,
+  migrateStorage,
   loadInfiniteEnabled,
   loadStats,
   loadEndlessState,
@@ -30,12 +32,22 @@ import {
   type Character,
   type LocalStats,
 } from "@/lib/mhadle";
+import {
+  MAX_SEASON,
+  charactersUpTo,
+  loadSpoilerSeason,
+  saveSpoilerSeason,
+  scopeFor,
+} from "@/lib/spoilers";
+import { SpoilerSelect } from "@/components/game/SpoilerSelect";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const LAUNCH_DATE_KEY = "2026-05-01";
+// Runs once on the client before the page reads any saved progress.
+migrateStorage();
+
 const ARCHIVE_DATE_STORAGE_KEY = "mhadle:archive-date";
 const MODE_LABELS: Record<GameMode, string> = {
   classic: "Clásico",
@@ -52,7 +64,10 @@ function hashString(value: string): number {
   return Math.abs(hash);
 }
 
-function buildModeTargets(characters: Character[], dayKey: string): Record<GameMode, Character | null> {
+function buildModeTargets(
+  characters: Character[],
+  dayKey: string,
+): Record<GameMode, Character | null> {
   const sorted = [...characters].sort((a, b) => {
     const left = hashString(`${dayKey}:${a.id}`);
     const right = hashString(`${dayKey}:${b.id}`);
@@ -81,7 +96,12 @@ function puzzleNumberForDate(dateKey: string): number {
   return Math.max(1, Math.floor((current - launch) / 86400000) + 1);
 }
 
-function buildEndlessTarget(characters: Character[], mode: GameMode, dayKey: string, roundIndex: number): Character | null {
+function buildEndlessTarget(
+  characters: Character[],
+  mode: GameMode,
+  dayKey: string,
+  roundIndex: number,
+): Character | null {
   const sorted = [...characters].sort((a, b) => {
     const left = hashString(`endless:${mode}:${dayKey}:${roundIndex}:${a.id}`);
     const right = hashString(`endless:${mode}:${dayKey}:${roundIndex}:${b.id}`);
@@ -102,8 +122,11 @@ function Index() {
   const [infiniteEnabled, setInfiniteEnabled] = useState(false);
   const [archiveDateKey, setArchiveDateKey] = useState<string | null>(null);
   const [archiveModalOpen, setArchiveModalOpen] = useState(false);
-  const [hintsVisible, setHintsVisible] = useState(true);
-  const [endlessState, setEndlessState] = useState<EndlessState>(() => loadEndlessState(mode, todayKeyUTC()));
+  const [hintsVisible, setHintsVisible] = useState(false);
+  const [spoilerSeason, setSpoilerSeason] = useState(MAX_SEASON);
+  const [endlessState, setEndlessState] = useState<EndlessState>(() =>
+    loadEndlessState(mode, todayKeyUTC()),
+  );
   const [endlessSummary, setEndlessSummary] = useState<{
     roundsCompleted: number;
     previousRecord: number;
@@ -119,6 +142,7 @@ function Index() {
 
   useEffect(() => {
     setInfiniteEnabled(loadInfiniteEnabled());
+    setSpoilerSeason(loadSpoilerSeason());
     if (typeof window === "undefined") return;
     const stored = localStorage.getItem(ARCHIVE_DATE_STORAGE_KEY);
     setArchiveDateKey(stored && stored >= LAUNCH_DATE_KEY ? stored : null);
@@ -133,8 +157,11 @@ function Index() {
     }
   }, [archiveDateKey]);
 
-  // Roster is bundled statically (no backend); same shape as the old query.
-  const charactersQ = { data: CHARACTERS, isLoading: false };
+  // Roster is bundled statically (no backend), limited to what the player has watched.
+  const pool = useMemo(() => charactersUpTo(CHARACTERS, spoilerSeason), [spoilerSeason]);
+  const charactersQ = { data: pool, isLoading: false };
+  // Saved progress is kept per mode and per spoiler level.
+  const scope = scopeFor(mode, spoilerSeason);
 
   const target = useMemo<Character | null>(() => {
     if (!charactersQ.data) return null;
@@ -145,18 +172,13 @@ function Index() {
     return targets[mode];
   }, [charactersQ.data, activeDateKey, infiniteEnabled, mode, endlessState.roundIndex]);
 
-  const currentDayLabel = useMemo(() => {
-    if (archiveDateKey) return `Archivo · ${formatDateLabel(activeDateKey)}`;
-    return "Día real";
-  }, [activeDateKey, archiveDateKey]);
-
   // Restore progress for the active mode and day/run
   useEffect(() => {
     if (!charactersQ.data) return;
     const map = new Map(charactersQ.data.map((c) => [c.id, c]));
 
     if (infiniteEnabled) {
-      const state = loadEndlessState(mode, activeDateKey);
+      const state = loadEndlessState(scope, activeDateKey);
       setEndlessState(state);
       const restored = state.attemptIds.map((id) => map.get(id)).filter(Boolean) as Character[];
       setAttempts(restored);
@@ -166,13 +188,13 @@ function Index() {
       return;
     }
 
-    const t = loadTodayState(mode, activeDateKey);
+    const t = loadTodayState(scope, activeDateKey);
     const restored = t.attemptIds.map((id) => map.get(id)).filter(Boolean) as Character[];
     setAttempts(restored);
     setWon(t.won);
     setSurrendered(t.surrendered);
     setEndlessSummary(null);
-  }, [charactersQ.data, activeDateKey, mode, infiniteEnabled]);
+  }, [charactersQ.data, activeDateKey, scope, infiniteEnabled]);
 
   const excludeIds = useMemo(() => new Set(attempts.map((a) => a.id)), [attempts]);
 
@@ -180,9 +202,7 @@ function Index() {
     ? `Ronda ${endlessState.roundIndex + 1}`
     : `Intento ${attempts.length + 1}`;
 
-  const hasEnded = infiniteEnabled
-    ? endlessState.phase !== "playing"
-    : won || surrendered;
+  const hasEnded = infiniteEnabled ? endlessState.phase !== "playing" : won || surrendered;
 
   const infiniteModeLabel = MODE_LABELS[mode];
 
@@ -191,7 +211,11 @@ function Index() {
     setSurrendered(nextSurrendered);
   };
 
-  const persistDailyState = (nextAttempts: Character[], nextWon: boolean, nextSurrendered: boolean) => {
+  const persistDailyState = (
+    nextAttempts: Character[],
+    nextWon: boolean,
+    nextSurrendered: boolean,
+  ) => {
     saveTodayState(
       {
         date: activeDateKey,
@@ -199,18 +223,18 @@ function Index() {
         won: nextWon,
         surrendered: nextSurrendered,
       },
-      mode,
+      scope,
       activeDateKey,
     );
   };
 
   const persistEndlessState = (nextState: EndlessState) => {
     setEndlessState(nextState);
-    saveEndlessState(nextState, mode, activeDateKey);
+    saveEndlessState(nextState, scope, activeDateKey);
   };
 
   const openEndlessSummary = (nextState: EndlessState) => {
-    const record = updateEndlessRecord(mode, activeDateKey, nextState.roundsCompleted);
+    const record = updateEndlessRecord(scope, activeDateKey, nextState.roundsCompleted);
     setEndlessSummary({
       roundsCompleted: nextState.roundsCompleted,
       previousRecord: record.previousRecord,
@@ -315,7 +339,8 @@ function Index() {
   };
 
   const handleNextEndlessRound = () => {
-    if (!infiniteEnabled || endlessState.phase !== "revealed" || endlessState.result !== "won") return;
+    if (!infiniteEnabled || endlessState.phase !== "revealed" || endlessState.result !== "won")
+      return;
     const nextState: EndlessState = {
       roundIndex: endlessState.roundIndex + 1,
       attemptIds: [],
@@ -332,7 +357,7 @@ function Index() {
 
   const handleResetEndless = () => {
     if (!infiniteEnabled) return;
-    const nextState = resetEndlessState(mode, activeDateKey);
+    const nextState = resetEndlessState(scope, activeDateKey);
     setAttempts([]);
     revealHero(false, false);
     setEndlessSummary(null);
@@ -340,132 +365,129 @@ function Index() {
   };
 
   return (
-    <main className="app-shell mx-auto min-h-screen w-full max-w-2xl px-4 pb-24 pt-5 sm:px-6 sm:pt-8">
-      <header className="relative isolate mb-6 text-center">
-        <div aria-hidden className="absolute inset-0 -z-10 flex items-center justify-center">
-          <div
-            className="size-64 rounded-full opacity-30"
-            style={{
-              background:
-                "repeating-conic-gradient(from 0deg, color-mix(in oklab, var(--hero) 35%, transparent) 0deg 6deg, transparent 6deg 14deg)",
-              maskImage: "radial-gradient(circle, black 30%, transparent 70%)",
-              WebkitMaskImage: "radial-gradient(circle, black 30%, transparent 70%)",
-            }}
-          />
-        </div>
-        <span className="chip chip-red mb-3">
-          <Sparkles className="size-3" /> Daily hero
-        </span>
-        <h1 className="hero-title font-display text-6xl leading-none sm:text-7xl">
-          <span className="text-primary drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">MHA</span>
-          <span className="text-foreground drop-shadow-[3px_3px_0_rgba(0,0,0,0.45)]">dle</span>
-        </h1>
-        <p className="hero-subtitle mt-2 text-xs sm:text-sm">
-          Descubre al héroe del día.
-        </p>
-      </header>
-
-      <section className="mb-5 grid gap-3">
-        <div className="panel-info flex items-center justify-between gap-4 px-4 py-3 sm:px-5">
-          <div className="flex items-end gap-3">
-            <Countdown onReset={() => location.reload()} />
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="text-right">
-              <div className="section-label justify-end">{currentDayLabel}</div>
-              <div className="font-display text-2xl leading-none text-primary">{archiveDateKey
-                  ? `#${puzzleNumberForDate(activeDateKey)}`
-                  : "Reloj real"}</div>
+    <main className="nb-page mx-auto min-h-screen w-full max-w-2xl px-4 pb-16 pt-4 sm:px-6 sm:pt-8 min-[720px]:max-w-[44rem] min-[1100px]:max-w-6xl min-[1100px]:pr-12">
+      <div className="nb-spread">
+        {/* Printed notebook header, filled in by hand */}
+        <header className="nb-left mb-5">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <p className="nb-printed">
+                Análisis Nº <span className="nb-fill">{puzzleNumberForDate(activeDateKey)}</span>
+              </p>
+              <SpoilerSelect
+                season={spoilerSeason}
+                onChange={(season) => {
+                  setSpoilerSeason(season);
+                  saveSpoilerSeason(season);
+                  setEndlessSummary(null);
+                }}
+              />
             </div>
-          </div>
-        </div>
-        <StatsBar stats={stats} />
-      </section>
-
-      <div className="mb-4 flex items-center justify-between px-1">
-        <span className="section-label">Modo de juego</span>
-      </div>
-      <GameModeSwitcher
-        mode={mode}
-        onChange={setMode}
-        infiniteEnabled={infiniteEnabled}
-        onToggleInfinite={(v) => {
-          setInfiniteEnabled(v);
-          if (!v) setEndlessSummary(null);
-        }}
-      />
-
-      <div className="mt-3 flex items-center justify-between gap-3 rounded-3xl border border-border bg-secondary/40 px-4 py-3">
-        <div className="flex items-end gap-3">
-          <div className="section-label">Archivo</div>
-          <div className="text-xs text-muted-foreground">
-            {archiveDateKey ? `Abierto en ${formatDateLabel(activeDateKey)}` : "Solo días anteriores"}
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={() => setArchiveModalOpen(true)}
-          className="focus-ring inline-flex items-center justify-center rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-semibold text-foreground transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
-        >
-          {archiveDateKey ? "Cambiar día" : "Abrir selector"}
-        </button>
-      </div>
-
-      <section className={`mb-6 mt-6 ${shake ? "animate-shake" : ""}`}>
-        <div className="mb-2 flex items-center justify-between px-1">
-          <span className="section-label">Tu turno</span>
-          <span className="ua-meta">
-            {infiniteEnabled
-              ? `${currentRoundLabel} · ${endlessState.livesLeft} vidas`
-              : hasEnded
-                ? "Caso resuelto"
-                : archiveDateKey
-                  ? `Archivo · ${formatDateLabel(activeDateKey)}`
-                  : `Intento ${attempts.length + 1}`}
-          </span>
-        </div>
-        {charactersQ.isLoading ? (
-          <div className="panel-info p-4 text-center text-sm text-muted-foreground">
-            Cargando héroes...
-          </div>
-        ) : (
-          <CharacterSearch
-            characters={charactersQ.data ?? []}
-            excludeIds={excludeIds}
-            disabled={hasEnded}
-            onPick={handleGuess}
-          />
-        )}
-        {!hasEnded && (
-          <div className="mt-3 flex flex-wrap gap-2 px-1">
             <button
               type="button"
-              onClick={handleSurrender}
-              className="focus-ring inline-flex items-center justify-center rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-semibold text-foreground transition hover:border-accent hover:bg-accent hover:text-accent-foreground"
+              onClick={() => setArchiveModalOpen(true)}
+              className="nb-link text-base"
             >
-              Rendirse y revelar héroe
+              <CalendarDays className="size-4" aria-hidden />
+              {archiveDateKey ? `Archivo · ${formatDateLabel(activeDateKey)}` : "Días anteriores"}
             </button>
-            {/* {infiniteEnabled && <span className="ua-meta self-center">Fallos restantes: {endlessState.livesLeft}</span>} */}
           </div>
-        )}
-      </section>
+          <h1 className="nb-title mt-2">
+            <span className="nb-title-hl">MHA</span>dle
+          </h1>
+          <p className="mt-1 font-hand text-lg text-pen">Análisis de héroes para el futuro</p>
+          <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
+            {archiveDateKey ? (
+              <span className="inline-flex items-baseline gap-1.5">
+                <span className="nb-printed">Día de archivo</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setArchiveDateKey(null);
+                    setAttempts([]);
+                    setWon(false);
+                    setSurrendered(false);
+                  }}
+                  className="nb-link"
+                >
+                  volver a hoy
+                </button>
+              </span>
+            ) : (
+              <Countdown onReset={() => location.reload()} />
+            )}
+            <StatsBar stats={stats} />
+          </div>
+        </header>
 
-      <ModeShowcasePanel target={target} attemptCount={attempts.length} won={won} mode={mode} />
+        {/* Today's case: index tabs + the page with the subject and the writing line */}
+        <div className="nb-left">
+          <GameModeSwitcher
+            mode={mode}
+            onChange={setMode}
+            infiniteEnabled={infiniteEnabled}
+            onToggleInfinite={(v) => {
+              setInfiniteEnabled(v);
+              if (!v) setEndlessSummary(null);
+            }}
+          />
+          <section
+            className={`nb-sheet mb-6 ${shake ? "animate-shake" : ""}`}
+            aria-label="Caso del día"
+          >
+            <ModeShowcasePanel
+              target={target}
+              attemptCount={attempts.length}
+              won={won}
+              mode={mode}
+              revealed={hasEnded}
+            />
 
-      {target && hasEnded && (
-        <section className="panel-hero glow-hero mb-5 animate-pop-in p-5 text-center">
-          <div className="mb-3 flex items-center justify-center">
-            <span
-              className="chip"
-              style={{
-                background: surrendered
-                  ? "color-mix(in oklab, var(--wrong) 18%, transparent)"
-                  : "color-mix(in oklab, var(--correct) 18%, transparent)",
-                color: surrendered ? "var(--wrong)" : "var(--correct)",
-                borderColor: surrendered
-                  ? "color-mix(in oklab, var(--wrong) 34%, transparent)"
-                  : "color-mix(in oklab, var(--correct) 34%, transparent)",
-              }}
+            <div className="px-4 pb-4 pt-4 sm:px-6">
+              <div className="mb-1 flex items-baseline justify-between">
+                <span className="nb-printed">
+                  {infiniteEnabled ? `Infinito · ${MODE_LABELS[mode]}` : "Tu respuesta"}
+                </span>
+                <span className="nb-printed">
+                  {infiniteEnabled
+                    ? `${currentRoundLabel} · ${endlessState.livesLeft} ${endlessState.livesLeft === 1 ? "vida" : "vidas"}`
+                    : hasEnded
+                      ? "Caso cerrado"
+                      : `Intento ${attempts.length + 1}`}
+                </span>
+              </div>
+              <CharacterSearch
+                characters={charactersQ.data ?? []}
+                excludeIds={excludeIds}
+                disabled={hasEnded}
+                onPick={handleGuess}
+              />
+              {!hasEnded && (
+                <div className="mt-2 flex justify-end">
+                  <button
+                    type="button"
+                    onClick={handleSurrender}
+                    className="nb-link nb-link-red text-base"
+                  >
+                    Me rindo, revela el héroe
+                  </button>
+                </div>
+              )}
+            </div>
+          </section>
+        </div>
+
+        {/* Conclusion of the case */}
+        {target && hasEnded && (
+          <section
+            className="nb-left nb-sheet nb-impact mb-6 px-4 pb-5 pt-6 text-center sm:px-6"
+            aria-live="polite"
+          >
+            <span className="nb-tape -top-2.5 left-8 rotate-[-6deg]" aria-hidden />
+            <span className="nb-tape -top-2.5 right-8 rotate-[5deg]" aria-hidden />
+            <span className="sr-only">El héroe era {target.name}.</span>
+            <p
+              className={`nb-stamp ${surrendered || endlessState.phase === "gameover" ? "text-ink-soft" : "text-redpen"}`}
             >
               {infiniteEnabled
                 ? endlessState.phase === "gameover"
@@ -476,106 +498,82 @@ function Index() {
                 : surrendered
                   ? "Rendición"
                   : "¡Plus Ultra!"}
-            </span>
-          </div>
-          {target.image_url && (
-            <div className="mx-auto mb-4 size-28 overflow-hidden rounded-full border border-border bg-secondary/60 shadow-[0_18px_34px_-24px_color-mix(in_oklab,var(--hero)_65%,transparent)]">
-              <img src={target.image_url} alt={target.name} className="size-full object-cover" />
-            </div>
-          )}
-          <h2 className="font-display text-4xl text-foreground sm:text-5xl">{target.name}</h2>
-          {target.aliases?.[0] && (
-            <p className="mt-1 text-sm text-muted-foreground">«{target.aliases[0]}»</p>
-          )}
-          {infiniteEnabled ? (
-            <div className="mt-3 space-y-2">
-              <p className="text-sm text-foreground/90">
-                Rondas superadas: <strong>{endlessState.roundsCompleted}</strong> · Vidas restantes: <strong>{endlessState.livesLeft}</strong>
-              </p>
-              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                {infiniteModeLabel} · infinito activo
-              </p>
-              <div className="flex flex-wrap justify-center gap-2 pt-2">
-                {endlessState.phase === "revealed" && endlessState.result === "won" && (
-                  <button
-                    type="button"
-                    onClick={handleNextEndlessRound}
-                    className="btn-hero focus-ring inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm"
-                  >
-                    Siguiente héroe
-                  </button>
-                )}
-                {(endlessState.phase === "gameover" || endlessState.result === "surrendered") && (
-                  <button
-                    type="button"
-                    onClick={handleResetEndless}
-                    className="focus-ring inline-flex items-center justify-center rounded-full border border-border bg-secondary px-5 py-3 text-sm font-semibold text-foreground transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
-                  >
-                    Reiniciar infinito
-                  </button>
-                )}
-              </div>
-            </div>
-          ) : (
-            <>
-              <p className="mt-3 text-sm text-foreground/90">
-                Resuelto en <strong>{attempts.length}</strong> {attempts.length === 1 ? "intento" : "intentos"} · Racha <strong>{stats.streak}</strong> 🔥
-              </p>
-              <div className="mt-5 flex flex-wrap justify-center gap-2">
-                <ShareButton puzzleNumber={puzzleNumberForDate(activeDateKey)} attempts={attempts} target={target} />
-                <button
-                  type="button"
-                  onClick={handlePreviousDay}
-                  disabled={activeDateKey <= LAUNCH_DATE_KEY}
-                  className="focus-ring inline-flex items-center justify-center rounded-full border border-border bg-secondary px-5 py-3 text-sm font-semibold text-foreground transition hover:border-primary hover:bg-primary hover:text-primary-foreground disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  Jugar día anterior
-                </button>
-              </div>
-            </>
-          )}
-        </section>
-      )}
+            </p>
 
+            {infiniteEnabled ? (
+              <div className="mt-4 space-y-3">
+                <p className="font-hand text-lg text-ink">
+                  Rondas superadas: <strong>{endlessState.roundsCompleted}</strong> · Vidas:{" "}
+                  <strong>{endlessState.livesLeft}</strong>
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+                  {endlessState.phase === "revealed" && endlessState.result === "won" && (
+                    <button type="button" onClick={handleNextEndlessRound} className="nb-btn">
+                      Siguiente héroe
+                    </button>
+                  )}
+                  {(endlessState.phase === "gameover" || endlessState.result === "surrendered") && (
+                    <button type="button" onClick={handleResetEndless} className="nb-btn">
+                      Reiniciar infinito
+                    </button>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <>
+                <p className="mt-4 font-hand text-lg text-ink">
+                  {surrendered
+                    ? `Caso cerrado tras ${attempts.length} ${attempts.length === 1 ? "intento" : "intentos"}.`
+                    : `Resuelto en ${attempts.length} ${attempts.length === 1 ? "intento" : "intentos"} · racha de ${stats.streak}.`}
+                </p>
+                <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+                  <ShareButton
+                    puzzleNumber={puzzleNumberForDate(activeDateKey)}
+                    attempts={attempts}
+                    target={target}
+                    season={spoilerSeason}
+                  />
+                  {activeDateKey > LAUNCH_DATE_KEY && (
+                    <button type="button" onClick={handlePreviousDay} className="nb-link">
+                      Jugar el día anterior
+                    </button>
+                  )}
+                </div>
+              </>
+            )}
+          </section>
+        )}
 
-      <AttemptsTable attempts={attempts} target={target} />
+        <div className="nb-right mb-8">
+          <AttemptsTable attempts={attempts} target={target} />
+          {attempts.length === 0 && (
+            <p className="nb-spread-only pt-24 text-center font-hand text-xl text-ink-soft">
+              Aquí irán tus análisis.
+            </p>
+          )}
+        </div>
 
         {target && !infiniteEnabled && (
-          <div className="mt-4 flex items-center justify-between gap-3 px-1">
-            <div>
-              <div className="section-label">Pistas</div>
-              <div className="text-xs text-muted-foreground">Detalles del personaje que complementan el modo principal</div>
-            </div>
+          <div className="nb-left mt-2">
+            {hintsVisible ? (
+              <HintPanel target={target} attemptCount={attempts.length} won={won} mode={mode} />
+            ) : null}
             <button
               type="button"
               onClick={() => setHintsVisible((value) => !value)}
-              className="focus-ring inline-flex items-center justify-center rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-semibold text-foreground transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
+              className="nb-link mt-2"
             >
               {hintsVisible ? "Ocultar pistas" : "Mostrar pistas"}
             </button>
           </div>
         )}
 
-        {hintsVisible && !infiniteEnabled && target && (
-          <div className="mb-5 mt-3">
-            <HintPanel target={target} attemptCount={attempts.length} won={won} mode={mode} />
-          </div>
-        )}
-
         {infiniteEnabled && (
-          <div className="mt-4 flex items-center justify-between gap-3 px-1">
-            <div>
-              <div className="section-label">Pistas</div>
-              <div className="text-xs text-muted-foreground">No disponibles en el modo infinito</div>
-            </div>
-          </div>
+          <p className="nb-left nb-printed mt-2">
+            Las pistas no están disponibles en el modo infinito.
+          </p>
         )}
-
-      {attempts.length === 0 && !charactersQ.isLoading && !hasEnded && (
-        <div className="panel-info mt-6 p-5 text-center text-xs uppercase tracking-[0.18em] text-muted-foreground">
-          Empieza escribiendo el nombre de un héroe…
-        </div>
-      )}
+      </div>
 
       <SupportFooter />
 
@@ -597,6 +595,7 @@ function Index() {
       <ArchiveDateModal
         open={archiveModalOpen}
         selectedDateKey={archiveDateKey ?? activeDateKey}
+        season={spoilerSeason}
         onOpenChange={setArchiveModalOpen}
         onSelectDate={(dateKey) => {
           setArchiveDateKey(dateKey);

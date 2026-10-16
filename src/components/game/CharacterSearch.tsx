@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Search } from "lucide-react";
+import { PenLine } from "lucide-react";
 import type { Character } from "@/lib/mhadle";
 
 interface Props {
@@ -13,6 +13,7 @@ export function CharacterSearch({ characters, excludeIds, disabled, onPick }: Pr
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [wrote, setWrote] = useState(0); // bumps to replay the pen scribble
   const wrapRef = useRef<HTMLDivElement>(null);
 
   const suggestions = useMemo(() => {
@@ -41,14 +42,20 @@ export function CharacterSearch({ characters, excludeIds, disabled, onPick }: Pr
 
   const pick = (c: Character) => {
     onPick(c);
+    setWrote((n) => n + 1);
     setQ("");
     setOpen(false);
   };
 
   return (
     <div ref={wrapRef} className="relative w-full">
-      <div className={`flex items-center gap-2 panel-input px-4 py-3.5 ${q.length === 0 && !disabled ? "panel-input-idle" : ""}`}>
-        <Search className="size-4 shrink-0 text-villain" style={{ color: "var(--villain)" }} />
+      <label className="nb-writeline">
+        <PenLine
+          key={wrote}
+          className={`size-5 shrink-0 text-ink ${wrote ? "nb-scribble" : ""}`}
+          aria-hidden
+        />
+        <span className="sr-only">Nombre del héroe</span>
         <input
           value={q}
           onChange={(e) => {
@@ -70,27 +77,40 @@ export function CharacterSearch({ characters, excludeIds, disabled, onPick }: Pr
             }
           }}
           disabled={disabled}
-          placeholder={disabled ? "¡Has acertado!" : "Escribe un héroe..."}
-          className="flex-1 bg-transparent text-base outline-none disabled:opacity-50"
+          placeholder={disabled ? "Caso cerrado por hoy" : "Escribe un héroe…"}
+          className="disabled:opacity-60"
           autoComplete="off"
           autoCapitalize="off"
           spellCheck={false}
+          role="combobox"
+          aria-expanded={open && suggestions.length > 0}
+          aria-controls="hero-suggestions"
+          aria-autocomplete="list"
         />
-      </div>
+      </label>
 
       {open && suggestions.length > 0 && (
-        <ul className="absolute z-30 mt-2 max-h-[60vh] w-full overflow-y-auto overflow-hidden panel-hero divide-y divide-border rounded-2xl">
+        <ul
+          id="hero-suggestions"
+          role="listbox"
+          className="nb-sheet nb-suggest absolute z-30 mt-1 max-h-[60vh] w-full overflow-y-auto divide-y divide-dashed divide-border"
+        >
           {suggestions.map((c, i) => (
-            <li key={c.id}>
+            <li
+              key={c.id}
+              role="option"
+              aria-selected={i === activeIdx}
+              style={{ ["--i" as string]: i } as React.CSSProperties}
+            >
               <button
                 type="button"
                 onClick={() => pick(c)}
                 onMouseEnter={() => setActiveIdx(i)}
-                className={`flex w-full items-center gap-3 px-3 py-2.5 text-left transition ${
-                  i === activeIdx ? "bg-primary/14" : "hover:bg-primary/8"
+                className={`flex w-full items-center gap-3 px-3 py-2 text-left transition-colors ${
+                  i === activeIdx ? "bg-hl-yellow/45" : "hover:bg-hl-yellow/25"
                 }`}
               >
-                <div className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-secondary font-display text-sm text-primary">
+                <div className="flex size-10 shrink-0 items-center justify-center overflow-hidden bg-[#d9e1ec] font-display text-sm text-ink">
                   {c.image_url ? (
                     <img src={c.image_url} alt="" className="size-full object-cover" />
                   ) : (
@@ -98,11 +118,11 @@ export function CharacterSearch({ characters, excludeIds, disabled, onPick }: Pr
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="truncate font-semibold">{c.name}</div>
+                  <div className="truncate font-hand text-lg font-bold leading-tight text-ink">
+                    {c.name}
+                  </div>
                   {c.aliases?.[0] && (
-                    <div className="truncate text-xs text-muted-foreground">
-                      {c.aliases[0]}
-                    </div>
+                    <div className="truncate text-sm text-ink-soft">{c.aliases[0]}</div>
                   )}
                 </div>
               </button>

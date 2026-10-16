@@ -72,6 +72,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "theme-color", content: "#eef1f5" },
       { title: "MHAdle" },
       { name: "description", content: "Wordle diario de My Hero Academia. Adivina el personaje oculto del día con pistas visuales. ¡Plus Ultra!" },
       { property: "og:title", content: "MHAdle — Adivina el héroe del día" },
@@ -84,7 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Kalam:wght@400;700&family=Permanent+Marker&display=swap",
       },
       { rel: "stylesheet", href: appCss },
     ],
@@ -97,7 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <HeadContent />
       </head>

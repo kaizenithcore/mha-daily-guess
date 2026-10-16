@@ -1,4 +1,4 @@
-import { Eye, Quote, Lock } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 import type { Character } from "@/lib/mhadle";
 import type { GameMode } from "./GameModeSwitcher";
 
@@ -7,97 +7,128 @@ interface Props {
   attemptCount: number;
   won: boolean;
   mode: GameMode;
+  /** The case is closed (won or surrendered): show who it was. */
+  revealed?: boolean;
 }
 
-export function ModeShowcasePanel({ target, attemptCount, won, mode }: Props) {
-  if (!target || mode === "classic") return null;
+const PROMPTS: Record<GameMode, string> = {
+  classic: "Cada intento se compara campo a campo con la ficha del héroe.",
+  silhouette: "La foto gana nitidez con cada intento.",
+  quote: "¿Quién dijo esto?",
+};
+
+/** Taped instant photo slot, the notebook's "subject of today's analysis". */
+function TapedPhoto({
+  children,
+  label,
+  develop = false,
+}: {
+  children: React.ReactNode;
+  label: string;
+  develop?: boolean;
+}) {
+  return (
+    <figure
+      className={`relative shrink-0 rotate-[-2deg] ${develop ? "nb-develop" : ""} bg-white p-1.5 pb-5 shadow-[0_8px_16px_-10px_rgb(28_35_48/0.55)]`}
+    >
+      <span className="nb-tape -top-2.5 left-1/2 -translate-x-1/2 rotate-[3deg]" aria-hidden />
+      <div className="relative size-24 overflow-hidden bg-[#d9e1ec] sm:size-28">{children}</div>
+      <figcaption className="absolute inset-x-0 bottom-0.5 text-center font-hand text-xs text-ink-soft">
+        {label}
+      </figcaption>
+    </figure>
+  );
+}
+
+export function ModeShowcasePanel({ target, attemptCount, won, mode, revealed = false }: Props) {
+  if (!target) return null;
+
+  // Case closed: the subject's photo is filled in and the name circled.
+  if (revealed) {
+    return (
+      <div className="flex items-center gap-5 px-4 pb-1 pt-6 sm:px-6">
+        <TapedPhoto develop label={won ? "¡identificado!" : "identidad revelada"}>
+          {target.image_url ? (
+            <img
+              src={target.image_url}
+              alt={target.name}
+              className="size-full object-cover object-top"
+            />
+          ) : (
+            <HelpCircle className="m-auto size-10 text-ink-soft" aria-hidden />
+          )}
+        </TapedPhoto>
+        <div className="nb-reveal min-w-0">
+          <h2 className="font-display text-3xl leading-tight text-ink sm:text-4xl">
+            <span className={won ? "nb-circled" : ""}>{target.name}</span>
+          </h2>
+          {target.aliases?.[0] && (
+            <p className="mt-1 font-hand text-lg text-pen">«{target.aliases[0]}»</p>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  if (mode === "quote") {
+    return (
+      <div className="px-4 pb-1 pt-5 sm:px-6">
+        <p className="nb-printed mb-2">{PROMPTS.quote}</p>
+        {target.quote ? (
+          <blockquote className="font-hand text-2xl font-bold leading-snug text-pen sm:text-[1.7rem]">
+            «{target.quote}»
+          </blockquote>
+        ) : (
+          <p className="font-hand text-lg text-ink-soft">Sin cita registrada.</p>
+        )}
+      </div>
+    );
+  }
 
   if (mode === "silhouette") {
     const t = Math.min(attemptCount / 7, 1);
     const brightness = won ? 1 : 0.04 + t * 0.96;
     const blur = won ? 0 : Math.max(0, 14 - attemptCount * 1.9);
     const contrast = won ? 1 : 0.4 + t * 0.6;
-    const img = target.image_url;
 
     return (
-      <section className="panel-hero ua-frame mx-auto mb-5 max-w-xl animate-pop-in p-4 sm:p-5">
-        <div className="mb-3 flex items-center justify-between gap-3">
-          <span className="chip">
-            <Eye className="size-3" /> Modo silueta
-          </span>
-          <span className="ua-meta">{won ? "Revelado" : `${Math.round(brightness * 100)}% visible`}</span>
-        </div>
-
-        <div className="silhouette-frame relative mx-auto flex h-44 w-44 items-center justify-center overflow-hidden rounded-2xl border border-primary/40 bg-secondary sm:h-52 sm:w-52">
-          {img ? (
+      <div className="flex items-center gap-5 px-4 pb-1 pt-6 sm:px-6">
+        <TapedPhoto label={won ? "¡identificado!" : `${Math.round(brightness * 100)}% visible`}>
+          {target.image_url ? (
             <img
-              src={img}
-              alt="Silueta del héroe"
+              src={target.image_url}
+              alt="Silueta del héroe del día"
               className="size-full object-cover transition-[filter] duration-700"
               style={{
                 filter: `brightness(${brightness}) contrast(${contrast}) blur(${blur}px) ${won ? "" : "grayscale(0.6)"}`,
               }}
             />
           ) : (
-            <span className="font-display text-6xl text-primary/30">?</span>
+            <HelpCircle className="m-auto size-10 text-ink-soft" aria-hidden />
           )}
-          {!won && (
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background: `linear-gradient(135deg, color-mix(in oklab, var(--background) ${68 - t * 50}%, transparent), transparent)`,
-              }}
-            />
-          )}
-          <div className="ua-corner ua-corner-tl" />
-          <div className="ua-corner ua-corner-tr" />
-          <div className="ua-corner ua-corner-bl" />
-          <div className="ua-corner ua-corner-br" />
+        </TapedPhoto>
+        <div className="min-w-0">
+          <h2 className="font-display text-3xl leading-none text-ink">¿Quién es?</h2>
+          <p className="mt-2 font-hand text-base text-pen">{PROMPTS.silhouette}</p>
         </div>
-
-        <p className="mt-3 text-center text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">
-          La silueta gana detalle con cada intento
-        </p>
-      </section>
+      </div>
     );
   }
 
-  const unlocked = true;
   return (
-    <section className="panel-hero ua-frame mx-auto mb-5 max-w-xl animate-pop-in p-4 sm:p-5">
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <span className="chip">
-          <Quote className="size-3" /> Modo cita
+    <div className="flex items-center gap-5 px-4 pb-1 pt-6 sm:px-6">
+      <TapedPhoto label="sujeto nº ?">
+        <span
+          className="absolute inset-0 flex items-center justify-center font-display text-5xl text-[#9fb0c6]"
+          aria-hidden
+        >
+          ?
         </span>
-        <span className="ua-meta">
-          {unlocked ? "Disponible" : `Bloqueada · ${Math.max(0, 2 - attemptCount)} intento${Math.max(0, 2 - attemptCount) === 1 ? "" : "s"} restante${Math.max(0, 2 - attemptCount) === 1 ? "" : "s"}`}
-        </span>
+      </TapedPhoto>
+      <div className="min-w-0">
+        <h2 className="font-display text-3xl leading-none text-ink">¿Quién es?</h2>
+        <p className="mt-2 font-hand text-base text-pen">{PROMPTS.classic}</p>
       </div>
-
-      <div className="relative flex min-h-[7rem] items-center justify-center overflow-hidden rounded-xl border border-primary/30 bg-secondary/60 p-5 text-center">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-18"
-          style={{
-            background:
-              "repeating-linear-gradient(0deg, transparent 0 3px, color-mix(in oklab, var(--hero) 60%, transparent) 3px 4px)",
-          }}
-        />
-        {unlocked && target.quote ? (
-          <blockquote className="font-display relative z-10 text-xl leading-snug text-foreground sm:text-2xl">
-            <span className="mr-1 text-3xl leading-none text-primary">«</span>
-            {target.quote}
-            <span className="ml-1 text-3xl leading-none text-primary">»</span>
-          </blockquote>
-        ) : !target.quote ? (
-          <p className="text-sm italic text-muted-foreground">Sin cita registrada</p>
-        ) : (
-          <div className="flex flex-col items-center gap-2 text-muted-foreground">
-            <Lock className="size-6" />
-            <span className="text-xs uppercase tracking-[0.2em]">Pista cifrada</span>
-          </div>
-        )}
-      </div>
-    </section>
+    </div>
   );
 }

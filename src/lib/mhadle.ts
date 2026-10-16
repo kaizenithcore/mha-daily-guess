@@ -114,6 +114,32 @@ export interface LocalStats {
   lastWonDate: string | null;
 }
 
+/** First puzzle day. Moved when the roster grew to 96 (old days were discarded). */
+export const LAUNCH_DATE_KEY = "2026-10-16";
+
+// Bump when the roster or daily pick changes so stale per-day progress is dropped.
+const ROSTER_VERSION = "2";
+const ROSTER_VERSION_KEY = "mhadle:roster-version";
+
+/** Drop saved per-day progress from an older roster (stats and settings are kept). */
+export function migrateStorage() {
+  if (typeof window === "undefined") return;
+  try {
+    if (localStorage.getItem(ROSTER_VERSION_KEY) === ROSTER_VERSION) return;
+    Object.keys(localStorage)
+      .filter(
+        (k) =>
+          k.startsWith("mhadle:today") ||
+          k.startsWith("mhadle:endless") ||
+          k === "mhadle:archive-date",
+      )
+      .forEach((k) => localStorage.removeItem(k));
+    localStorage.setItem(ROSTER_VERSION_KEY, ROSTER_VERSION);
+  } catch {
+    // storage unavailable: nothing to migrate
+  }
+}
+
 const STATS_KEY = "mhadle:stats";
 const TODAY_STATE_KEY = "mhadle:today";
 const INFINITE_ENABLED_KEY = "mhadle:infinite-enabled";

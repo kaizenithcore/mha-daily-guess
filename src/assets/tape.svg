@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 34" preserveAspectRatio="none">
+  <!-- Masking tape strip with torn ends. Authored for MHAdle (Kaizenith), 2026-10-15. -->
+  <defs>
+    <filter id="fiber" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9 0.08" numOctaves="2" seed="7" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.45  0 0 0 0 0.42  0 0 0 0 0.33  0 0 0 0.18 0" result="g"/>
+      <feComposite in="g" in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+  <path id="strip" fill="#e8e1cc" fill-opacity="0.88"
+    d="M3 2 L7 0.5 L10 3 L13 1 L117 1.5 L114 5 L118 8 L115 12 L119 16 L116 20 L118.5 24 L115 28 L117 33 L12 33.5 L9 30 L4 32 L6 27 L1.5 23 L5 19 L2 15 L5.5 11 L1 7 Z"/>
+  <use href="#strip" filter="url(#fiber)"/>
+  <path d="M10 6 H112" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.2"/>
+</svg>

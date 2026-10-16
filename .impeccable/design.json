@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-16T00:00:00Z",
+  "title": "Design System: MHAdle",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Graph Paper", "canonical": "oklch(95.7% 0.006 255)", "tonalRamp": ["#090b0e", "#24272a", "#434548", "#64666a", "#87898d", "#abaeb2", "#ced1d5", "#eceff3"] },
+      "sheet": { "role": "neutral", "displayName": "Fresh Sheet", "canonical": "oklch(98.4% 0.003 247)", "tonalRamp": ["#0a0b0d", "#252728", "#444547", "#646668", "#87898b", "#acaeb0", "#cfd1d3", "#edeff1"] },
+      "grid": { "role": "neutral", "displayName": "Grid Line", "canonical": "oklch(87.8% 0.023 254)", "tonalRamp": ["#050c15", "#1f2732", "#3d4651", "#5d6773", "#808a97", "#a4afbc", "#c7d2e0", "#e4f0fe"] },
+      "ink": { "role": "primary", "displayName": "Navy Ballpoint", "canonical": "oklch(25.5% 0.027 262)", "tonalRamp": ["#060b16", "#1f2734", "#3d4554", "#5e6676", "#818a9a", "#a5aebf", "#c8d1e3", "#e5efff"] },
+      "ink-soft": { "role": "neutral", "displayName": "Faded Pencil", "canonical": "oklch(44.4% 0.032 262)", "tonalRamp": ["#050b19", "#1e2636", "#3c4557", "#5c6679", "#7f8a9d", "#a3aec3", "#c6d2e7", "#e3efff"] },
+      "pen": { "role": "primary", "displayName": "Blue Gel Pen", "canonical": "oklch(46.5% 0.139 261)", "tonalRamp": ["#010044", "#001b68", "#163f8e", "#3762b5", "#5987dd", "#7dadff", "#9ed1ff", "#bbefff"] },
+      "redpen": { "role": "secondary", "displayName": "Red Pen", "canonical": "oklch(54.0% 0.187 28)", "tonalRamp": ["#3c0000", "#660000", "#8f0000", "#b9221d", "#e44f43", "#ff7767", "#ff9b89", "#ffbaa7"] },
+      "hl-green": { "role": "tertiary", "displayName": "Match Highlighter", "canonical": "oklch(90.1% 0.130 135)", "tonalRamp": ["#001300", "#003200", "#205300", "#42761f", "#659a46", "#89c06b", "#abe48d", "#c8ffaa"] },
+      "hl-yellow": { "role": "tertiary", "displayName": "Close Highlighter", "canonical": "oklch(91.3% 0.142 98)", "tonalRamp": ["#1b0400", "#3a2200", "#5a4200", "#7c6400", "#a08900", "#c6ae2d", "#ead258", "#fff078"] },
+      "desk": { "role": "neutral", "displayName": "Desk", "canonical": "oklch(85.8% 0.018 256)", "tonalRamp": ["#070b13", "#21272f", "#3f464f", "#606770", "#828a94", "#a7afb9", "#cad2dd", "#e7effb"] },
+      "border": { "role": "neutral", "displayName": "Sheet Edge", "canonical": "#b4c2d4" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Marker Title", "purpose": "The MHAdle title only, with MHA under a yellow highlighter band." },
+      "headline": { "displayName": "Marker Headline", "purpose": "Case heading and solved name; 2.25rem from 640px." },
+      "title": { "displayName": "Marker Section", "purpose": "Section headings (Análisis, Pistas)." },
+      "hand": { "displayName": "Handwriting", "purpose": "Attempt field values, names, links." },
+      "hand-note": { "displayName": "Handwritten Note", "purpose": "Subtitles, prompts, post-it bodies, footer note." },
+      "hand-input": { "displayName": "Writing Line", "purpose": "The search input." },
+      "label": { "displayName": "Printed Label", "purpose": "Uppercase pre-printed form labels and counters; never a kicker." },
+      "label-field": { "displayName": "Printed Field Name", "purpose": "Attribute names in attempt entries." },
+      "button": { "displayName": "Printed Control", "purpose": "Uppercase button labels; tabs use 0.8rem to 0.875rem." },
+      "stamp": { "displayName": "Rubber Stamp", "purpose": "Closing verdict stamp." }
+    },
+    "shadows": [
+      { "name": "sheet", "value": "0 1px 0 rgb(28 35 48 / 0.04), 0 10px 24px -18px rgb(28 35 48 / 0.35)", "purpose": "A sheet laid on the page." },
+      { "name": "page-on-desk", "value": "0 1px 0 rgb(28 35 48 / 0.06), 0 24px 48px -28px rgb(28 35 48 / 0.55), 4px 4px 0 -1px var(--paper), 4px 4px 0 0 rgb(28 35 48 / 0.12)", "purpose": "The notebook page on the desk (720px+); the offset layers draw the leaf beneath. Page only." },
+      { "name": "postit", "value": "0 1px 1px rgb(28 35 48 / 0.06), 0 8px 14px -10px rgb(28 35 48 / 0.35)", "purpose": "Sticky note lifting at its free edge." },
+      { "name": "polaroid", "value": "0 8px 16px -10px rgb(28 35 48 / 0.55)", "purpose": "The taped instant photo." },
+      { "name": "button", "value": "0 6px 14px -10px rgb(28 35 48 / 0.7)", "purpose": "Primary button." },
+      { "name": "tape", "value": "drop-shadow(0 1px 1px rgb(28 35 48 / 0.12))", "purpose": "Masking tape (filter, not box-shadow)." },
+      { "name": "binding-gutter", "value": "-12px 0 20px -10px rgb(28 35 48 / 0.28)", "purpose": "Inner shadow of the spread's binding (1100px+)." }
+    ],
+    "motion": [
+      { "name": "ease-ink", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Ink-in, highlighter swipe, pop-in, tab and button transitions." },
+      { "name": "ink-in", "value": "clip-path inset(0 100% 0 0) to inset(0) 380ms ease-ink, stagger 90ms per field", "purpose": "Newest entry's fields are written left to right." },
+      { "name": "highlight-swipe", "value": "background-size 0% to 100% 340ms ease-ink, delay field + 300ms", "purpose": "Match and close highlighters swipe after the ink." },
+      { "name": "strike-in", "value": "text-decoration-color transparent to redpen 260ms ease-out, delay field + 300ms", "purpose": "Red pen strikes misses." },
+      { "name": "shake", "value": "translateX ±5px 0.32s ease", "purpose": "Wrong guess on the case sheet." },
+      { "name": "pop-in", "value": "opacity 0 + translateY(4px) to rest 0.24s ease-ink", "purpose": "Closing card and unlocked post-its." },
+      { "name": "control-transition", "value": "140ms to 160ms", "purpose": "Tabs, buttons, writing line focus." },
+      { "name": "reduced-motion", "value": "animation: none", "purpose": "All of the above off under prefers-reduced-motion: reduce." }
+    ],
+    "breakpoints": [
+      { "name": "tab-icons", "value": "480px" },
+      { "name": "sm", "value": "640px" },
+      { "name": "page-on-desk", "value": "720px" },
+      { "name": "spread", "value": "1100px" },
+      { "name": "entry-row-container", "value": "44rem (container query)" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Printed primary action, one per closed case (Compartir, Siguiente héroe).",
+      "html": "<button class=\"ds-btn\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg>Compartir</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 2.75rem; padding: 0.55rem 1.1rem; background: var(--ink, #1c2330); color: var(--sheet, #f8fafc); font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border: 0; border-radius: 0.2rem; box-shadow: 0 6px 14px -10px rgb(28 35 48 / 0.7); cursor: pointer; transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1), background-color 140ms ease; } .ds-btn:hover { background: #2a3447; } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--pen, #2b55a6); outline-offset: 3px; } .ds-btn:disabled { opacity: 0.45; cursor: not-allowed; }"
+    },
+    {
+      "name": "Handwritten Link",
+      "kind": "button",
+      "refersTo": "link",
+      "description": "Secondary actions written in blue pen; red variant only for giving up.",
+      "html": "<span style=\"display:flex;gap:1.25rem\"><button class=\"ds-link\">Jugar el día anterior</button><button class=\"ds-link ds-link-red\">Me rindo, revela el héroe</button></span>",
+      "css": ".ds-link { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 2.25rem; background: none; border: 0; padding: 0; cursor: pointer; font-family: 'Kalam', 'Segoe Print', cursive; font-size: 1rem; font-weight: 700; color: var(--pen, #2b55a6); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em; } .ds-link:hover { color: var(--ink, #1c2330); } .ds-link:focus-visible { outline: 2px solid var(--pen, #2b55a6); outline-offset: 3px; } .ds-link-red { color: var(--redpen, #c42f27); }"
+    },
+    {
+      "name": "Index Tabs",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "Card-stock mode tabs on the sheet edge; selected tab becomes the sheet with a strong top edge.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\" style=\"--stock:#cfe0f5;--strong:#2b55a6\">Clásico</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\" style=\"--stock:#d9d6ec;--strong:#4b3f8f\">Silueta</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\" style=\"--stock:#f6d5dc;--strong:#c42f27\">Cita</button><button class=\"ds-tab\" aria-pressed=\"false\" style=\"--stock:#d6ecd0\">Infinito</button></div><div class=\"ds-tabs-sheet\"></div>",
+      "css": ".ds-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.25rem; padding: 0 0.5rem; margin-bottom: -1px; position: relative; z-index: 1; } .ds-tab { min-height: 2.75rem; padding: 0.4rem 0.35rem 0.3rem; border: 1px solid #b4c2d4; border-bottom: none; border-radius: 0.5rem 0.5rem 0 0; background: var(--stock, #dfe6ef); color: var(--ink-soft, #4a5466); font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; transform: translateY(3px); transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1), background-color 160ms ease, color 160ms ease; } .ds-tab:hover { color: var(--ink, #1c2330); transform: translateY(0); } .ds-tab[aria-selected='true'] { background: var(--sheet, #f8fafc); color: var(--ink, #1c2330); transform: translateY(0); box-shadow: inset 0 4px 0 var(--strong, #2b55a6); } .ds-tab[aria-pressed='true'] { background: var(--ink, #1c2330); color: var(--sheet, #f8fafc); } .ds-tab:focus-visible { outline: 2px solid var(--pen, #2b55a6); outline-offset: 3px; } .ds-tabs-sheet { height: 3rem; background: var(--sheet, #f8fafc); border: 1px solid #b4c2d4; }"
+    },
+    {
+      "name": "Writing Line",
+      "kind": "input",
+      "refersTo": "writeline-input",
+      "description": "The search: a ruled line the player writes a hero's name on.",
+      "html": "<label class=\"ds-writeline\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#1c2330\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 20h9\"/><path d=\"M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z\"/></svg><input placeholder=\"Escribe un héroe...\" aria-label=\"Nombre del héroe\"></label>",
+      "css": ".ds-writeline { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.15rem 0.4rem; border-bottom: 2px solid var(--ink, #1c2330); transition: border-color 160ms ease; } .ds-writeline:focus-within { border-bottom-color: var(--pen, #2b55a6); } .ds-writeline input { flex: 1; min-width: 0; background: transparent; border: 0; outline: none; font-family: 'Kalam', 'Segoe Print', cursive; font-size: 1.35rem; font-weight: 700; color: var(--pen, #2b55a6); caret-color: var(--pen, #2b55a6); } .ds-writeline input::placeholder { color: color-mix(in oklab, #4a5466 80%, transparent); font-weight: 400; }"
+    },
+    {
+      "name": "Analysis Entry with Verdict Marks",
+      "kind": "card",
+      "refersTo": "entry",
+      "description": "One attempt: printed field names, handwritten values, and the three colour-independent marks plus arrows.",
+      "html": "<div class=\"ds-entry\"><div class=\"ds-entry-name\">Shoto Todoroki <span>#3</span></div><dl class=\"ds-fields\"><div><dt>Género</dt><dd><span class=\"ds-mark ds-match\">Masculino</span></dd></div><div><dt>Edad</dt><dd><span class=\"ds-mark ds-miss\">16</span><span class=\"ds-arrow\" aria-label=\"más\">↑</span></dd></div><div><dt>Altura</dt><dd><span class=\"ds-mark ds-close\">176 cm</span></dd></div><div><dt>Don</dt><dd><span class=\"ds-mark ds-miss\">Emisor</span></dd></div></dl></div>",
+      "css": ".ds-entry { background: var(--sheet, #f8fafc); border: 1px solid #b4c2d4; padding: 0.9rem 0.85rem 0.85rem; box-shadow: 0 1px 0 rgb(28 35 48 / 0.04), 0 10px 24px -18px rgb(28 35 48 / 0.35); } .ds-entry-name { display: flex; justify-content: space-between; margin-bottom: 0.625rem; font-family: 'Kalam', cursive; font-size: 1.25rem; font-weight: 700; color: var(--ink, #1c2330); } .ds-entry-name span { color: var(--ink-soft, #4a5466); font-size: 1.125rem; } .ds-fields { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.625rem 0.75rem; margin: 0; } .ds-fields dt { font-family: 'Barlow Semi Condensed', sans-serif; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft, #4a5466); } .ds-fields dd { margin: 0.15rem 0 0; font-family: 'Kalam', cursive; font-size: 1.02rem; font-weight: 700; line-height: 1.2; color: var(--ink, #1c2330); white-space: nowrap; } .ds-mark { padding: 0.02em 0.18em; border-radius: 0.15em; background-repeat: no-repeat; background-size: 100% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; } .ds-match { background-image: linear-gradient(100deg, transparent 0.15em, #b8f29a 0.15em, #b8f29a calc(100% - 0.1em), transparent calc(100% - 0.1em)); } .ds-close { background-image: linear-gradient(100deg, transparent 0.15em, #fbe36b 0.15em, #fbe36b calc(100% - 0.1em), transparent calc(100% - 0.1em)); text-decoration: underline wavy color-mix(in oklab, #1c2330 55%, transparent) 1px; text-underline-offset: 0.25em; } .ds-miss { color: var(--ink-soft, #4a5466); text-decoration: line-through #c42f27 2px; } .ds-arrow { margin-left: 0.15rem; color: var(--pen, #2b55a6); font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 700; }"
+    },
+    {
+      "name": "Post-it Hint",
+      "kind": "card",
+      "refersTo": "postit",
+      "description": "Unlocked hint as a tilted sticky note; locked hints are a dashed outline.",
+      "html": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:0.75rem\"><div class=\"ds-postit\" style=\"transform:rotate(-0.8deg)\"><h3>Perfil general</h3><p>El registro de voz coincide con alguien habituado a situaciones de presión.</p></div><div class=\"ds-postit ds-postit-locked\"><h3>Registro académico</h3><p>Se desbloquea en 1 intento.</p></div></div>",
+      "css": ".ds-postit { padding: 0.75rem 0.85rem 0.8rem; background: #dff1fb; color: var(--ink, #1c2330); box-shadow: 0 1px 1px rgb(28 35 48 / 0.06), 0 8px 14px -10px rgb(28 35 48 / 0.35); } .ds-postit h3 { margin: 0 0 0.25rem; font-family: 'Barlow Semi Condensed', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft, #4a5466); } .ds-postit p { margin: 0; font-family: 'Kalam', cursive; font-size: 1.05rem; line-height: 1.375; } .ds-postit-locked { background: transparent; box-shadow: none; border: 1px dashed #b4c2d4; color: var(--ink-soft, #4a5466); } .ds-postit-locked p { font-size: 1rem; }"
+    },
+    {
+      "name": "Taped Polaroid",
+      "kind": "custom",
+      "description": "The case subject: tilted instant photo pinned with masking tape, handwritten caption.",
+      "html": "<figure class=\"ds-polaroid\"><span class=\"ds-tape\"></span><div class=\"ds-photo\">?</div><figcaption>sujeto nº ?</figcaption></figure>",
+      "css": ".ds-polaroid { position: relative; display: inline-block; margin: 1rem; padding: 0.375rem 0.375rem 1.25rem; background: #fff; transform: rotate(-2deg); box-shadow: 0 8px 16px -10px rgb(28 35 48 / 0.55); } .ds-photo { width: 7rem; height: 7rem; background: #d9e1ec; display: flex; align-items: center; justify-content: center; font-family: 'Permanent Marker', cursive; font-size: 3rem; color: #9fb0c6; } .ds-polaroid figcaption { position: absolute; left: 0; right: 0; bottom: 0.125rem; text-align: center; font-family: 'Kalam', cursive; font-size: 0.75rem; color: var(--ink-soft, #4a5466); } .ds-tape { position: absolute; top: -0.625rem; left: 50%; width: 4.5rem; height: 1.3rem; transform: translateX(-50%) rotate(3deg); background: #e8e1cc; opacity: 0.88; clip-path: polygon(3% 6%, 8% 0, 11% 9%, 97% 4%, 95% 24%, 98% 47%, 96% 70%, 97% 97%, 10% 99%, 3% 94%, 4% 70%, 1% 47%, 4% 24%); filter: drop-shadow(0 1px 1px rgb(28 35 48 / 0.12)); }"
+    },
+    {
+      "name": "Stamp and Circled Name",
+      "kind": "custom",
+      "refersTo": "stamp",
+      "description": "Case closed: rubber stamp in marker, and the solved name circled in red pen.",
+      "html": "<div style=\"text-align:center;padding:1.5rem\"><p class=\"ds-stamp\">¡Plus Ultra!</p><h2 class=\"ds-solved\"><span class=\"ds-circled\">Shoto Todoroki</span></h2></div>",
+      "css": ".ds-stamp { display: inline-block; margin: 0; padding: 0.15rem 0.6rem; border: 2.5px solid currentColor; border-radius: 46% 54% 42% 58% / 22% 30% 26% 34%; font-family: 'Permanent Marker', cursive; font-size: 1.15rem; letter-spacing: 0.04em; color: var(--redpen, #c42f27); transform: rotate(-6deg); } .ds-solved { margin: 1.5rem 0 0; font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 2.25rem; color: var(--ink, #1c2330); } .ds-circled { position: relative; display: inline-block; padding: 0.1em 0.45em; } .ds-circled::after { content: ''; position: absolute; inset: -0.18em -0.1em -0.12em -0.2em; border: 3px solid var(--redpen, #c42f27); border-radius: 50% 45% 52% 48% / 55% 48% 52% 45%; transform: rotate(-3deg); pointer-events: none; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Deku's Analysis Notebook",
+    "overview": "Guessing is analysis. Every surface is a page of Izuku's \"Análisis de héroes para el futuro\" notebook: cool graph paper, navy ballpoint, a blue gel pen for everything written by hand, a red pen that strikes what is wrong, and two highlighters that mark what matched and what came close. Today's case is taped into the notebook as a polaroid, the game modes are card-stock index tabs on the page edge, hints are post-its, and the closing verdict is a rubber stamp.\n\nThe system has three voices, and each one means something. Marker (Permanent Marker) is the heading voice of a student writing titles in thick felt-tip. Handwriting (Kalam) is everything the player or Izuku writes: names, values, notes, links. Print (Barlow Semi Condensed, uppercase, tabular numerals) is the notebook's own pre-printed furniture: form labels, counters, field names. Content is never printed. Furniture is never handwritten.\n\nDensity is phone-first: on a 390px screen the phone *is* the page, gridded edge to edge. From 720px the page lies on a desk with a red margin rule and punched holes, and from 1100px it opens into a two-page spread with the case on the left leaf and the analysis on the right. The build rejects the category's dark panel of coloured tiles under a logo, and it replaced the earlier navy/gold \"U.A. HUD\" look completely.",
+    "keyCharacteristics": [
+      "Cool graph paper ground (never cream), 22px grid in 1px lines.",
+      "Three type voices with fixed jobs: marker headings, handwritten content, printed furniture.",
+      "Verdicts are marks a student would make (highlighter, wavy underline, strike), legible without colour.",
+      "Real-stationery materials only: tape, polaroid, post-its, index tabs, stamp, marker circle.",
+      "One signature motion: ink writes in, then the marks land."
+    ],
+    "rules": [
+      { "name": "The Instruments Rule", "body": "Colour is an instrument, not decoration: blue means written, red means wrong or closed, green means match, yellow means close. Do not use any of them for any other meaning; the one exception is the printed red margin rule, which is part of the paper itself.", "section": "colors" },
+      { "name": "The Cool Paper Rule", "body": "The ground is cool blue-grey paper. Warm cream or beige grounds are off-system; the only warm tone is the masking tape itself.", "section": "colors" },
+      { "name": "The Three Voices Rule", "body": "Marker for headings, Kalam for anything written, Barlow for anything printed. A value the game reports about a character is written (Kalam); the name of the field it fills is printed (Barlow).", "section": "typography" },
+      { "name": "The Printed Blank Rule", "body": "A printed label always names a field, counter or state that sits beside or after it (\"Análisis Nº 169\", \"Próximo héroe en 16:27:42\"). It is never a decorative kicker above a heading.", "section": "typography" },
+      { "name": "The Resting Object Rule", "body": "Every shadow belongs to an object that could lie on a desk. If you cannot name the object, it gets no shadow.", "section": "elevation" },
+      { "name": "The Under-Leaf Exception", "body": "The 4px offset layer exists only on the notebook page, in paper colour, to show the next leaf. It is never reused as a hard offset shadow on cards, buttons or tabs.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do put the graph grid on the body below 720px and on the notebook page from 720px, with the desk (#c9d1dc) behind it.",
+      "Do write every content value in Kalam and every field name, counter and control label in uppercase Barlow with tabular numerals.",
+      "Do mark verdicts with highlighter, wavy underline or strike so they survive without colour, and pair numeric misses with a blue ↑/↓ arrow.",
+      "Do lay new surfaces down as sheets (fresh sheet, 1px border, Sheet shadow) and fasten featured ones with the SVG tape.",
+      "Do use the ink-in, then mark sequence for newly written content, and switch it off under reduced motion.",
+      "Do keep touch targets at 2.75rem for buttons and tabs, 2.25rem for handwritten links."
+    ],
+    "donts": [
+      "Don't use green, yellow or red as tile fills or status chips; they exist only as highlighter swipes and red-pen strokes.",
+      "Don't put a printed uppercase label above a heading as a kicker; printed labels name a field or a count.",
+      "Don't set content in the print face or labels in the handwriting face.",
+      "Don't use a cream or warm ground, a dark panel, or the retired navy/gold U.A. HUD styling.",
+      "Don't reuse the page's under-leaf offset as a hard shadow on any other element.",
+      "Don't add stationery the notebook would not hold; new materials must be tape, paper, card stock, pen, marker or highlighter."
+    ]
+  }
+}

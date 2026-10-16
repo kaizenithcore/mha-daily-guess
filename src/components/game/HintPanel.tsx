@@ -1,4 +1,4 @@
-import { Sparkles, Shield, Eye, ScanSearch } from "lucide-react";
+import { Lock } from "lucide-react";
 import type { Character } from "@/lib/mhadle";
 import type { GameMode } from "./GameModeSwitcher";
 
@@ -30,119 +30,81 @@ function getThreatTone(quirk?: string | null) {
   }
 }
 
-export function HintPanel({
-  target,
-  attemptCount,
-  won,
-  mode,
-}: Props) {
+export function HintPanel({ target, attemptCount, won, mode }: Props) {
   if (!target) return null;
 
-  const unlocked = {
-    general: true,
-    affiliation: attemptCount >= 1,
-    quirk: attemptCount >= 2,
-    physical: attemptCount >= 3,
-    identity: attemptCount >= 4,
-  };
-
-  const intro =
-    mode === "classic"
-      ? "La ficha base va soltando datos a medida que avanzas."
-      : mode === "silhouette"
-        ? "La lectura visual ayuda a acotar al héroe."
-        : "La voz deja pequeñas huellas del personaje.";
+  const hints: Array<{ title: string; unlockAt: number; body: string }> = [
+    {
+      title: "Perfil general",
+      unlockAt: 0,
+      body:
+        mode === "silhouette"
+          ? `La silueta refleja una presencia ${getPresence(target.height)} dentro del entorno de combate.`
+          : "El registro de voz coincide con alguien habituado a situaciones de presión.",
+    },
+    {
+      title: "Registro académico",
+      unlockAt: 1,
+      body: target.affiliation
+        ? `Existen registros vinculados a ${target.affiliation}.`
+        : "La afiliación oficial sigue clasificada.",
+    },
+    { title: "Análisis de don", unlockAt: 2, body: `Su don ${getThreatTone(target.quirk_type)}.` },
+    {
+      title: "Datos parciales",
+      unlockAt: 3,
+      body: `Primera actividad registrada en la temporada ${target.first_appearance_season ?? "¿?"}. Edad estimada: ${target.age ?? "desconocida"}${target.age ? " años" : ""}.`,
+    },
+    {
+      title: "Identidad asociada",
+      unlockAt: 4,
+      body: target.aliases?.[0]
+        ? `También responde al nombre de «${target.aliases[0]}».`
+        : "No existen alias registrados.",
+    },
+  ];
 
   return (
-    <section className="panel-hero ua-frame mx-auto mb-5 max-w-xl animate-pop-in p-4 sm:p-5">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <span className="chip">
-          <Sparkles className="size-3" />
-          Archivo U.A.
-        </span>
-
-        <span className="ua-meta">
-          {won
-            ? "Identidad confirmada"
-            : `Acceso parcial · nivel ${Math.min(attemptCount + 1, 5)}`}
+    <section aria-label="Pistas">
+      <div className="mb-3 flex items-baseline justify-between gap-3">
+        <h2 className="font-display text-2xl leading-none text-ink">Pistas</h2>
+        <span className="nb-printed">
+          {won ? "Identidad confirmada" : `${Math.min(attemptCount + 1, 5)} de 5 desbloqueadas`}
         </span>
       </div>
 
-      <p className="mb-3 text-sm text-muted-foreground">{intro}</p>
-
-      <div className="grid gap-2">
-
-        {unlocked.general && (
-          <div className="rounded-2xl border border-border bg-secondary/50 p-3">
-            <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
-              <Eye className="size-3" />
-              Perfil general
-            </div>
-
-            <p className="mt-1 text-sm text-foreground">
-              {mode === "silhouette"
-                ? `La silueta refleja una presencia ${getPresence(target.height)} dentro del entorno de combate.`
-                : `El registro de voz coincide con alguien habituado a situaciones de presión.`}
-            </p>
-          </div>
-        )}
-
-        {unlocked.affiliation && (
-          <div className="rounded-2xl border border-border bg-secondary/50 p-3">
-            <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
-              <Shield className="size-3" />
-              Registro académico
-            </div>
-
-            <p className="mt-1 text-sm text-foreground">
-              {target.affiliation
-                ? `Existen registros vinculados a ${target.affiliation}.`
-                : "La afiliación oficial sigue clasificada."}
-            </p>
-          </div>
-        )}
-
-        {unlocked.quirk && (
-          <div className="rounded-2xl border border-border bg-secondary/50 p-3">
-            <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
-              <ScanSearch className="size-3" />
-              Análisis de don
-            </div>
-
-            <p className="mt-1 text-sm text-foreground">
-              {getThreatTone(target.quirk_type)}.
-            </p>
-          </div>
-        )}
-
-        {unlocked.physical && (
-          <div className="rounded-2xl border border-border bg-secondary/50 p-3">
-            <div className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
-              Datos parciales
-            </div>
-
-            <p className="mt-1 text-sm text-foreground">
-              Primera actividad registrada en la temporada{" "}
-              {target.first_appearance_season}. Edad estimada:{" "}
-              {target.age ?? "desconocida"} años.
-            </p>
-          </div>
-        )}
-
-        {unlocked.identity && (
-          <div className="rounded-2xl border border-primary/30 bg-primary/10 p-3">
-            <div className="text-[0.65rem] uppercase tracking-[0.18em] text-primary">
-              Identidad asociada
-            </div>
-
-            <p className="mt-1 text-sm font-medium text-foreground">
-              {target.aliases?.[0]
-                ? `También responde al nombre de «${target.aliases[0]}».`
-                : "No existen alias registrados."}
-            </p>
-          </div>
-        )}
-      </div>
+      <ul className="grid gap-3 sm:grid-cols-2">
+        {hints.map((hint, i) => {
+          const open = won || attemptCount >= hint.unlockAt;
+          const remaining = hint.unlockAt - attemptCount;
+          return (
+            <li
+              key={`${hint.title}-${open}`}
+              className={`nb-postit ${open ? "nb-postit-stick" : "nb-postit-locked"}`}
+              style={
+                open
+                  ? ({
+                      ["--r" as string]: `${i % 2 === 0 ? -0.8 : 0.9}deg`,
+                      ["--i" as string]: i,
+                    } as React.CSSProperties)
+                  : undefined
+              }
+            >
+              <h3 className="nb-printed mb-1 flex items-center gap-1.5">
+                {!open && <Lock className="size-3" aria-hidden />}
+                {hint.title}
+              </h3>
+              {open ? (
+                <p className="font-hand text-[1.05rem] leading-snug text-ink">{hint.body}</p>
+              ) : (
+                <p className="font-hand text-base text-ink-soft">
+                  Se desbloquea en {remaining} {remaining === 1 ? "intento" : "intentos"}.
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }

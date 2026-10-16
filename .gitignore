@@ -33,3 +33,7 @@ dist-ssr
 
 # Local env (no backend needed anymore)
 .env
+
+# Impeccable working files (keep design.json and surfaces/)
+.impeccable/review/
+.impeccable/questions/

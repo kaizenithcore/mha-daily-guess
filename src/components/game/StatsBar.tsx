@@ -1,24 +1,21 @@
-import { Flame, Trophy, Target } from "lucide-react";
 import type { LocalStats } from "@/lib/mhadle";
 
+/** Margin note: the player's record, jotted in pen beside the page. */
 export function StatsBar({ stats }: { stats: LocalStats }) {
-  const avg = stats.wins > 0 ? (stats.totalAttempts / stats.wins).toFixed(1) : "—";
-  const items = [
-    { icon: Flame, label: "Racha", value: stats.streak },
-    { icon: Trophy, label: "Mejor", value: stats.bestStreak },
-    { icon: Target, label: "Media", value: avg },
-  ];
+  const avg = stats.wins > 0 ? (stats.totalAttempts / stats.wins).toFixed(1) : "–";
   return (
-    <div className="grid grid-cols-3 gap-2.5">
-      {items.map(({ icon: Icon, label, value }) => (
-        <div key={label} className="panel-info flex flex-col items-center px-2 py-3">
-          <Icon className="mb-1 size-3.5 text-muted-foreground" />
-          <span className="font-display text-2xl leading-none text-foreground">{value}</span>
-          <span className="mt-0.5 text-[0.55rem] uppercase tracking-widest text-muted-foreground">
-            {label}
-          </span>
-        </div>
-      ))}
-    </div>
+    <p className="font-hand text-base leading-none text-pen">
+      <span className="sr-only">Tus estadísticas: </span>
+      racha <strong className="text-lg">{stats.streak}</strong>
+      <span className="mx-1.5 text-ink-soft" aria-hidden>
+        ·
+      </span>
+      mejor <strong className="text-lg">{stats.bestStreak}</strong>
+      <span className="mx-1.5 text-ink-soft" aria-hidden>
+        ·
+      </span>
+      media <strong className="text-lg">{avg}</strong>
+      <span className="sr-only"> intentos</span>
+    </p>
   );
 }

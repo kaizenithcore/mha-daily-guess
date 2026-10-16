@@ -1,3 +1,4 @@
+import { MAX_SEASON } from "@/lib/spoilers";
 import type { AttemptComparison, Character } from "@/lib/mhadle";
 import { compareCharacters } from "@/lib/mhadle";
 
@@ -21,10 +22,12 @@ const KEYS: Array<keyof AttemptComparison> = [
 
 export function buildShareText(opts: {
   puzzleNumber: number;
+  season?: number;
   attempts: Character[];
   target: Character;
 }) {
-  const { puzzleNumber, attempts, target } = opts;
+  const { puzzleNumber, attempts, target, season } = opts;
+  const level = season && season < MAX_SEASON ? ` · hasta T${season}` : "";
   const grid = attempts
     .map((g) => {
       const cmp = compareCharacters(g, target);
@@ -37,10 +40,9 @@ export function buildShareText(opts: {
     })
     .join("\n");
 
-  const url =
-    typeof window !== "undefined" ? window.location.origin : "https://mhadle.app";
+  const url = typeof window !== "undefined" ? window.location.origin : "https://mhadle.app";
 
-  return `MHAdle #${puzzleNumber} — ${attempts.length} ${
+  return `MHAdle #${puzzleNumber}${level} — ${attempts.length} ${
     attempts.length === 1 ? "intento" : "intentos"
   }\n\n${grid}\n\n${url}`;
 }

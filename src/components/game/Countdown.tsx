@@ -17,13 +17,11 @@ export function Countdown({ onReset }: { onReset?: () => void }) {
   }, [onReset]);
 
   return (
-    <div className="flex flex-col items-center">
-      <span className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
-        Próximo héroe en
+    <span className="inline-flex items-baseline gap-1.5">
+      <span className="nb-printed">Próximo héroe en</span>
+      <span className="font-hand text-lg font-bold tabular-nums text-pen">
+        {mounted ? formatCountdown(ms) : "--:--:--"}
       </span>
-      <span className="font-display text-3xl leading-none text-primary tabular-nums">
-        {mounted ? formatCountdown(ms) : "00:00:00"}
-      </span>
-    </div>
+    </span>
   );
 }

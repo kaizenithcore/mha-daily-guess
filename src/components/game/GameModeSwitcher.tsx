@@ -2,10 +2,17 @@ import { Grid3x3, UserRound, Quote, Infinity } from "lucide-react";
 
 export type GameMode = "classic" | "silhouette" | "quote";
 
-const MODES: Array<{ id: GameMode; label: string; icon: typeof Grid3x3; tag: string }> = [
-  { id: "classic", label: "Clásico", icon: Grid3x3, tag: "Atributos" },
-  { id: "silhouette", label: "Silueta", icon: UserRound, tag: "Visual" },
-  { id: "quote", label: "Cita", icon: Quote, tag: "Voz" },
+// Each index tab is its own coloured card stock; the open one gets a strong top edge.
+const MODES: Array<{
+  id: GameMode;
+  label: string;
+  icon: typeof Grid3x3;
+  stock: string;
+  strong: string;
+}> = [
+  { id: "classic", label: "Clásico", icon: Grid3x3, stock: "#cfe0f5", strong: "var(--pen)" },
+  { id: "silhouette", label: "Silueta", icon: UserRound, stock: "#d9d6ec", strong: "#4b3f8f" },
+  { id: "quote", label: "Cita", icon: Quote, stock: "#f6d5dc", strong: "var(--redpen)" },
 ];
 
 interface Props {
@@ -15,40 +22,44 @@ interface Props {
   onToggleInfinite?: (v: boolean) => void;
 }
 
-export function GameModeSwitcher({ mode, onChange, infiniteEnabled = false, onToggleInfinite }: Props) {
+export function GameModeSwitcher({
+  mode,
+  onChange,
+  infiniteEnabled = false,
+  onToggleInfinite,
+}: Props) {
   return (
-    <div className="ua-tabs grid-cols-2 sm:grid-cols-4" role="tablist" aria-label="Modo de juego">
-      {MODES.map(({ id, label, icon: Icon, tag }) => {
-        const active = mode === id;
-        return (
-          <button
-            key={id}
-            role="tab"
-            aria-selected={active}
-            onClick={() => onChange(id)}
-            className={`ua-tab focus-ring ${active ? "ua-tab-active" : ""}`}
-          >
-            <Icon className="size-4" />
-            <span className="font-display tracking-wider text-base leading-none">{label}</span>
-            <span className="ua-tab-meta">{tag}</span>
-          </button>
-        );
-      })}
+    <div className="nb-tabs" role="tablist" aria-label="Modo de juego">
+      {MODES.map(({ id, label, icon: Icon, stock, strong }) => (
+        <button
+          key={id}
+          type="button"
+          role="tab"
+          aria-selected={mode === id}
+          onClick={() => onChange(id)}
+          className="nb-tab"
+          style={
+            {
+              ["--tab-stock" as string]: stock,
+              ["--tab-stock-strong" as string]: strong,
+            } as React.CSSProperties
+          }
+        >
+          <Icon className="size-4 shrink-0" aria-hidden />
+          <span>{label}</span>
+        </button>
+      ))}
 
       <button
-        role="tab"
-        aria-selected={infiniteEnabled}
+        type="button"
+        aria-pressed={infiniteEnabled}
         onClick={() => onToggleInfinite?.(!infiniteEnabled)}
-        className={`ua-tab focus-ring ${infiniteEnabled ? "ua-tab-active" : ""}`}
-        style={
-          infiniteEnabled
-            ? undefined
-            : { opacity: 0.78, borderStyle: "dashed", filter: "saturate(0.75)" }
-        }
+        className="nb-tab nb-tab-toggle"
+        style={{ ["--tab-stock" as string]: "#d6ecd0" } as React.CSSProperties}
+        title={infiniteEnabled ? "Desactivar modo infinito" : "Activar modo infinito"}
       >
-        <Infinity className="size-4" />
-        <span className="font-display tracking-wider text-base leading-none">Infinito</span>
-        <span className="ua-tab-meta">{infiniteEnabled ? "On" : "Off"}</span>
+        <Infinity className="size-4 shrink-0" aria-hidden />
+        <span>Infinito</span>
       </button>
     </div>
   );
