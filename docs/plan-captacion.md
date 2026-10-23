@@ -16,7 +16,7 @@ Cuenta de orden de magnitud (supuestos, no datos): 10 € equivalen a unas 3–4
 | Clics en «Compartir» por jugador activo | ≥ 0,15 |
 | Clics en Ko-fi/Patreon | medir (sin meta hasta tener línea base) |
 
-Retención sin identificadores: Umami no puede seguir a una misma persona entre días (la IP cambia), así que en vez de D1/D7 se mide el reparto de **racha del jugador al empezar a jugar** (evento , campo : 0, 1, 2, 3-6, 7+). Estas metas son referencias propias, sin datos del mercado: se ajustan con la línea base de la semana 4.
+Retención sin identificadores: Umami no puede seguir a una misma persona entre días (la IP cambia), así que en vez de D1/D7 se mide el reparto de **racha del jugador al empezar a jugar** (evento `partida_iniciada`, campo `racha`: 0, 1, 2, 3-6, 7+). Estas metas son referencias propias, sin datos del mercado: se ajustan con la línea base de la semana 4.
 
 ## Fase 0 (semana 0): medir antes de promocionar
 
