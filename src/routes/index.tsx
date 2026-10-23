@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { streakBucket, track } from "../lib/analytics";
 import { useEffect, useMemo, useState } from "react";
 import { CalendarDays } from "lucide-react";
 import { CHARACTERS } from "@/lib/characters";
@@ -245,6 +246,9 @@ function Index() {
 
   const handleGuess = (c: Character) => {
     if (!target || hasEnded) return;
+    if (attempts.length === 0) {
+      track("partida_iniciada", { modo: mode, infinito: infiniteEnabled, spoilers: spoilerSeason, racha: streakBucket(stats.streak) });
+    }
     if (infiniteEnabled) {
       if (endlessState.phase !== "playing") return;
 
@@ -260,6 +264,7 @@ function Index() {
           roundsCompleted: endlessState.roundsCompleted + 1,
         };
         setAttempts(nextAttempts);
+        track("partida_ganada", { modo: mode, infinito: true, ronda: nextState.roundsCompleted, intentos: nextAttempts.length });
         revealHero(true, false);
         setEndlessSummary(null);
         persistEndlessState(nextState);
@@ -276,6 +281,7 @@ function Index() {
           result: "lost",
         };
         setAttempts(nextAttempts);
+        track("partida_perdida", { modo: mode, infinito: true, rondas: endlessState.roundsCompleted });
         revealHero(false, false);
         setShake(true);
         setTimeout(() => setShake(false), 400);
@@ -302,6 +308,7 @@ function Index() {
     persistDailyState(next, isWin, false);
     if (isWin) {
       revealHero(true, false);
+      track("partida_ganada", { modo: mode, infinito: false, intentos: next.length, archivo: activeDateKey !== todayKeyUTC() });
       setStats(recordWin(next.length, activeDateKey));
     } else {
       setShake(true);
@@ -311,6 +318,7 @@ function Index() {
 
   const handleSurrender = () => {
     if (!target || hasEnded) return;
+    track("partida_abandonada", { modo: mode, infinito: infiniteEnabled, intentos: attempts.length });
     if (infiniteEnabled) {
       const nextState: EndlessState = {
         ...endlessState,
@@ -379,6 +387,7 @@ function Index() {
                 onChange={(season) => {
                   setSpoilerSeason(season);
                   saveSpoilerSeason(season);
+                  track("spoilers_cambiado", { temporada: season });
                   setEndlessSummary(null);
                 }}
               />

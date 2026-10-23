@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { initAnalytics } from "../lib/analytics";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -112,6 +114,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useEffect(() => { initAnalytics(); }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -40,7 +40,7 @@ export function buildShareText(opts: {
     })
     .join("\n");
 
-  const url = typeof window !== "undefined" ? window.location.origin : "https://mhadle.app";
+  const url = typeof window !== "undefined" ? `${window.location.origin}/?ref=compartir` : "https://mhadle.app";
 
   return `MHAdle #${puzzleNumber}${level} — ${attempts.length} ${
     attempts.length === 1 ? "intento" : "intentos"

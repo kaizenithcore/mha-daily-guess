@@ -1,4 +1,5 @@
 import { Coffee, Heart, Mail } from "lucide-react";
+import { track } from "@/lib/analytics";
 
 export function SupportFooter() {
   return (
@@ -9,6 +10,7 @@ export function SupportFooter() {
       <div className="mt-2 flex flex-wrap gap-x-5">
         <a
           href="https://ko-fi.com/kaizenith"
+          onClick={() => track("apoyo_click", { destino: "kofi" })}
           target="_blank"
           rel="noopener noreferrer"
           className="nb-link"
@@ -17,6 +19,7 @@ export function SupportFooter() {
         </a>
         <a
           href="https://patreon.com/kaizenithcore"
+          onClick={() => track("apoyo_click", { destino: "patreon" })}
           target="_blank"
           rel="noopener noreferrer"
           className="nb-link"
@@ -28,6 +31,7 @@ export function SupportFooter() {
         </a>
       </div>
       <p className="nb-printed mt-6">Hecho por fans · No oficial · Nuevo héroe a las 00:00 UTC</p>
+      <p className="nb-printed mt-1">Estadísticas anónimas, sin cookies ni datos personales.</p>
     </footer>
   );
 }

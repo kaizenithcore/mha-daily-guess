@@ -24,7 +24,19 @@ La app compila con `npm run build` y el runtime arranca `scripts/serve-worker.mj
 
 ## Variables de entorno
 
-Ninguna. Desde 2026-10 la app no tiene backend: los personajes están en `src/data/characters.json` y sus retratos en `src/assets/characters/<id>.webp`, empaquetados en el build. Las antiguas variables `VITE_SUPABASE_*` / `SUPABASE_*` pueden borrarse de Coolify.
+Ninguna es obligatoria. Desde 2026-10 la app no tiene backend: los personajes están en `src/data/characters.json` y sus retratos en `src/assets/characters/<id>.webp`, empaquetados en el build. Las antiguas variables `VITE_SUPABASE_*` / `SUPABASE_*` pueden borrarse de Coolify.
+
+### Analítica (opcional, Umami autoalojado)
+
+Sin cookies ni datos personales. Solo se activa si existen estas dos variables **de build** (en Coolify, marcar «Build time»; si se cambian hay que redesplegar):
+
+| Variable | Valor |
+|---|---|
+| `VITE_UMAMI_URL` | `https://analytics.kaizenith.es` |
+| `VITE_UMAMI_WEBSITE_ID` | el ID del sitio «MHAdle» en Umami |
+| `VITE_UMAMI_DOMAINS` (opcional) | `mhadle.kaizenith.es` (así solo cuenta el dominio de producción) |
+
+Eventos: `partida_iniciada` (modo, infinito, spoilers, racha agrupada), `partida_ganada`, `partida_perdida`, `partida_abandonada`, `compartir`, `apoyo_click`, `spoilers_cambiado`. El parámetro `?ref=etiqueta` se guarda solo en memoria y se añade a la visita y a cada evento de esa pestaña. Lo compartido incluye `?ref=compartir`.
 
 ## Validación local
 

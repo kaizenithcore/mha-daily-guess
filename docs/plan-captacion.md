@@ -11,16 +11,16 @@ Cuenta de orden de magnitud (supuestos, no datos): 10 € equivalen a unas 3–4
 | Indicador | Meta a 8 semanas |
 |---|---|
 | Jugadores distintos al día (media 7 días) | 150 |
-| Vuelven al día siguiente (D1) | ≥ 35 % |
-| Vuelven a los 7 días (D7) | ≥ 15 % |
+| Partidas iniciadas con **racha ≥ 2** (jugadores que ya volvieron al menos un día) | ≥ 35 % |
+| Partidas iniciadas con **racha ≥ 7** | ≥ 8 % |
 | Clics en «Compartir» por jugador activo | ≥ 0,15 |
 | Clics en Ko-fi/Patreon | medir (sin meta hasta tener línea base) |
 
-Las cifras D1/D7 son referencias habituales para juegos diarios, no datos verificados de este mercado.
+Retención sin identificadores: Umami no puede seguir a una misma persona entre días (la IP cambia), así que en vez de D1/D7 se mide el reparto de **racha del jugador al empezar a jugar** (evento , campo : 0, 1, 2, 3-6, 7+). Estas metas son referencias propias, sin datos del mercado: se ajustan con la línea base de la semana 4.
 
 ## Fase 0 (semana 0): medir antes de promocionar
 
-Propuesta **funcional** (necesita tu aprobación): analítica **sin cookies** y sin datos personales, autoalojada en Coolify (Umami o Plausible) o su versión gratuita, con 5 eventos: partida iniciada, partida ganada, compartir, clic en Ko-fi/Patreon, nivel de spoilers elegido. Sin esto no se puede saber qué canal funciona. El progreso ya vive en el navegador del jugador, así que no hace falta nada más.
+Aprobada e implementada (2026-10-23): analítica **sin cookies** y sin datos personales, autoalojada en Coolify (Umami o Plausible) o su versión gratuita, con 5 eventos: partida iniciada, partida ganada, compartir, clic en Ko-fi/Patreon, nivel de spoilers elegido. Sin esto no se puede saber qué canal funciona. El progreso ya vive en el navegador del jugador, así que no hace falta nada más.
 
 ## A quién
 
@@ -52,7 +52,7 @@ Fan hispanohablante de My Hero Academia (España y Latinoamérica), casual, móv
 | 1 | Primeros 3 vídeos. Entrar en 5 comunidades (solo participar). Primera medición |
 | 2 | 3 vídeos. Publicar en las comunidades que lo permitan (1 por servidor). 5 contactos a streamers |
 | 3 | 3 vídeos. 5 contactos más. Primera revisión: qué vídeo y qué comunidad dan más jugadores |
-| 4 | **Revisión de la línea base** con datos de 4 semanas: DAU, D1/D7, compartir. Ajustar la meta del plan |
+| 4 | **Revisión de la línea base** con datos de 4 semanas: DAU, reparto de rachas, compartir. Ajustar la meta del plan |
 | 5–6 | Duplicar lo que funcione y dejar lo que no. 5 creadores pequeños de anime |
 | 7 | Retos con streamers que aceptaron. SEO: páginas de personajes si se aprobaron |
 | 8 | **Revisión final** y decisión: seguir, ampliar (más personajes y modos) o mantener en piloto automático |
@@ -69,7 +69,7 @@ Tiempo estimado: 3–4 horas por semana. Coste: 0 €.
 
 ## Qué se mide
 
-Con la analítica de la fase 0: jugadores únicos, D1/D7, partidas por día, compartir y clics a Ko-fi, **por origen** (se añade `?ref=` a los enlaces de cada campaña). Una hoja semanal con: qué se publicó, dónde, cuánto tráfico trajo y cuánto se quedó.
+Con la analítica de la fase 0: jugadores únicos, reparto de rachas, partidas por día, compartir y clics a Ko-fi, **por origen** (se añade `?ref=` a los enlaces de cada campaña). Una hoja semanal con: qué se publicó, dónde, cuánto tráfico trajo y cuánto se quedó.
 
 ## Riesgos
 
