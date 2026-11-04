@@ -1,3 +1,5 @@
 [variables]
 # Keep the client output path explicit for the static production server.
 NIXPACKS_SPA_OUTPUT_DIR = "dist/client"
+# Vite 8 needs Node >= 20.19 or >= 22.12.
+NIXPACKS_NODE_VERSION = "22"

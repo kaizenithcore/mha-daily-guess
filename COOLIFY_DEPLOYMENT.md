@@ -4,7 +4,7 @@
 
 Este repositorio ya no usa Dockerfile. El despliegue correcto es con **Nixpacks** y un adaptador Node que expone el worker generado por TanStack Start.
 
-La app compila con `npm run build` y el runtime arranca `scripts/serve-worker.mjs`, que traduce requests HTTP de Coolify al `fetch` del worker en `dist/server/index.js`.
+La app compila con `npm run build` y el runtime arranca `scripts/serve-worker.mjs`, que traduce requests HTTP de Coolify al `fetch` del worker en `dist/server/server.js`.
 
 ## Configuración recomendada en Coolify
 

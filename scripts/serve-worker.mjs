@@ -113,7 +113,7 @@ function writeWebResponseToNode(response, nodeResponse) {
   });
 }
 
-const workerModule = await import("../dist/server/index.js");
+const workerModule = await import("../dist/server/server.js");
 const worker = workerModule.default;
 
 const server = createServer(async (request, response) => {
